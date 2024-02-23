@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "LOgic_Analyzer_Test", "LOgic_Analyzer_Test\LOgic_Analyzer_Test.cproj", "{F2EB280C-1CED-4BF1-AA6C-1C51EE808103}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2EB280C-1CED-4BF1-AA6C-1C51EE808103}.Debug|AVR.ActiveCfg = Debug|AVR
+		{F2EB280C-1CED-4BF1-AA6C-1C51EE808103}.Debug|AVR.Build.0 = Debug|AVR
+		{F2EB280C-1CED-4BF1-AA6C-1C51EE808103}.Release|AVR.ActiveCfg = Release|AVR
+		{F2EB280C-1CED-4BF1-AA6C-1C51EE808103}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

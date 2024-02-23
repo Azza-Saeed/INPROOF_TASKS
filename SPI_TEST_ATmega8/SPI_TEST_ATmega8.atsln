@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SPI_TEST_ATmega8", "SPI_TEST_ATmega8\SPI_TEST_ATmega8.cproj", "{7581331A-D160-44FF-89F2-50F9232169EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7581331A-D160-44FF-89F2-50F9232169EC}.Debug|AVR.ActiveCfg = Debug|AVR
+		{7581331A-D160-44FF-89F2-50F9232169EC}.Debug|AVR.Build.0 = Debug|AVR
+		{7581331A-D160-44FF-89F2-50F9232169EC}.Release|AVR.ActiveCfg = Release|AVR
+		{7581331A-D160-44FF-89F2-50F9232169EC}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

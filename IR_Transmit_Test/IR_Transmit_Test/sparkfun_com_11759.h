@@ -1,0 +1,17 @@
+/*
+ * The remote that came with Sparkfun's IR kit as of August 2017.  https://www.sparkfun.com/products/11759
+ */ 
+#ifndef SPARKFUN_COM_11759_H_
+#define SPARKFUN_COM_11759_H_
+
+#define COM_11759_POWER_BTN 284153895
+#define COM_11759_A_BTN 284162055
+#define COM_11759_B_BTN 284129415
+#define COM_11759_C_BTN 284121255
+#define COM_11759_UP_BTN 284139615
+#define COM_11759_RIGHT_BTN 284131455
+#define COM_11759_DOWN_BTN 284098815
+#define COM_11759_LEFT_BTN 284102895
+#define COM_11759_CIRCLE_BTN 284106975
+
+#endif /* SPARKFUN_COM_11759_H_ */

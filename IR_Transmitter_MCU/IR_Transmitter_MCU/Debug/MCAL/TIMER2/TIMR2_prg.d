@@ -1,0 +1,14 @@
+MCAL/TIMER2/TIMR2_prg.d MCAL/TIMER2/TIMR2_prg.o: \
+ ../MCAL/TIMER2/TIMR2_prg.c ../LIB/STD_TYPES.h ../LIB/BIT_MATH.h \
+ ../MCAL/TIMER2/TIMR2_int.h ../MCAL/TIMER2/TIMR02_priv.h \
+ ../MCAL/TIMER2/TIMR2_config.h
+
+../LIB/STD_TYPES.h:
+
+../LIB/BIT_MATH.h:
+
+../MCAL/TIMER2/TIMR2_int.h:
+
+../MCAL/TIMER2/TIMR02_priv.h:
+
+../MCAL/TIMER2/TIMR2_config.h:

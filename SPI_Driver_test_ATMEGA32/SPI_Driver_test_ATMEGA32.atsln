@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "SPI_Driver_test_ATMEGA32", "SPI_Driver_test_ATMEGA32\SPI_Driver_test_ATMEGA32.cproj", "{D6730B2A-118D-41DE-9A0B-99472BE5FDCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6730B2A-118D-41DE-9A0B-99472BE5FDCC}.Debug|AVR.ActiveCfg = Debug|AVR
+		{D6730B2A-118D-41DE-9A0B-99472BE5FDCC}.Debug|AVR.Build.0 = Debug|AVR
+		{D6730B2A-118D-41DE-9A0B-99472BE5FDCC}.Release|AVR.ActiveCfg = Release|AVR
+		{D6730B2A-118D-41DE-9A0B-99472BE5FDCC}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
