@@ -3,29 +3,29 @@ SPI_Slave.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000596  00000000  00000000  00000094  2**1
+  0 .text         00000582  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00000596  0000062a  2**0
+  1 .data         00000000  00800060  00000582  00000616  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000002  00800060  00800060  0000062a  2**0
+  2 .bss          00000005  00800060  00800060  00000616  2**0
                   ALLOC
-  3 .stab         000006cc  00000000  00000000  0000062c  2**2
+  3 .stab         000006cc  00000000  00000000  00000618  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000085  00000000  00000000  00000cf8  2**0
+  4 .stabstr      00000085  00000000  00000000  00000ce4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 000000c0  00000000  00000000  00000d80  2**3
+  5 .debug_aranges 000000c0  00000000  00000000  00000d70  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bc3  00000000  00000000  00000e40  2**0
+  6 .debug_info   00000be9  00000000  00000000  00000e30  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000415  00000000  00000000  00001a03  2**0
+  7 .debug_abbrev 00000411  00000000  00000000  00001a19  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000004b4  00000000  00000000  00001e18  2**0
+  8 .debug_line   000004ba  00000000  00000000  00001e2a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001fc  00000000  00000000  000022cc  2**2
+  9 .debug_frame  0000021c  00000000  00000000  000022e4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000411  00000000  00000000  000024c8  2**0
+ 10 .debug_str    0000045a  00000000  00000000  00002500  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000606  00000000  00000000  000028d9  2**0
+ 11 .debug_loc    000005d1  00000000  00000000  0000295a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -41,9 +41,9 @@ Disassembly of section .text:
    e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
   10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
   12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
-  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  14:	01 c2       	rjmp	.+1026   	; 0x418 <__vector_10>
   16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
-  18:	09 c2       	rjmp	.+1042   	; 0x42c <__vector_12>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
   1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
   1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
   1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
@@ -63,7 +63,7 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	e6 e9       	ldi	r30, 0x96	; 150
+  38:	e2 e8       	ldi	r30, 0x82	; 130
   3a:	f5 e0       	ldi	r31, 0x05	; 5
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
@@ -82,11 +82,11 @@ Disassembly of section .text:
   50:	1d 92       	st	X+, r1
 
 00000052 <.do_clear_bss_start>:
-  52:	a2 36       	cpi	r26, 0x62	; 98
+  52:	a5 36       	cpi	r26, 0x65	; 101
   54:	b1 07       	cpc	r27, r17
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
-  58:	b5 d1       	rcall	.+874    	; 0x3c4 <main>
-  5a:	9b c2       	rjmp	.+1334   	; 0x592 <_exit>
+  58:	c4 d1       	rcall	.+904    	; 0x3e2 <main>
+  5a:	91 c2       	rjmp	.+1314   	; 0x57e <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
@@ -737,407 +737,404 @@ void dio_vidEnablePullUp(dio_portId_t port, dio_channelId_t channel)
  3c0:	62 bb       	out	0x12, r22	; 18
  3c2:	08 95       	ret
 
-000003c4 <main>:
-
-#include "dio.h"
-#include "SPI_Interface.h"
-
-int main(void)
-{
- 3c4:	cf 93       	push	r28
- 3c6:	df 93       	push	r29
- 3c8:	00 d0       	rcall	.+0      	; 0x3ca <main+0x6>
- 3ca:	00 d0       	rcall	.+0      	; 0x3cc <main+0x8>
- 3cc:	00 d0       	rcall	.+0      	; 0x3ce <main+0xa>
- 3ce:	cd b7       	in	r28, 0x3d	; 61
- 3d0:	de b7       	in	r29, 0x3e	; 62
-	Slave_Config Slave_Obj={ SPI_INTERRUPT_DISABLE,SPI_LSB,SPI_RISING_LEADING,SPI_SAMPLE_LEADING};
- 3d2:	19 82       	std	Y+1, r1	; 0x01
- 3d4:	81 e0       	ldi	r24, 0x01	; 1
- 3d6:	8a 83       	std	Y+2, r24	; 0x02
- 3d8:	1b 82       	std	Y+3, r1	; 0x03
- 3da:	1c 82       	std	Y+4, r1	; 0x04
-	volatile u8 u8Copy_data=0xFF;
- 3dc:	8f ef       	ldi	r24, 0xFF	; 255
- 3de:	8d 83       	std	Y+5, r24	; 0x05
-	volatile u8  Ptr_Received=0;
- 3e0:	1e 82       	std	Y+6, r1	; 0x06
-	
-	SPI_Init_Slave(&Slave_Obj);
- 3e2:	ce 01       	movw	r24, r28
- 3e4:	01 96       	adiw	r24, 0x01	; 1
- 3e6:	7e d0       	rcall	.+252    	; 0x4e4 <SPI_Init_Slave>
-	
-	dio_vidConfigChannel(DIO_PORTB,DIO_PIN0, OUTPUT);
- 3e8:	81 e0       	ldi	r24, 0x01	; 1
- 3ea:	60 e0       	ldi	r22, 0x00	; 0
- 3ec:	41 e0       	ldi	r20, 0x01	; 1
- 3ee:	37 de       	rcall	.-914    	; 0x5e <dio_vidConfigChannel>
-	
-	while(1)
-	{		
- 		SPI_Send_Receive_Synch_Byte(u8Copy_data,&Ptr_Received);
- 3f0:	8d 81       	ldd	r24, Y+5	; 0x05
- 3f2:	be 01       	movw	r22, r28
- 3f4:	6a 5f       	subi	r22, 0xFA	; 250
- 3f6:	7f 4f       	sbci	r23, 0xFF	; 255
- 3f8:	a2 d0       	rcall	.+324    	; 0x53e <SPI_Send_Receive_Synch_Byte>
- 		if( Ptr_Received == 0x55 )
- 3fa:	8e 81       	ldd	r24, Y+6	; 0x06
- 3fc:	85 35       	cpi	r24, 0x55	; 85
- 3fe:	61 f4       	brne	.+24     	; 0x418 <main+0x54>
- 		{
-	 		dio_vidFlipChannel(DIO_PORTB,DIO_PIN0);
- 400:	81 e0       	ldi	r24, 0x01	; 1
- 402:	60 e0       	ldi	r22, 0x00	; 0
- 404:	40 df       	rcall	.-384    	; 0x286 <dio_vidFlipChannel>
+000003c4 <slave_callback>:
+ u8 local=0;
+ u8 pread=0;
+ void slave_callback()
+ {
+	 //SPI_Read_Data(&pread);
+	 pread = SPDR;
+ 3c4:	8f b1       	in	r24, 0x0f	; 15
+ 3c6:	80 93 60 00 	sts	0x0060, r24
+	 dio_vidFlipChannel(DIO_PORTB, DIO_PIN0);
+ 3ca:	81 e0       	ldi	r24, 0x01	; 1
+ 3cc:	60 e0       	ldi	r22, 0x00	; 0
+ 3ce:	5b df       	rcall	.-330    	; 0x286 <dio_vidFlipChannel>
+	 //dio_vidWriteChannel(DIO_PORTB, DIO_PIN0, STD_HIGH);
+	 SPDR = 0xFA;
+ 3d0:	8a ef       	ldi	r24, 0xFA	; 250
+ 3d2:	8f b9       	out	0x0f, r24	; 15
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 406:	8f e9       	ldi	r24, 0x9F	; 159
- 408:	96 e8       	ldi	r25, 0x86	; 134
- 40a:	a1 e0       	ldi	r26, 0x01	; 1
- 40c:	81 50       	subi	r24, 0x01	; 1
- 40e:	90 40       	sbci	r25, 0x00	; 0
- 410:	a0 40       	sbci	r26, 0x00	; 0
- 412:	e1 f7       	brne	.-8      	; 0x40c <main+0x48>
- 414:	00 c0       	rjmp	.+0      	; 0x416 <main+0x52>
- 416:	00 00       	nop
- 418:	8f e9       	ldi	r24, 0x9F	; 159
- 41a:	96 e8       	ldi	r25, 0x86	; 134
- 41c:	a1 e0       	ldi	r26, 0x01	; 1
- 41e:	81 50       	subi	r24, 0x01	; 1
- 420:	90 40       	sbci	r25, 0x00	; 0
- 422:	a0 40       	sbci	r26, 0x00	; 0
- 424:	e1 f7       	brne	.-8      	; 0x41e <main+0x5a>
- 426:	00 c0       	rjmp	.+0      	; 0x428 <main+0x64>
- 428:	00 00       	nop
- 42a:	e2 cf       	rjmp	.-60     	; 0x3f0 <main+0x2c>
+ 3d4:	87 ea       	ldi	r24, 0xA7	; 167
+ 3d6:	91 e6       	ldi	r25, 0x61	; 97
+ 3d8:	01 97       	sbiw	r24, 0x01	; 1
+ 3da:	f1 f7       	brne	.-4      	; 0x3d8 <slave_callback+0x14>
+ 3dc:	00 c0       	rjmp	.+0      	; 0x3de <slave_callback+0x1a>
+ 3de:	00 00       	nop
+	 _delay_ms(100);
+ }
+ 3e0:	08 95       	ret
 
-0000042c <__vector_12>:
+000003e2 <main>:
+ 
+int main(void)
+{
+ 3e2:	cf 93       	push	r28
+ 3e4:	df 93       	push	r29
+ 3e6:	00 d0       	rcall	.+0      	; 0x3e8 <main+0x6>
+ 3e8:	00 d0       	rcall	.+0      	; 0x3ea <main+0x8>
+ 3ea:	cd b7       	in	r28, 0x3d	; 61
+ 3ec:	de b7       	in	r29, 0x3e	; 62
+	dio_vidConfigChannel(DIO_PORTB, DIO_PIN0, OUTPUT);
+ 3ee:	81 e0       	ldi	r24, 0x01	; 1
+ 3f0:	60 e0       	ldi	r22, 0x00	; 0
+ 3f2:	41 e0       	ldi	r20, 0x01	; 1
+ 3f4:	34 de       	rcall	.-920    	; 0x5e <dio_vidConfigChannel>
+	Slave_Config Slave_Obj={ SPI_INTERRUPT_ENABLE,SPI_LSB,SPI_RISING_LEADING,SPI_SAMPLE_LEADING};
+ 3f6:	81 e0       	ldi	r24, 0x01	; 1
+ 3f8:	89 83       	std	Y+1, r24	; 0x01
+ 3fa:	8a 83       	std	Y+2, r24	; 0x02
+ 3fc:	1b 82       	std	Y+3, r1	; 0x03
+ 3fe:	1c 82       	std	Y+4, r1	; 0x04
+	
+	
+	SPI_Init_Slave(&Slave_Obj);
+ 400:	ce 01       	movw	r24, r28
+ 402:	01 96       	adiw	r24, 0x01	; 1
+ 404:	65 d0       	rcall	.+202    	; 0x4d0 <SPI_Init_Slave>
+	SPI_Set_CallBack(slave_callback);
+ 406:	82 ee       	ldi	r24, 0xE2	; 226
+ 408:	91 e0       	ldi	r25, 0x01	; 1
+ 40a:	9c d0       	rcall	.+312    	; 0x544 <SPI_Set_CallBack>
+	Global_Interrupt_Enable();
+ 40c:	a0 d0       	rcall	.+320    	; 0x54e <Global_Interrupt_Enable>
+	dio_vidConfigChannel(DIO_PORTC,DIO_PIN0, OUTPUT);
+ 40e:	82 e0       	ldi	r24, 0x02	; 2
+ 410:	60 e0       	ldi	r22, 0x00	; 0
+ 412:	41 e0       	ldi	r20, 0x01	; 1
+ 414:	24 de       	rcall	.-952    	; 0x5e <dio_vidConfigChannel>
+ 416:	ff cf       	rjmp	.-2      	; 0x416 <main+0x34>
+
+00000418 <__vector_10>:
  */
 
 
 #include "SPI_Interface.h"
 
-ISR(VECTOR(12)) {
- 42c:	1f 92       	push	r1
- 42e:	0f 92       	push	r0
- 430:	0f b6       	in	r0, 0x3f	; 63
- 432:	0f 92       	push	r0
- 434:	11 24       	eor	r1, r1
- 436:	2f 93       	push	r18
- 438:	3f 93       	push	r19
- 43a:	4f 93       	push	r20
- 43c:	5f 93       	push	r21
- 43e:	6f 93       	push	r22
- 440:	7f 93       	push	r23
- 442:	8f 93       	push	r24
- 444:	9f 93       	push	r25
- 446:	af 93       	push	r26
- 448:	bf 93       	push	r27
- 44a:	ef 93       	push	r30
- 44c:	ff 93       	push	r31
+ISR(VECTOR(10)) {
+ 418:	1f 92       	push	r1
+ 41a:	0f 92       	push	r0
+ 41c:	0f b6       	in	r0, 0x3f	; 63
+ 41e:	0f 92       	push	r0
+ 420:	11 24       	eor	r1, r1
+ 422:	2f 93       	push	r18
+ 424:	3f 93       	push	r19
+ 426:	4f 93       	push	r20
+ 428:	5f 93       	push	r21
+ 42a:	6f 93       	push	r22
+ 42c:	7f 93       	push	r23
+ 42e:	8f 93       	push	r24
+ 430:	9f 93       	push	r25
+ 432:	af 93       	push	r26
+ 434:	bf 93       	push	r27
+ 436:	ef 93       	push	r30
+ 438:	ff 93       	push	r31
 	ptr_func();
- 44e:	e0 91 60 00 	lds	r30, 0x0060
- 452:	f0 91 61 00 	lds	r31, 0x0061
- 456:	09 95       	icall
+ 43a:	e0 91 63 00 	lds	r30, 0x0063
+ 43e:	f0 91 64 00 	lds	r31, 0x0064
+ 442:	09 95       	icall
 }
- 458:	ff 91       	pop	r31
- 45a:	ef 91       	pop	r30
- 45c:	bf 91       	pop	r27
- 45e:	af 91       	pop	r26
- 460:	9f 91       	pop	r25
- 462:	8f 91       	pop	r24
- 464:	7f 91       	pop	r23
- 466:	6f 91       	pop	r22
- 468:	5f 91       	pop	r21
- 46a:	4f 91       	pop	r20
- 46c:	3f 91       	pop	r19
- 46e:	2f 91       	pop	r18
- 470:	0f 90       	pop	r0
- 472:	0f be       	out	0x3f, r0	; 63
- 474:	0f 90       	pop	r0
- 476:	1f 90       	pop	r1
- 478:	18 95       	reti
+ 444:	ff 91       	pop	r31
+ 446:	ef 91       	pop	r30
+ 448:	bf 91       	pop	r27
+ 44a:	af 91       	pop	r26
+ 44c:	9f 91       	pop	r25
+ 44e:	8f 91       	pop	r24
+ 450:	7f 91       	pop	r23
+ 452:	6f 91       	pop	r22
+ 454:	5f 91       	pop	r21
+ 456:	4f 91       	pop	r20
+ 458:	3f 91       	pop	r19
+ 45a:	2f 91       	pop	r18
+ 45c:	0f 90       	pop	r0
+ 45e:	0f be       	out	0x3f, r0	; 63
+ 460:	0f 90       	pop	r0
+ 462:	1f 90       	pop	r1
+ 464:	18 95       	reti
 
-0000047a <SPI_Init_Master>:
+00000466 <SPI_Init_Master>:
 
 void SPI_Init_Master(Master_Config *My_Config) {
- 47a:	cf 93       	push	r28
- 47c:	df 93       	push	r29
- 47e:	ec 01       	movw	r28, r24
+ 466:	cf 93       	push	r28
+ 468:	df 93       	push	r29
+ 46a:	ec 01       	movw	r28, r24
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
- 480:	81 e0       	ldi	r24, 0x01	; 1
- 482:	66 e0       	ldi	r22, 0x06	; 6
- 484:	40 e0       	ldi	r20, 0x00	; 0
- 486:	eb dd       	rcall	.-1066   	; 0x5e <dio_vidConfigChannel>
+ 46c:	81 e0       	ldi	r24, 0x01	; 1
+ 46e:	66 e0       	ldi	r22, 0x06	; 6
+ 470:	40 e0       	ldi	r20, 0x00	; 0
+ 472:	f5 dd       	rcall	.-1046   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
- 488:	81 e0       	ldi	r24, 0x01	; 1
- 48a:	65 e0       	ldi	r22, 0x05	; 5
- 48c:	41 e0       	ldi	r20, 0x01	; 1
- 48e:	e7 dd       	rcall	.-1074   	; 0x5e <dio_vidConfigChannel>
+ 474:	81 e0       	ldi	r24, 0x01	; 1
+ 476:	65 e0       	ldi	r22, 0x05	; 5
+ 478:	41 e0       	ldi	r20, 0x01	; 1
+ 47a:	f1 dd       	rcall	.-1054   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
- 490:	81 e0       	ldi	r24, 0x01	; 1
- 492:	67 e0       	ldi	r22, 0x07	; 7
- 494:	41 e0       	ldi	r20, 0x01	; 1
- 496:	e3 dd       	rcall	.-1082   	; 0x5e <dio_vidConfigChannel>
+ 47c:	81 e0       	ldi	r24, 0x01	; 1
+ 47e:	67 e0       	ldi	r22, 0x07	; 7
+ 480:	41 e0       	ldi	r20, 0x01	; 1
+ 482:	ed dd       	rcall	.-1062   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
- 498:	81 e0       	ldi	r24, 0x01	; 1
- 49a:	64 e0       	ldi	r22, 0x04	; 4
- 49c:	41 e0       	ldi	r20, 0x01	; 1
- 49e:	df dd       	rcall	.-1090   	; 0x5e <dio_vidConfigChannel>
+ 484:	81 e0       	ldi	r24, 0x01	; 1
+ 486:	64 e0       	ldi	r22, 0x04	; 4
+ 488:	41 e0       	ldi	r20, 0x01	; 1
+ 48a:	e9 dd       	rcall	.-1070   	; 0x5e <dio_vidConfigChannel>
 
 	SPCR |= (1 << SPE)
- 4a0:	4d b1       	in	r20, 0x0d	; 13
- 4a2:	40 65       	ori	r20, 0x50	; 80
- 4a4:	8c 81       	ldd	r24, Y+4	; 0x04
- 4a6:	83 70       	andi	r24, 0x03	; 3
- 4a8:	48 2b       	or	r20, r24
+ 48c:	4d b1       	in	r20, 0x0d	; 13
+ 48e:	40 65       	ori	r20, 0x50	; 80
+ 490:	8c 81       	ldd	r24, Y+4	; 0x04
+ 492:	83 70       	andi	r24, 0x03	; 3
+ 494:	48 2b       	or	r20, r24
 			| (My_Config->Int_Enable << SPIE)
- 4aa:	38 81       	ld	r19, Y
- 4ac:	37 95       	ror	r19
- 4ae:	33 27       	eor	r19, r19
- 4b0:	37 95       	ror	r19
+ 496:	38 81       	ld	r19, Y
+ 498:	37 95       	ror	r19
+ 49a:	33 27       	eor	r19, r19
+ 49c:	37 95       	ror	r19
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
 	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
 
 	SPCR |= (1 << SPE)
- 4b2:	34 2b       	or	r19, r20
-			| (My_Config->Int_Enable << SPIE)
-			| (My_Config->Data_Order << DORD) | (SPI_MASTER << MSTR)
- 4b4:	29 81       	ldd	r18, Y+1	; 0x01
- 4b6:	22 95       	swap	r18
- 4b8:	22 0f       	add	r18, r18
- 4ba:	20 7e       	andi	r18, 0xE0	; 224
-	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
-	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
-	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
-	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
-
-	SPCR |= (1 << SPE)
- 4bc:	23 2b       	or	r18, r19
+ 49e:	34 2b       	or	r19, r20
 			| (My_Config->Int_Enable << SPIE)
 			| (My_Config->Data_Order << DORD) | (SPI_MASTER << MSTR)
-			| (My_Config->Polarity << CPOL) | (My_Config->Phase << CPHA)
- 4be:	9a 81       	ldd	r25, Y+2	; 0x02
- 4c0:	99 0f       	add	r25, r25
- 4c2:	99 0f       	add	r25, r25
- 4c4:	99 0f       	add	r25, r25
+ 4a0:	29 81       	ldd	r18, Y+1	; 0x01
+ 4a2:	22 95       	swap	r18
+ 4a4:	22 0f       	add	r18, r18
+ 4a6:	20 7e       	andi	r18, 0xE0	; 224
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
 	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
 
 	SPCR |= (1 << SPE)
- 4c6:	92 2b       	or	r25, r18
+ 4a8:	23 2b       	or	r18, r19
 			| (My_Config->Int_Enable << SPIE)
 			| (My_Config->Data_Order << DORD) | (SPI_MASTER << MSTR)
 			| (My_Config->Polarity << CPOL) | (My_Config->Phase << CPHA)
- 4c8:	8b 81       	ldd	r24, Y+3	; 0x03
- 4ca:	88 0f       	add	r24, r24
- 4cc:	88 0f       	add	r24, r24
+ 4aa:	9a 81       	ldd	r25, Y+2	; 0x02
+ 4ac:	99 0f       	add	r25, r25
+ 4ae:	99 0f       	add	r25, r25
+ 4b0:	99 0f       	add	r25, r25
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
 	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
 
 	SPCR |= (1 << SPE)
- 4ce:	89 2b       	or	r24, r25
- 4d0:	8d b9       	out	0x0d, r24	; 13
+ 4b2:	92 2b       	or	r25, r18
+			| (My_Config->Int_Enable << SPIE)
+			| (My_Config->Data_Order << DORD) | (SPI_MASTER << MSTR)
+			| (My_Config->Polarity << CPOL) | (My_Config->Phase << CPHA)
+ 4b4:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4b6:	88 0f       	add	r24, r24
+ 4b8:	88 0f       	add	r24, r24
+	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
+	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);
+	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, OUTPUT);
+	dio_vidConfigChannel(SS_PORT, SS_PIN, OUTPUT);
+
+	SPCR |= (1 << SPE)
+ 4ba:	89 2b       	or	r24, r25
+ 4bc:	8d b9       	out	0x0d, r24	; 13
 			| (My_Config->Int_Enable << SPIE)
 			| (My_Config->Data_Order << DORD) | (SPI_MASTER << MSTR)
 			| (My_Config->Polarity << CPOL) | (My_Config->Phase << CPHA)
 			| (My_Config->Prescaler & 0x3);
 
 	SPSR |= (My_Config->Prescaler >> 2);
- 4d2:	9e b1       	in	r25, 0x0e	; 14
- 4d4:	8c 81       	ldd	r24, Y+4	; 0x04
- 4d6:	86 95       	lsr	r24
- 4d8:	86 95       	lsr	r24
- 4da:	89 2b       	or	r24, r25
- 4dc:	8e b9       	out	0x0e, r24	; 14
+ 4be:	9e b1       	in	r25, 0x0e	; 14
+ 4c0:	8c 81       	ldd	r24, Y+4	; 0x04
+ 4c2:	86 95       	lsr	r24
+ 4c4:	86 95       	lsr	r24
+ 4c6:	89 2b       	or	r24, r25
+ 4c8:	8e b9       	out	0x0e, r24	; 14
 }
- 4de:	df 91       	pop	r29
- 4e0:	cf 91       	pop	r28
- 4e2:	08 95       	ret
+ 4ca:	df 91       	pop	r29
+ 4cc:	cf 91       	pop	r28
+ 4ce:	08 95       	ret
 
-000004e4 <SPI_Init_Slave>:
+000004d0 <SPI_Init_Slave>:
 
 void SPI_Init_Slave(Slave_Config *My_Config) {
- 4e4:	cf 93       	push	r28
- 4e6:	df 93       	push	r29
- 4e8:	ec 01       	movw	r28, r24
+ 4d0:	cf 93       	push	r28
+ 4d2:	df 93       	push	r29
+ 4d4:	ec 01       	movw	r28, r24
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, OUTPUT);
- 4ea:	81 e0       	ldi	r24, 0x01	; 1
- 4ec:	66 e0       	ldi	r22, 0x06	; 6
- 4ee:	41 e0       	ldi	r20, 0x01	; 1
- 4f0:	b6 dd       	rcall	.-1172   	; 0x5e <dio_vidConfigChannel>
+ 4d6:	81 e0       	ldi	r24, 0x01	; 1
+ 4d8:	66 e0       	ldi	r22, 0x06	; 6
+ 4da:	41 e0       	ldi	r20, 0x01	; 1
+ 4dc:	c0 dd       	rcall	.-1152   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, INPUT);
- 4f2:	81 e0       	ldi	r24, 0x01	; 1
- 4f4:	65 e0       	ldi	r22, 0x05	; 5
- 4f6:	40 e0       	ldi	r20, 0x00	; 0
- 4f8:	b2 dd       	rcall	.-1180   	; 0x5e <dio_vidConfigChannel>
+ 4de:	81 e0       	ldi	r24, 0x01	; 1
+ 4e0:	65 e0       	ldi	r22, 0x05	; 5
+ 4e2:	40 e0       	ldi	r20, 0x00	; 0
+ 4e4:	bc dd       	rcall	.-1160   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, INPUT);
- 4fa:	81 e0       	ldi	r24, 0x01	; 1
- 4fc:	67 e0       	ldi	r22, 0x07	; 7
- 4fe:	40 e0       	ldi	r20, 0x00	; 0
- 500:	ae dd       	rcall	.-1188   	; 0x5e <dio_vidConfigChannel>
+ 4e6:	81 e0       	ldi	r24, 0x01	; 1
+ 4e8:	67 e0       	ldi	r22, 0x07	; 7
+ 4ea:	40 e0       	ldi	r20, 0x00	; 0
+ 4ec:	b8 dd       	rcall	.-1168   	; 0x5e <dio_vidConfigChannel>
 	dio_vidConfigChannel(SS_PORT, SS_PIN, INPUT);
- 502:	81 e0       	ldi	r24, 0x01	; 1
- 504:	64 e0       	ldi	r22, 0x04	; 4
- 506:	40 e0       	ldi	r20, 0x00	; 0
- 508:	aa dd       	rcall	.-1196   	; 0x5e <dio_vidConfigChannel>
+ 4ee:	81 e0       	ldi	r24, 0x01	; 1
+ 4f0:	64 e0       	ldi	r22, 0x04	; 4
+ 4f2:	40 e0       	ldi	r20, 0x00	; 0
+ 4f4:	b4 dd       	rcall	.-1176   	; 0x5e <dio_vidConfigChannel>
 
 	SPCR = 0;
- 50a:	1d b8       	out	0x0d, r1	; 13
+ 4f6:	1d b8       	out	0x0d, r1	; 13
 	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
- 50c:	4d b1       	in	r20, 0x0d	; 13
- 50e:	40 64       	ori	r20, 0x40	; 64
- 510:	38 81       	ld	r19, Y
- 512:	37 95       	ror	r19
- 514:	33 27       	eor	r19, r19
- 516:	37 95       	ror	r19
- 518:	34 2b       	or	r19, r20
-			| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
- 51a:	29 81       	ldd	r18, Y+1	; 0x01
- 51c:	22 95       	swap	r18
- 51e:	22 0f       	add	r18, r18
- 520:	20 7e       	andi	r18, 0xE0	; 224
-	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, INPUT);
-	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, INPUT);
-	dio_vidConfigChannel(SS_PORT, SS_PIN, INPUT);
-
-	SPCR = 0;
-	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
- 522:	23 2b       	or	r18, r19
-			| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
- 524:	9a 81       	ldd	r25, Y+2	; 0x02
- 526:	99 0f       	add	r25, r25
- 528:	99 0f       	add	r25, r25
- 52a:	99 0f       	add	r25, r25
+ 4f8:	4d b1       	in	r20, 0x0d	; 13
+ 4fa:	40 64       	ori	r20, 0x40	; 64
+ 4fc:	38 81       	ld	r19, Y
+ 4fe:	37 95       	ror	r19
+ 500:	33 27       	eor	r19, r19
+ 502:	37 95       	ror	r19
+ 504:	34 2b       	or	r19, r20
+	| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
+ 506:	29 81       	ldd	r18, Y+1	; 0x01
+ 508:	22 95       	swap	r18
+ 50a:	22 0f       	add	r18, r18
+ 50c:	20 7e       	andi	r18, 0xE0	; 224
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, INPUT);
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, INPUT);
 	dio_vidConfigChannel(SS_PORT, SS_PIN, INPUT);
 
 	SPCR = 0;
 	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
- 52c:	92 2b       	or	r25, r18
-			| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
-			| (My_Config->Phase << CPHA);
- 52e:	8b 81       	ldd	r24, Y+3	; 0x03
- 530:	88 0f       	add	r24, r24
- 532:	88 0f       	add	r24, r24
+ 50e:	23 2b       	or	r18, r19
+	| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
+ 510:	9a 81       	ldd	r25, Y+2	; 0x02
+ 512:	99 0f       	add	r25, r25
+ 514:	99 0f       	add	r25, r25
+ 516:	99 0f       	add	r25, r25
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, INPUT);
 	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, INPUT);
 	dio_vidConfigChannel(SS_PORT, SS_PIN, INPUT);
 
 	SPCR = 0;
 	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
- 534:	89 2b       	or	r24, r25
- 536:	8d b9       	out	0x0d, r24	; 13
-			| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
-			| (My_Config->Phase << CPHA);
+ 518:	92 2b       	or	r25, r18
+	| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
+	| (My_Config->Phase << CPHA);
+ 51a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 51c:	88 0f       	add	r24, r24
+ 51e:	88 0f       	add	r24, r24
+	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, INPUT);
+	dio_vidConfigChannel(CLOCK_PORT, CLOCK_PIN, INPUT);
+	dio_vidConfigChannel(SS_PORT, SS_PIN, INPUT);
+
+	SPCR = 0;
+	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
+ 520:	89 2b       	or	r24, r25
+ 522:	8d b9       	out	0x0d, r24	; 13
+	| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
+	| (My_Config->Phase << CPHA);
 }
- 538:	df 91       	pop	r29
- 53a:	cf 91       	pop	r28
- 53c:	08 95       	ret
+ 524:	df 91       	pop	r29
+ 526:	cf 91       	pop	r28
+ 528:	08 95       	ret
 
-0000053e <SPI_Send_Receive_Synch_Byte>:
+0000052a <SPI_Send_Receive_Synch_Byte>:
 
 void SPI_Send_Receive_Synch_Byte(u8 byte, u8 *received) {
 	SPDR = byte;
- 53e:	8f b9       	out	0x0f, r24	; 15
+ 52a:	8f b9       	out	0x0f, r24	; 15
 
 	while (!CHECK_BIT(SPSR, SPIF));
- 540:	77 9b       	sbis	0x0e, 7	; 14
- 542:	fe cf       	rjmp	.-4      	; 0x540 <SPI_Send_Receive_Synch_Byte+0x2>
+ 52c:	77 9b       	sbis	0x0e, 7	; 14
+ 52e:	fe cf       	rjmp	.-4      	; 0x52c <SPI_Send_Receive_Synch_Byte+0x2>
 	*received = SPDR;
- 544:	8f b1       	in	r24, 0x0f	; 15
- 546:	fb 01       	movw	r30, r22
- 548:	80 83       	st	Z, r24
+ 530:	8f b1       	in	r24, 0x0f	; 15
+ 532:	fb 01       	movw	r30, r22
+ 534:	80 83       	st	Z, r24
 }
- 54a:	08 95       	ret
+ 536:	08 95       	ret
 
-0000054c <SPI_Send_ASynch_Byte>:
+00000538 <SPI_Send_ASynch_Byte>:
 
 void SPI_Send_ASynch_Byte(u8 byte) {
 	SPDR = byte;
- 54c:	8f b9       	out	0x0f, r24	; 15
+ 538:	8f b9       	out	0x0f, r24	; 15
 
-	while (!CHECK_BIT(SPSR, SPIF));
- 54e:	77 9b       	sbis	0x0e, 7	; 14
- 550:	fe cf       	rjmp	.-4      	; 0x54e <SPI_Send_ASynch_Byte+0x2>
+	//while (!CHECK_BIT(SPSR, SPIF));
 }
- 552:	08 95       	ret
+ 53a:	08 95       	ret
 
-00000554 <SPI_Read_Data>:
+0000053c <SPI_Read_Data>:
 
 void SPI_Read_Data(u8 *var) {
 	*var = SPDR;
- 554:	2f b1       	in	r18, 0x0f	; 15
- 556:	fc 01       	movw	r30, r24
- 558:	20 83       	st	Z, r18
+ 53c:	2f b1       	in	r18, 0x0f	; 15
+ 53e:	fc 01       	movw	r30, r24
+ 540:	20 83       	st	Z, r18
 }
- 55a:	08 95       	ret
+ 542:	08 95       	ret
 
-0000055c <SPI_Set_CallBack>:
+00000544 <SPI_Set_CallBack>:
 
 void SPI_Set_CallBack(void (*func)(void)) {
 	ptr_func = func;
- 55c:	90 93 61 00 	sts	0x0061, r25
- 560:	80 93 60 00 	sts	0x0060, r24
+ 544:	90 93 64 00 	sts	0x0064, r25
+ 548:	80 93 63 00 	sts	0x0063, r24
 }
- 564:	08 95       	ret
+ 54c:	08 95       	ret
 
-00000566 <Global_Interrupt_Enable>:
+0000054e <Global_Interrupt_Enable>:
 
 void Global_Interrupt_Enable() {
 	SREG |= (1 << 7);
- 566:	8f b7       	in	r24, 0x3f	; 63
- 568:	80 68       	ori	r24, 0x80	; 128
- 56a:	8f bf       	out	0x3f, r24	; 63
+ 54e:	8f b7       	in	r24, 0x3f	; 63
+ 550:	80 68       	ori	r24, 0x80	; 128
+ 552:	8f bf       	out	0x3f, r24	; 63
 }
- 56c:	08 95       	ret
+ 554:	08 95       	ret
 
-0000056e <Master_Send>:
+00000556 <Master_Send>:
 void Master_Send(u8 data){
 	SPI_Send_ASynch_Byte(data);
- 56e:	ee df       	rcall	.-36     	; 0x54c <SPI_Send_ASynch_Byte>
+ 556:	f0 df       	rcall	.-32     	; 0x538 <SPI_Send_ASynch_Byte>
 }
- 570:	08 95       	ret
+ 558:	08 95       	ret
 
-00000572 <Master_Receive>:
+0000055a <Slave_Send>:
+void Slave_Send(u8 data){
+	SPI_Send_ASynch_Byte(data);
+ 55a:	ee df       	rcall	.-36     	; 0x538 <SPI_Send_ASynch_Byte>
+}
+ 55c:	08 95       	ret
 
+0000055e <Master_Receive>:
 u8 Master_Receive(){
- 572:	cf 93       	push	r28
- 574:	df 93       	push	r29
- 576:	0f 92       	push	r0
- 578:	cd b7       	in	r28, 0x3d	; 61
- 57a:	de b7       	in	r29, 0x3e	; 62
+ 55e:	cf 93       	push	r28
+ 560:	df 93       	push	r29
+ 562:	0f 92       	push	r0
+ 564:	cd b7       	in	r28, 0x3d	; 61
+ 566:	de b7       	in	r29, 0x3e	; 62
 	u8 received=0;
- 57c:	19 82       	std	Y+1, r1	; 0x01
+ 568:	19 82       	std	Y+1, r1	; 0x01
 	SPI_Send_Receive_Synch_Byte(DUMMY_DATA,&received);
- 57e:	8e ef       	ldi	r24, 0xFE	; 254
- 580:	be 01       	movw	r22, r28
- 582:	6f 5f       	subi	r22, 0xFF	; 255
- 584:	7f 4f       	sbci	r23, 0xFF	; 255
- 586:	db df       	rcall	.-74     	; 0x53e <SPI_Send_Receive_Synch_Byte>
+ 56a:	8e ef       	ldi	r24, 0xFE	; 254
+ 56c:	be 01       	movw	r22, r28
+ 56e:	6f 5f       	subi	r22, 0xFF	; 255
+ 570:	7f 4f       	sbci	r23, 0xFF	; 255
+ 572:	db df       	rcall	.-74     	; 0x52a <SPI_Send_Receive_Synch_Byte>
 	return received;
 }
- 588:	89 81       	ldd	r24, Y+1	; 0x01
- 58a:	0f 90       	pop	r0
- 58c:	df 91       	pop	r29
- 58e:	cf 91       	pop	r28
- 590:	08 95       	ret
+ 574:	89 81       	ldd	r24, Y+1	; 0x01
+ 576:	0f 90       	pop	r0
+ 578:	df 91       	pop	r29
+ 57a:	cf 91       	pop	r28
+ 57c:	08 95       	ret
 
-00000592 <_exit>:
- 592:	f8 94       	cli
+0000057e <_exit>:
+ 57e:	f8 94       	cli
 
-00000594 <__stop_program>:
- 594:	ff cf       	rjmp	.-2      	; 0x594 <__stop_program>
+00000580 <__stop_program>:
+ 580:	ff cf       	rjmp	.-2      	; 0x580 <__stop_program>

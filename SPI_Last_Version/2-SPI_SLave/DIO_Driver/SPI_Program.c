@@ -10,7 +10,7 @@
 
 #include "SPI_Interface.h"
 
-ISR(VECTOR(12)) {
+ISR(VECTOR(10)) {
 	ptr_func();
 }
 
@@ -37,8 +37,8 @@ void SPI_Init_Slave(Slave_Config *My_Config) {
 
 	SPCR = 0;
 	SPCR |= (SPI_ENABLE << SPE) | (My_Config->Int_Enable << SPIE)
-			| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
-			| (My_Config->Phase << CPHA);
+	| (My_Config->Data_Order << DORD) | (My_Config->Polarity << CPOL)
+	| (My_Config->Phase << CPHA);
 }
 
 void SPI_Send_Receive_Synch_Byte(u8 byte, u8 *received) {
@@ -51,7 +51,7 @@ void SPI_Send_Receive_Synch_Byte(u8 byte, u8 *received) {
 void SPI_Send_ASynch_Byte(u8 byte) {
 	SPDR = byte;
 
-	while (!CHECK_BIT(SPSR, SPIF));
+	//while (!CHECK_BIT(SPSR, SPIF));
 }
 
 void SPI_Read_Data(u8 *var) {
@@ -68,7 +68,9 @@ void Global_Interrupt_Enable() {
 void Master_Send(u8 data){
 	SPI_Send_ASynch_Byte(data);
 }
-
+void Slave_Send(u8 data){
+	SPI_Send_ASynch_Byte(data);
+}
 u8 Master_Receive(){
 	u8 received=0;
 	SPI_Send_Receive_Synch_Byte(DUMMY_DATA,&received);
