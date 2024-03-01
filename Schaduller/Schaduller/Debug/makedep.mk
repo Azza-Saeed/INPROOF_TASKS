@@ -12,5 +12,7 @@ Schaduller.c
 
 Scheduler_prog.c
 
+SPI_Program.c
+
 TIMR0_prg.c
 

@@ -14,11 +14,15 @@
 
 void App_voidIit(void);
 
-void Blue_led(void);
+void App_vidMain(void);
 
-void Green_Led(void);
+void Func_recieve_data( void );
 
-void Red_Led(void);
+//void Blue_led(void);
+//
+//void Green_Led(void);
+//
+//void Red_Led(void);
 
 
 

@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../GIE.c \
 ../Schaduller.c \
 ../Scheduler_prog.c \
+../SPI_Program.c \
 ../TIMR0_prg.c
 
 
@@ -55,6 +56,7 @@ dio.o \
 GIE.o \
 Schaduller.o \
 Scheduler_prog.o \
+SPI_Program.o \
 TIMR0_prg.o
 
 
@@ -64,6 +66,7 @@ dio.o \
 GIE.o \
 Schaduller.o \
 Scheduler_prog.o \
+SPI_Program.o \
 TIMR0_prg.o
 
 
@@ -73,6 +76,7 @@ dio.d \
 GIE.d \
 Schaduller.d \
 Scheduler_prog.d \
+SPI_Program.d \
 TIMR0_prg.d
 
 
@@ -82,6 +86,7 @@ dio.d \
 GIE.d \
 Schaduller.d \
 Scheduler_prog.d \
+SPI_Program.d \
 TIMR0_prg.d
 
 
@@ -94,6 +99,8 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
+
+
 
 
 
