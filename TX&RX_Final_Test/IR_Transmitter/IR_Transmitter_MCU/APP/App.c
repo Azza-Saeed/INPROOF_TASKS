@@ -10,9 +10,9 @@
 #include "App.h"
 
 //IR_parameters_t Transmitter ={DIO_PORTB,DIO_PIN0, 0xf0,0xff};
-IR_parameters_t Array_Transmitter[NUMBER_OF_SENSORS] ={ {DIO_PORTC,DIO_PIN0, 0xf0,0xff},{DIO_PORTC,DIO_PIN1, 0xf1,0xff}, {DIO_PORTC,DIO_PIN2, 0xf2,0xff},
-										   {DIO_PORTC,DIO_PIN3, 0xf3,0xff}, {DIO_PORTC,DIO_PIN4, 0xf4,0xff}, {DIO_PORTC,DIO_PIN5, 0xf5,0xff}, 
-										   {DIO_PORTD,DIO_PIN7, 0xf6,0xff}, {DIO_PORTD,DIO_PIN6, 0xf7,0xff} };
+IR_parameters_t Array_Transmitter[NUMBER_OF_SENSORS] ={ {DIO_PORTC,DIO_PIN0, 0xf0},{DIO_PORTC,DIO_PIN1, 0xf0}, {DIO_PORTC,DIO_PIN2, 0xf0},
+										   {DIO_PORTC,DIO_PIN3, 0xf0}, {DIO_PORTC,DIO_PIN4, 0xf0}, {DIO_PORTC,DIO_PIN5, 0xf0}, 
+										   {DIO_PORTD,DIO_PIN7, 0xf0}, {DIO_PORTD,DIO_PIN6, 0xf0} };
 	
 void App_vidInit(void)
 {	

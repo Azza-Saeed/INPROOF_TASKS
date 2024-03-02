@@ -3,31 +3,29 @@ IR_Transmitter_MCU.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000a5c  00000000  00000000  00000094  2**1
+  0 .text         00000914  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000020  00800060  00000a5c  00000af0  2**0
+  1 .data         00000018  00800060  00000914  000009a8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          0000000c  00800080  00800080  00000b10  2**0
+  2 .bss          0000000b  00800078  00800078  000009c0  2**0
                   ALLOC
-  3 .stab         000006cc  00000000  00000000  00000b10  2**2
+  3 .stab         000006cc  00000000  00000000  000009c0  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000085  00000000  00000000  000011dc  2**0
+  4 .stabstr      00000085  00000000  00000000  0000108c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000100  00000000  00000000  00001268  2**3
+  5 .debug_aranges 00000100  00000000  00000000  00001118  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000011ae  00000000  00000000  00001368  2**0
+  6 .debug_info   00001058  00000000  00000000  00001218  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000518  00000000  00000000  00002516  2**0
+  7 .debug_abbrev 00000507  00000000  00000000  00002270  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000737  00000000  00000000  00002a2e  2**0
+  8 .debug_line   0000068e  00000000  00000000  00002777  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000444  00000000  00000000  00003168  2**2
+  9 .debug_frame  00000454  00000000  00000000  00002e08  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000615  00000000  00000000  000035ac  2**0
+ 10 .debug_str    00000618  00000000  00000000  0000325c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000d44  00000000  00000000  00003bc1  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000060  00000000  00000000  00004905  2**0
+ 11 .debug_loc    00000c98  00000000  00000000  00003874  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -37,8 +35,8 @@ Disassembly of section .text:
    2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
    4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
    6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
-   8:	00 c5       	rjmp	.+2560   	; 0xa0a <__vector_4>
-   a:	d8 c4       	rjmp	.+2480   	; 0x9bc <__vector_5>
+   8:	5c c4       	rjmp	.+2232   	; 0x8c2 <__vector_4>
+   a:	34 c4       	rjmp	.+2152   	; 0x874 <__vector_5>
    c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
    e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
   10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
@@ -65,18 +63,18 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	ec e5       	ldi	r30, 0x5C	; 92
-  3a:	fa e0       	ldi	r31, 0x0A	; 10
+  38:	e4 e1       	ldi	r30, 0x14	; 20
+  3a:	f9 e0       	ldi	r31, 0x09	; 9
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
   40:	0d 92       	st	X+, r0
-  42:	a0 38       	cpi	r26, 0x80	; 128
+  42:	a8 37       	cpi	r26, 0x78	; 120
   44:	b1 07       	cpc	r27, r17
   46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
 
 00000048 <__do_clear_bss>:
   48:	10 e0       	ldi	r17, 0x00	; 0
-  4a:	a0 e8       	ldi	r26, 0x80	; 128
+  4a:	a8 e7       	ldi	r26, 0x78	; 120
   4c:	b0 e0       	ldi	r27, 0x00	; 0
   4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
 
@@ -84,19 +82,19 @@ Disassembly of section .text:
   50:	1d 92       	st	X+, r1
 
 00000052 <.do_clear_bss_start>:
-  52:	ac 38       	cpi	r26, 0x8C	; 140
+  52:	a3 38       	cpi	r26, 0x83	; 131
   54:	b1 07       	cpc	r27, r17
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
-  58:	b9 d2       	rcall	.+1394   	; 0x5cc <main>
-  5a:	fe c4       	rjmp	.+2556   	; 0xa58 <_exit>
+  58:	15 d2       	rcall	.+1066   	; 0x484 <main>
+  5a:	5a c4       	rjmp	.+2228   	; 0x910 <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
 
 0000005e <App_vidInit>:
-IR_parameters_t Array_Transmitter[NUMBER_OF_SENSORS] ={ {DIO_PORTC,DIO_PIN0, 0xf0,0xff},{DIO_PORTC,DIO_PIN1, 0xf1,0xff}, {DIO_PORTC,DIO_PIN2, 0xf2,0xff},
-										   {DIO_PORTC,DIO_PIN3, 0xf3,0xff}, {DIO_PORTC,DIO_PIN4, 0xf4,0xff}, {DIO_PORTC,DIO_PIN5, 0xf5,0xff}, 
-										   {DIO_PORTD,DIO_PIN7, 0xf6,0xff}, {DIO_PORTD,DIO_PIN6, 0xf7,0xff} };
+IR_parameters_t Array_Transmitter[NUMBER_OF_SENSORS] ={ {DIO_PORTC,DIO_PIN0, 0xf0},{DIO_PORTC,DIO_PIN1, 0xf0}, {DIO_PORTC,DIO_PIN2, 0xf0},
+										   {DIO_PORTC,DIO_PIN3, 0xf0}, {DIO_PORTC,DIO_PIN4, 0xf0}, {DIO_PORTC,DIO_PIN5, 0xf0}, 
+										   {DIO_PORTD,DIO_PIN7, 0xf0}, {DIO_PORTD,DIO_PIN6, 0xf0} };
 	
 void App_vidInit(void)
 {	
@@ -109,8 +107,8 @@ void App_vidInit(void)
   62:	81 e0       	ldi	r24, 0x01	; 1
   64:	6c 2f       	mov	r22, r28
   66:	41 e0       	ldi	r20, 0x01	; 1
-  68:	b4 d2       	rcall	.+1384   	; 0x5d2 <dio_vidConfigChannel>
-										   {DIO_PORTD,DIO_PIN7, 0xf6,0xff}, {DIO_PORTD,DIO_PIN6, 0xf7,0xff} };
+  68:	10 d2       	rcall	.+1056   	; 0x48a <dio_vidConfigChannel>
+										   {DIO_PORTD,DIO_PIN7, 0xf0}, {DIO_PORTD,DIO_PIN6, 0xf0} };
 	
 void App_vidInit(void)
 {	
@@ -132,1789 +130,1410 @@ void App_vidInit(void)
 
 void App_vidMain(void)
 {
-  74:	0f 93       	push	r16
-  76:	1f 93       	push	r17
-  78:	cf 93       	push	r28
-  7a:	df 93       	push	r29
-  7c:	c0 e0       	ldi	r28, 0x00	; 0
-  7e:	d0 e0       	ldi	r29, 0x00	; 0
+  74:	cf 93       	push	r28
+  76:	df 93       	push	r29
+  78:	c0 e0       	ldi	r28, 0x00	; 0
+  7a:	d0 e0       	ldi	r29, 0x00	; 0
 	//IR_voidTransmitFrame_timer(Transmitter);
 		u8 u8Counter=0;
 		for( u8Counter=0;u8Counter<NUMBER_OF_SENSORS;u8Counter++)
 		{
 			IR_voidTransmitFrame_timer( Array_Transmitter[u8Counter] );
-  80:	00 e6       	ldi	r16, 0x60	; 96
-  82:	10 e0       	ldi	r17, 0x00	; 0
-  84:	fe 01       	movw	r30, r28
-  86:	ee 0f       	add	r30, r30
-  88:	ff 1f       	adc	r31, r31
-  8a:	ee 0f       	add	r30, r30
-  8c:	ff 1f       	adc	r31, r31
-  8e:	e0 0f       	add	r30, r16
-  90:	f1 1f       	adc	r31, r17
-  92:	60 81       	ld	r22, Z
-  94:	71 81       	ldd	r23, Z+1	; 0x01
-  96:	82 81       	ldd	r24, Z+2	; 0x02
-  98:	93 81       	ldd	r25, Z+3	; 0x03
-  9a:	86 d2       	rcall	.+1292   	; 0x5a8 <IR_voidTransmitFrame_timer>
-  9c:	21 96       	adiw	r28, 0x01	; 1
+  7c:	fe 01       	movw	r30, r28
+  7e:	ee 0f       	add	r30, r30
+  80:	ff 1f       	adc	r31, r31
+  82:	ec 0f       	add	r30, r28
+  84:	fd 1f       	adc	r31, r29
+  86:	e0 5a       	subi	r30, 0xA0	; 160
+  88:	ff 4f       	sbci	r31, 0xFF	; 255
+  8a:	60 81       	ld	r22, Z
+  8c:	71 81       	ldd	r23, Z+1	; 0x01
+  8e:	82 81       	ldd	r24, Z+2	; 0x02
+  90:	e1 d1       	rcall	.+962    	; 0x454 <IR_voidTransmitFrame_timer>
+  92:	21 96       	adiw	r28, 0x01	; 1
 
 void App_vidMain(void)
 {
 	//IR_voidTransmitFrame_timer(Transmitter);
 		u8 u8Counter=0;
 		for( u8Counter=0;u8Counter<NUMBER_OF_SENSORS;u8Counter++)
-  9e:	c8 30       	cpi	r28, 0x08	; 8
-  a0:	d1 05       	cpc	r29, r1
-  a2:	81 f7       	brne	.-32     	; 0x84 <App_vidMain+0x10>
+  94:	c8 30       	cpi	r28, 0x08	; 8
+  96:	d1 05       	cpc	r29, r1
+  98:	89 f7       	brne	.-30     	; 0x7c <App_vidMain+0x8>
 	//IR_voidSendStartBit_timer(Transmitter);
 	/*dio_vidWriteChannel(DIO_PORTB,DIO_PIN0,STD_HIGH);
 	_delay_ms(500);
 	dio_vidWriteChannel(DIO_PORTB,DIO_PIN0,STD_LOW);
 	_delay_ms(500);*/
-  a4:	df 91       	pop	r29
-  a6:	cf 91       	pop	r28
-  a8:	1f 91       	pop	r17
-  aa:	0f 91       	pop	r16
-  ac:	08 95       	ret
+  9a:	df 91       	pop	r29
+  9c:	cf 91       	pop	r28
+  9e:	08 95       	ret
 
-000000ae <IR_voidInit>:
+000000a0 <IR_voidInit>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : initialize the system
 */
 void IR_voidInit(IR_parameters_t IR_Obj)
 {
-  ae:	cf 92       	push	r12
-  b0:	df 92       	push	r13
-  b2:	ef 92       	push	r14
-  b4:	ff 92       	push	r15
-  b6:	6b 01       	movw	r12, r22
-  b8:	7c 01       	movw	r14, r24
+  a0:	0f 93       	push	r16
+  a2:	1f 93       	push	r17
+  a4:	cf 93       	push	r28
+  a6:	df 93       	push	r29
+  a8:	00 d0       	rcall	.+0      	; 0xaa <IR_voidInit+0xa>
+  aa:	0f 92       	push	r0
+  ac:	cd b7       	in	r28, 0x3d	; 61
+  ae:	de b7       	in	r29, 0x3e	; 62
+  b0:	16 2f       	mov	r17, r22
+  b2:	69 83       	std	Y+1, r22	; 0x01
+  b4:	07 2f       	mov	r16, r23
+  b6:	7a 83       	std	Y+2, r23	; 0x02
+  b8:	8b 83       	std	Y+3, r24	; 0x03
     IR_Global_Obj = IR_Obj;
-  ba:	60 93 84 00 	sts	0x0084, r22
-  be:	70 93 85 00 	sts	0x0085, r23
-  c2:	80 93 86 00 	sts	0x0086, r24
-  c6:	90 93 87 00 	sts	0x0087, r25
+  ba:	ac e7       	ldi	r26, 0x7C	; 124
+  bc:	b0 e0       	ldi	r27, 0x00	; 0
+  be:	fe 01       	movw	r30, r28
+  c0:	31 96       	adiw	r30, 0x01	; 1
+  c2:	83 e0       	ldi	r24, 0x03	; 3
+  c4:	01 90       	ld	r0, Z+
+  c6:	0d 92       	st	X+, r0
+  c8:	81 50       	subi	r24, 0x01	; 1
+  ca:	e1 f7       	brne	.-8      	; 0xc4 <IR_voidInit+0x24>
 //	u32Concat |= IR_Obj.u8Address;			// address bits
 //	u32Concat |= (~IR_Obj.u8Address)<<8;	// inverted address bits
 //	u32Concat |= (IR_Obj.u8Data)<<16;		// data bits
 //	u32Concat |= (~IR_Obj.u8Data)<<24;		// inverted data bits
     
         u32Concat |= IR_Obj.u8Data;			// data bits
-  ca:	80 91 80 00 	lds	r24, 0x0080
-  ce:	90 91 81 00 	lds	r25, 0x0081
-  d2:	a0 91 82 00 	lds	r26, 0x0082
-  d6:	b0 91 83 00 	lds	r27, 0x0083
-  da:	4e 2d       	mov	r20, r14
-  dc:	50 e0       	ldi	r21, 0x00	; 0
-  de:	60 e0       	ldi	r22, 0x00	; 0
-  e0:	70 e0       	ldi	r23, 0x00	; 0
-  e2:	84 2b       	or	r24, r20
-  e4:	95 2b       	or	r25, r21
-  e6:	a6 2b       	or	r26, r22
-  e8:	b7 2b       	or	r27, r23
-  ea:	80 93 80 00 	sts	0x0080, r24
-  ee:	90 93 81 00 	sts	0x0081, r25
-  f2:	a0 93 82 00 	sts	0x0082, r26
-  f6:	b0 93 83 00 	sts	0x0083, r27
+  cc:	40 91 78 00 	lds	r20, 0x0078
+  d0:	50 91 79 00 	lds	r21, 0x0079
+  d4:	60 91 7a 00 	lds	r22, 0x007A
+  d8:	70 91 7b 00 	lds	r23, 0x007B
+  dc:	8b 81       	ldd	r24, Y+3	; 0x03
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	a0 e0       	ldi	r26, 0x00	; 0
+  e2:	b0 e0       	ldi	r27, 0x00	; 0
+  e4:	84 2b       	or	r24, r20
+  e6:	95 2b       	or	r25, r21
+  e8:	a6 2b       	or	r26, r22
+  ea:	b7 2b       	or	r27, r23
+  ec:	80 93 78 00 	sts	0x0078, r24
+  f0:	90 93 79 00 	sts	0x0079, r25
+  f4:	a0 93 7a 00 	sts	0x007A, r26
+  f8:	b0 93 7b 00 	sts	0x007B, r27
     /* IO initialization */
     dio_vidConfigChannel(IR_Obj.u8port, IR_Obj.u8pin,OUTPUT);
-  fa:	8c 2d       	mov	r24, r12
-  fc:	6d 2d       	mov	r22, r13
-  fe:	41 e0       	ldi	r20, 0x01	; 1
- 100:	68 d2       	rcall	.+1232   	; 0x5d2 <dio_vidConfigChannel>
+  fc:	81 2f       	mov	r24, r17
+  fe:	60 2f       	mov	r22, r16
+ 100:	41 e0       	ldi	r20, 0x01	; 1
+ 102:	c3 d1       	rcall	.+902    	; 0x48a <dio_vidConfigChannel>
     /* Idle */
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin,STD_LOW);
- 102:	8c 2d       	mov	r24, r12
- 104:	6d 2d       	mov	r22, r13
- 106:	40 e0       	ldi	r20, 0x00	; 0
- 108:	db d2       	rcall	.+1462   	; 0x6c0 <dio_vidWriteChannel>
+ 104:	81 2f       	mov	r24, r17
+ 106:	60 2f       	mov	r22, r16
+ 108:	40 e0       	ldi	r20, 0x00	; 0
+ 10a:	36 d2       	rcall	.+1132   	; 0x578 <dio_vidWriteChannel>
     /* Initialize timer */
     TIMER2_void_Init();
- 10a:	16 d4       	rcall	.+2092   	; 0x938 <TIMER2_void_Init>
+ 10c:	71 d3       	rcall	.+1762   	; 0x7f0 <TIMER2_void_Init>
 }
- 10c:	ff 90       	pop	r15
- 10e:	ef 90       	pop	r14
- 110:	df 90       	pop	r13
- 112:	cf 90       	pop	r12
- 114:	08 95       	ret
+ 10e:	0f 90       	pop	r0
+ 110:	0f 90       	pop	r0
+ 112:	0f 90       	pop	r0
+ 114:	df 91       	pop	r29
+ 116:	cf 91       	pop	r28
+ 118:	1f 91       	pop	r17
+ 11a:	0f 91       	pop	r16
+ 11c:	08 95       	ret
 
-00000116 <IR_voidSendStartBit>:
+0000011e <IR_voidSendStartBit>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the start of the frame
 */
 void IR_voidSendStartBit(IR_parameters_t IR_Obj)
 {
- 116:	cf 93       	push	r28
- 118:	df 93       	push	r29
- 11a:	d6 2f       	mov	r29, r22
- 11c:	c7 2f       	mov	r28, r23
+ 11e:	0f 93       	push	r16
+ 120:	1f 93       	push	r17
+ 122:	cf 93       	push	r28
+ 124:	df 93       	push	r29
+ 126:	00 d0       	rcall	.+0      	; 0x128 <IR_voidSendStartBit+0xa>
+ 128:	0f 92       	push	r0
+ 12a:	cd b7       	in	r28, 0x3d	; 61
+ 12c:	de b7       	in	r29, 0x3e	; 62
+ 12e:	06 2f       	mov	r16, r22
+ 130:	69 83       	std	Y+1, r22	; 0x01
+ 132:	17 2f       	mov	r17, r23
+ 134:	7a 83       	std	Y+2, r23	; 0x02
+ 136:	8b 83       	std	Y+3, r24	; 0x03
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 11e:	86 2f       	mov	r24, r22
- 120:	67 2f       	mov	r22, r23
- 122:	41 e0       	ldi	r20, 0x01	; 1
- 124:	cd d2       	rcall	.+1434   	; 0x6c0 <dio_vidWriteChannel>
+ 138:	86 2f       	mov	r24, r22
+ 13a:	67 2f       	mov	r22, r23
+ 13c:	41 e0       	ldi	r20, 0x01	; 1
+ 13e:	1c d2       	rcall	.+1080   	; 0x578 <dio_vidWriteChannel>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 126:	8f e9       	ldi	r24, 0x9F	; 159
- 128:	9c e8       	ldi	r25, 0x8C	; 140
- 12a:	01 97       	sbiw	r24, 0x01	; 1
- 12c:	f1 f7       	brne	.-4      	; 0x12a <IR_voidSendStartBit+0x14>
- 12e:	00 c0       	rjmp	.+0      	; 0x130 <IR_voidSendStartBit+0x1a>
- 130:	00 00       	nop
+ 140:	8f e9       	ldi	r24, 0x9F	; 159
+ 142:	9c e8       	ldi	r25, 0x8C	; 140
+ 144:	01 97       	sbiw	r24, 0x01	; 1
+ 146:	f1 f7       	brne	.-4      	; 0x144 <IR_voidSendStartBit+0x26>
+ 148:	00 c0       	rjmp	.+0      	; 0x14a <IR_voidSendStartBit+0x2c>
+ 14a:	00 00       	nop
     _delay_ms(SET_BIT_PULSE_TIMES);
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
- 132:	8d 2f       	mov	r24, r29
- 134:	6c 2f       	mov	r22, r28
- 136:	40 e0       	ldi	r20, 0x00	; 0
- 138:	c3 d2       	rcall	.+1414   	; 0x6c0 <dio_vidWriteChannel>
- 13a:	8f e4       	ldi	r24, 0x4F	; 79
- 13c:	96 e4       	ldi	r25, 0x46	; 70
- 13e:	01 97       	sbiw	r24, 0x01	; 1
- 140:	f1 f7       	brne	.-4      	; 0x13e <IR_voidSendStartBit+0x28>
- 142:	00 c0       	rjmp	.+0      	; 0x144 <IR_voidSendStartBit+0x2e>
- 144:	00 00       	nop
+ 14c:	80 2f       	mov	r24, r16
+ 14e:	61 2f       	mov	r22, r17
+ 150:	40 e0       	ldi	r20, 0x00	; 0
+ 152:	12 d2       	rcall	.+1060   	; 0x578 <dio_vidWriteChannel>
+ 154:	8f e4       	ldi	r24, 0x4F	; 79
+ 156:	96 e4       	ldi	r25, 0x46	; 70
+ 158:	01 97       	sbiw	r24, 0x01	; 1
+ 15a:	f1 f7       	brne	.-4      	; 0x158 <IR_voidSendStartBit+0x3a>
+ 15c:	00 c0       	rjmp	.+0      	; 0x15e <IR_voidSendStartBit+0x40>
+ 15e:	00 00       	nop
     _delay_ms(SET_BIT_PULSE_SPACE_TIMES);
 }
- 146:	df 91       	pop	r29
- 148:	cf 91       	pop	r28
- 14a:	08 95       	ret
+ 160:	0f 90       	pop	r0
+ 162:	0f 90       	pop	r0
+ 164:	0f 90       	pop	r0
+ 166:	df 91       	pop	r29
+ 168:	cf 91       	pop	r28
+ 16a:	1f 91       	pop	r17
+ 16c:	0f 91       	pop	r16
+ 16e:	08 95       	ret
 
-0000014c <IR_voidTransmitData>:
+00000170 <IR_voidTransmitData>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the IR Address & Data
 */
 void IR_voidTransmitData(IR_parameters_t IR_Obj)
 {
- 14c:	0f 93       	push	r16
- 14e:	1f 93       	push	r17
- 150:	cf 93       	push	r28
- 152:	df 93       	push	r29
- 154:	16 2f       	mov	r17, r22
- 156:	07 2f       	mov	r16, r23
- 158:	c0 e0       	ldi	r28, 0x00	; 0
- 15a:	d0 e0       	ldi	r29, 0x00	; 0
+ 170:	ef 92       	push	r14
+ 172:	ff 92       	push	r15
+ 174:	0f 93       	push	r16
+ 176:	1f 93       	push	r17
+ 178:	cf 93       	push	r28
+ 17a:	df 93       	push	r29
+ 17c:	00 d0       	rcall	.+0      	; 0x17e <IR_voidTransmitData+0xe>
+ 17e:	0f 92       	push	r0
+ 180:	cd b7       	in	r28, 0x3d	; 61
+ 182:	de b7       	in	r29, 0x3e	; 62
+ 184:	f6 2e       	mov	r15, r22
+ 186:	69 83       	std	Y+1, r22	; 0x01
+ 188:	e7 2e       	mov	r14, r23
+ 18a:	7a 83       	std	Y+2, r23	; 0x02
+ 18c:	8b 83       	std	Y+3, r24	; 0x03
+ 18e:	00 e0       	ldi	r16, 0x00	; 0
+ 190:	10 e0       	ldi	r17, 0x00	; 0
     u8 u8Counter=0;
 
     /* check on data */
     for(u8Counter=0;u8Counter<MAXIMUM_LENGTH;u8Counter++ )
     {
         dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 15c:	81 2f       	mov	r24, r17
- 15e:	60 2f       	mov	r22, r16
- 160:	41 e0       	ldi	r20, 0x01	; 1
- 162:	ae d2       	rcall	.+1372   	; 0x6c0 <dio_vidWriteChannel>
- 164:	8b ec       	ldi	r24, 0xCB	; 203
- 166:	98 e0       	ldi	r25, 0x08	; 8
- 168:	01 97       	sbiw	r24, 0x01	; 1
- 16a:	f1 f7       	brne	.-4      	; 0x168 <IR_voidTransmitData+0x1c>
- 16c:	00 c0       	rjmp	.+0      	; 0x16e <IR_voidTransmitData+0x22>
- 16e:	00 00       	nop
+ 192:	8f 2d       	mov	r24, r15
+ 194:	6e 2d       	mov	r22, r14
+ 196:	41 e0       	ldi	r20, 0x01	; 1
+ 198:	ef d1       	rcall	.+990    	; 0x578 <dio_vidWriteChannel>
+ 19a:	8b ec       	ldi	r24, 0xCB	; 203
+ 19c:	98 e0       	ldi	r25, 0x08	; 8
+ 19e:	01 97       	sbiw	r24, 0x01	; 1
+ 1a0:	f1 f7       	brne	.-4      	; 0x19e <IR_voidTransmitData+0x2e>
+ 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <IR_voidTransmitData+0x34>
+ 1a4:	00 00       	nop
         _delay_ms(HIGH_PULSE_BURST_TIMES);
         
         if(((u32Concat >> u8Counter) & 1 != 0 ) )
- 170:	80 91 80 00 	lds	r24, 0x0080
- 174:	90 91 81 00 	lds	r25, 0x0081
- 178:	a0 91 82 00 	lds	r26, 0x0082
- 17c:	b0 91 83 00 	lds	r27, 0x0083
- 180:	0c 2e       	mov	r0, r28
- 182:	04 c0       	rjmp	.+8      	; 0x18c <IR_voidTransmitData+0x40>
- 184:	b6 95       	lsr	r27
- 186:	a7 95       	ror	r26
- 188:	97 95       	ror	r25
- 18a:	87 95       	ror	r24
- 18c:	0a 94       	dec	r0
- 18e:	d2 f7       	brpl	.-12     	; 0x184 <IR_voidTransmitData+0x38>
- 190:	81 70       	andi	r24, 0x01	; 1
- 192:	90 70       	andi	r25, 0x00	; 0
- 194:	00 97       	sbiw	r24, 0x00	; 0
- 196:	59 f0       	breq	.+22     	; 0x1ae <IR_voidTransmitData+0x62>
+ 1a6:	80 91 78 00 	lds	r24, 0x0078
+ 1aa:	90 91 79 00 	lds	r25, 0x0079
+ 1ae:	a0 91 7a 00 	lds	r26, 0x007A
+ 1b2:	b0 91 7b 00 	lds	r27, 0x007B
+ 1b6:	00 2e       	mov	r0, r16
+ 1b8:	04 c0       	rjmp	.+8      	; 0x1c2 <IR_voidTransmitData+0x52>
+ 1ba:	b6 95       	lsr	r27
+ 1bc:	a7 95       	ror	r26
+ 1be:	97 95       	ror	r25
+ 1c0:	87 95       	ror	r24
+ 1c2:	0a 94       	dec	r0
+ 1c4:	d2 f7       	brpl	.-12     	; 0x1ba <IR_voidTransmitData+0x4a>
+ 1c6:	81 70       	andi	r24, 0x01	; 1
+ 1c8:	90 70       	andi	r25, 0x00	; 0
+ 1ca:	00 97       	sbiw	r24, 0x00	; 0
+ 1cc:	59 f0       	breq	.+22     	; 0x1e4 <IR_voidTransmitData+0x74>
         {
             dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
- 198:	81 2f       	mov	r24, r17
- 19a:	60 2f       	mov	r22, r16
- 19c:	40 e0       	ldi	r20, 0x00	; 0
- 19e:	90 d2       	rcall	.+1312   	; 0x6c0 <dio_vidWriteChannel>
- 1a0:	8d e5       	ldi	r24, 0x5D	; 93
- 1a2:	9a e1       	ldi	r25, 0x1A	; 26
- 1a4:	01 97       	sbiw	r24, 0x01	; 1
- 1a6:	f1 f7       	brne	.-4      	; 0x1a4 <IR_voidTransmitData+0x58>
- 1a8:	00 c0       	rjmp	.+0      	; 0x1aa <IR_voidTransmitData+0x5e>
- 1aa:	00 00       	nop
- 1ac:	0d c0       	rjmp	.+26     	; 0x1c8 <IR_voidTransmitData+0x7c>
+ 1ce:	8f 2d       	mov	r24, r15
+ 1d0:	6e 2d       	mov	r22, r14
+ 1d2:	40 e0       	ldi	r20, 0x00	; 0
+ 1d4:	d1 d1       	rcall	.+930    	; 0x578 <dio_vidWriteChannel>
+ 1d6:	ad e5       	ldi	r26, 0x5D	; 93
+ 1d8:	ba e1       	ldi	r27, 0x1A	; 26
+ 1da:	11 97       	sbiw	r26, 0x01	; 1
+ 1dc:	f1 f7       	brne	.-4      	; 0x1da <IR_voidTransmitData+0x6a>
+ 1de:	00 c0       	rjmp	.+0      	; 0x1e0 <IR_voidTransmitData+0x70>
+ 1e0:	00 00       	nop
+ 1e2:	0d c0       	rjmp	.+26     	; 0x1fe <IR_voidTransmitData+0x8e>
             _delay_ms(HIGH_PULSE_BURST_SPACE_TIMES);
         }else{
             dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
- 1ae:	81 2f       	mov	r24, r17
- 1b0:	60 2f       	mov	r22, r16
- 1b2:	40 e0       	ldi	r20, 0x00	; 0
- 1b4:	85 d2       	rcall	.+1290   	; 0x6c0 <dio_vidWriteChannel>
- 1b6:	8f e7       	ldi	r24, 0x7F	; 127
- 1b8:	9d e7       	ldi	r25, 0x7D	; 125
- 1ba:	ab e1       	ldi	r26, 0x1B	; 27
- 1bc:	81 50       	subi	r24, 0x01	; 1
- 1be:	90 40       	sbci	r25, 0x00	; 0
- 1c0:	a0 40       	sbci	r26, 0x00	; 0
- 1c2:	e1 f7       	brne	.-8      	; 0x1bc <IR_voidTransmitData+0x70>
- 1c4:	00 c0       	rjmp	.+0      	; 0x1c6 <IR_voidTransmitData+0x7a>
- 1c6:	00 00       	nop
- 1c8:	21 96       	adiw	r28, 0x01	; 1
+ 1e4:	8f 2d       	mov	r24, r15
+ 1e6:	6e 2d       	mov	r22, r14
+ 1e8:	40 e0       	ldi	r20, 0x00	; 0
+ 1ea:	c6 d1       	rcall	.+908    	; 0x578 <dio_vidWriteChannel>
+ 1ec:	8f e7       	ldi	r24, 0x7F	; 127
+ 1ee:	9d e7       	ldi	r25, 0x7D	; 125
+ 1f0:	ab e1       	ldi	r26, 0x1B	; 27
+ 1f2:	81 50       	subi	r24, 0x01	; 1
+ 1f4:	90 40       	sbci	r25, 0x00	; 0
+ 1f6:	a0 40       	sbci	r26, 0x00	; 0
+ 1f8:	e1 f7       	brne	.-8      	; 0x1f2 <IR_voidTransmitData+0x82>
+ 1fa:	00 c0       	rjmp	.+0      	; 0x1fc <IR_voidTransmitData+0x8c>
+ 1fc:	00 00       	nop
+ 1fe:	0f 5f       	subi	r16, 0xFF	; 255
+ 200:	1f 4f       	sbci	r17, 0xFF	; 255
 void IR_voidTransmitData(IR_parameters_t IR_Obj)
 {
     u8 u8Counter=0;
 
     /* check on data */
     for(u8Counter=0;u8Counter<MAXIMUM_LENGTH;u8Counter++ )
- 1ca:	c0 32       	cpi	r28, 0x20	; 32
- 1cc:	d1 05       	cpc	r29, r1
- 1ce:	31 f6       	brne	.-116    	; 0x15c <IR_voidTransmitData+0x10>
+ 202:	00 32       	cpi	r16, 0x20	; 32
+ 204:	11 05       	cpc	r17, r1
+ 206:	29 f6       	brne	.-118    	; 0x192 <IR_voidTransmitData+0x22>
         }else{
             dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
             _delay_ms(LOW_PULSE_BURST_TIMES);
         }
     }
 }
- 1d0:	df 91       	pop	r29
- 1d2:	cf 91       	pop	r28
- 1d4:	1f 91       	pop	r17
- 1d6:	0f 91       	pop	r16
- 1d8:	08 95       	ret
+ 208:	0f 90       	pop	r0
+ 20a:	0f 90       	pop	r0
+ 20c:	0f 90       	pop	r0
+ 20e:	df 91       	pop	r29
+ 210:	cf 91       	pop	r28
+ 212:	1f 91       	pop	r17
+ 214:	0f 91       	pop	r16
+ 216:	ff 90       	pop	r15
+ 218:	ef 90       	pop	r14
+ 21a:	08 95       	ret
 
-000001da <IR_voidEndBit>:
+0000021c <IR_voidEndBit>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the end of the frame
 */
 void IR_voidEndBit(IR_parameters_t IR_Obj)
 {
- 1da:	86 2f       	mov	r24, r22
+ 21c:	cf 93       	push	r28
+ 21e:	df 93       	push	r29
+ 220:	00 d0       	rcall	.+0      	; 0x222 <IR_voidEndBit+0x6>
+ 222:	0f 92       	push	r0
+ 224:	cd b7       	in	r28, 0x3d	; 61
+ 226:	de b7       	in	r29, 0x3e	; 62
+ 228:	96 2f       	mov	r25, r22
+ 22a:	69 83       	std	Y+1, r22	; 0x01
+ 22c:	67 2f       	mov	r22, r23
+ 22e:	7a 83       	std	Y+2, r23	; 0x02
+ 230:	8b 83       	std	Y+3, r24	; 0x03
     dio_vidWriteChannel(IR_Obj.u8port,IR_Obj.u8pin,STD_HIGH);
- 1dc:	67 2f       	mov	r22, r23
- 1de:	41 e0       	ldi	r20, 0x01	; 1
- 1e0:	6f d2       	rcall	.+1246   	; 0x6c0 <dio_vidWriteChannel>
- 1e2:	8b ec       	ldi	r24, 0xCB	; 203
- 1e4:	98 e0       	ldi	r25, 0x08	; 8
- 1e6:	01 97       	sbiw	r24, 0x01	; 1
- 1e8:	f1 f7       	brne	.-4      	; 0x1e6 <IR_voidEndBit+0xc>
- 1ea:	00 c0       	rjmp	.+0      	; 0x1ec <IR_voidEndBit+0x12>
- 1ec:	00 00       	nop
+ 232:	89 2f       	mov	r24, r25
+ 234:	41 e0       	ldi	r20, 0x01	; 1
+ 236:	a0 d1       	rcall	.+832    	; 0x578 <dio_vidWriteChannel>
+ 238:	8b ec       	ldi	r24, 0xCB	; 203
+ 23a:	98 e0       	ldi	r25, 0x08	; 8
+ 23c:	01 97       	sbiw	r24, 0x01	; 1
+ 23e:	f1 f7       	brne	.-4      	; 0x23c <IR_voidEndBit+0x20>
+ 240:	00 c0       	rjmp	.+0      	; 0x242 <IR_voidEndBit+0x26>
+ 242:	00 00       	nop
     _delay_ms(END_BURST_TIMES);
 }
- 1ee:	08 95       	ret
+ 244:	0f 90       	pop	r0
+ 246:	0f 90       	pop	r0
+ 248:	0f 90       	pop	r0
+ 24a:	df 91       	pop	r29
+ 24c:	cf 91       	pop	r28
+ 24e:	08 95       	ret
 
-000001f0 <IR_voidTransmitFrame>:
+00000250 <IR_voidTransmitFrame>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the IR signal
 */
 void IR_voidTransmitFrame(IR_parameters_t IR_Obj)
 {
- 1f0:	cf 92       	push	r12
- 1f2:	df 92       	push	r13
- 1f4:	ef 92       	push	r14
- 1f6:	ff 92       	push	r15
- 1f8:	6b 01       	movw	r12, r22
- 1fa:	7c 01       	movw	r14, r24
+ 250:	cf 93       	push	r28
+ 252:	df 93       	push	r29
+ 254:	00 d0       	rcall	.+0      	; 0x256 <IR_voidTransmitFrame+0x6>
+ 256:	0f 92       	push	r0
+ 258:	cd b7       	in	r28, 0x3d	; 61
+ 25a:	de b7       	in	r29, 0x3e	; 62
+ 25c:	69 83       	std	Y+1, r22	; 0x01
+ 25e:	7a 83       	std	Y+2, r23	; 0x02
+ 260:	8b 83       	std	Y+3, r24	; 0x03
     /* Sending Start Frame */
     IR_voidSendStartBit(IR_Obj);
- 1fc:	8c df       	rcall	.-232    	; 0x116 <IR_voidSendStartBit>
+ 262:	5d df       	rcall	.-326    	; 0x11e <IR_voidSendStartBit>
     /* Sensing Address & Data */
     IR_voidTransmitData(IR_Obj);
- 1fe:	c7 01       	movw	r24, r14
- 200:	b6 01       	movw	r22, r12
- 202:	a4 df       	rcall	.-184    	; 0x14c <IR_voidTransmitData>
+ 264:	69 81       	ldd	r22, Y+1	; 0x01
+ 266:	7a 81       	ldd	r23, Y+2	; 0x02
+ 268:	8b 81       	ldd	r24, Y+3	; 0x03
+ 26a:	82 df       	rcall	.-252    	; 0x170 <IR_voidTransmitData>
     /* Send the end of the frame */
     IR_voidEndBit(IR_Obj);
- 204:	c7 01       	movw	r24, r14
- 206:	b6 01       	movw	r22, r12
- 208:	e8 df       	rcall	.-48     	; 0x1da <IR_voidEndBit>
+ 26c:	69 81       	ldd	r22, Y+1	; 0x01
+ 26e:	7a 81       	ldd	r23, Y+2	; 0x02
+ 270:	8b 81       	ldd	r24, Y+3	; 0x03
+ 272:	d4 df       	rcall	.-88     	; 0x21c <IR_voidEndBit>
 }
- 20a:	ff 90       	pop	r15
- 20c:	ef 90       	pop	r14
- 20e:	df 90       	pop	r13
- 210:	cf 90       	pop	r12
- 212:	08 95       	ret
+ 274:	0f 90       	pop	r0
+ 276:	0f 90       	pop	r0
+ 278:	0f 90       	pop	r0
+ 27a:	df 91       	pop	r29
+ 27c:	cf 91       	pop	r28
+ 27e:	08 95       	ret
 
-00000214 <IR_voidSendPulses>:
+00000280 <IR_voidSendPulses>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the start of the modulation pulses
 */
 void IR_voidSendPulses(IR_parameters_t IR_Obj)
 {
- 214:	cf 93       	push	r28
- 216:	df 93       	push	r29
- 218:	d6 2f       	mov	r29, r22
- 21a:	c7 2f       	mov	r28, r23
+ 280:	0f 93       	push	r16
+ 282:	1f 93       	push	r17
+ 284:	cf 93       	push	r28
+ 286:	df 93       	push	r29
+ 288:	00 d0       	rcall	.+0      	; 0x28a <IR_voidSendPulses+0xa>
+ 28a:	0f 92       	push	r0
+ 28c:	cd b7       	in	r28, 0x3d	; 61
+ 28e:	de b7       	in	r29, 0x3e	; 62
+ 290:	06 2f       	mov	r16, r22
+ 292:	69 83       	std	Y+1, r22	; 0x01
+ 294:	17 2f       	mov	r17, r23
+ 296:	7a 83       	std	Y+2, r23	; 0x02
+ 298:	8b 83       	std	Y+3, r24	; 0x03
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 21c:	86 2f       	mov	r24, r22
- 21e:	67 2f       	mov	r22, r23
- 220:	41 e0       	ldi	r20, 0x01	; 1
- 222:	4e d2       	rcall	.+1180   	; 0x6c0 <dio_vidWriteChannel>
- 224:	8f e1       	ldi	r24, 0x1F	; 31
- 226:	9b ec       	ldi	r25, 0xCB	; 203
- 228:	01 97       	sbiw	r24, 0x01	; 1
- 22a:	f1 f7       	brne	.-4      	; 0x228 <IR_voidSendPulses+0x14>
- 22c:	00 c0       	rjmp	.+0      	; 0x22e <IR_voidSendPulses+0x1a>
- 22e:	00 00       	nop
+ 29a:	86 2f       	mov	r24, r22
+ 29c:	67 2f       	mov	r22, r23
+ 29e:	41 e0       	ldi	r20, 0x01	; 1
+ 2a0:	6b d1       	rcall	.+726    	; 0x578 <dio_vidWriteChannel>
+ 2a2:	8f e1       	ldi	r24, 0x1F	; 31
+ 2a4:	9b ec       	ldi	r25, 0xCB	; 203
+ 2a6:	01 97       	sbiw	r24, 0x01	; 1
+ 2a8:	f1 f7       	brne	.-4      	; 0x2a6 <IR_voidSendPulses+0x26>
+ 2aa:	00 c0       	rjmp	.+0      	; 0x2ac <IR_voidSendPulses+0x2c>
+ 2ac:	00 00       	nop
     _delay_ms(13);
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
- 230:	8d 2f       	mov	r24, r29
- 232:	6c 2f       	mov	r22, r28
- 234:	40 e0       	ldi	r20, 0x00	; 0
- 236:	44 d2       	rcall	.+1160   	; 0x6c0 <dio_vidWriteChannel>
- 238:	8f e1       	ldi	r24, 0x1F	; 31
- 23a:	9b ec       	ldi	r25, 0xCB	; 203
- 23c:	01 97       	sbiw	r24, 0x01	; 1
- 23e:	f1 f7       	brne	.-4      	; 0x23c <IR_voidSendPulses+0x28>
- 240:	00 c0       	rjmp	.+0      	; 0x242 <IR_voidSendPulses+0x2e>
- 242:	00 00       	nop
+ 2ae:	80 2f       	mov	r24, r16
+ 2b0:	61 2f       	mov	r22, r17
+ 2b2:	40 e0       	ldi	r20, 0x00	; 0
+ 2b4:	61 d1       	rcall	.+706    	; 0x578 <dio_vidWriteChannel>
+ 2b6:	8f e1       	ldi	r24, 0x1F	; 31
+ 2b8:	9b ec       	ldi	r25, 0xCB	; 203
+ 2ba:	01 97       	sbiw	r24, 0x01	; 1
+ 2bc:	f1 f7       	brne	.-4      	; 0x2ba <IR_voidSendPulses+0x3a>
+ 2be:	00 c0       	rjmp	.+0      	; 0x2c0 <IR_voidSendPulses+0x40>
+ 2c0:	00 00       	nop
     _delay_ms(13);
 }
- 244:	df 91       	pop	r29
- 246:	cf 91       	pop	r28
- 248:	08 95       	ret
+ 2c2:	0f 90       	pop	r0
+ 2c4:	0f 90       	pop	r0
+ 2c6:	0f 90       	pop	r0
+ 2c8:	df 91       	pop	r29
+ 2ca:	cf 91       	pop	r28
+ 2cc:	1f 91       	pop	r17
+ 2ce:	0f 91       	pop	r16
+ 2d0:	08 95       	ret
 
-0000024a <IR_voidSendPulses_timer>:
+000002d2 <IR_voidSendPulses_timer>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the start of the modulation pulses
 */
 void IR_voidSendPulses_timer(IR_parameters_t IR_Obj)
 {
- 24a:	cf 93       	push	r28
- 24c:	df 93       	push	r29
- 24e:	d6 2f       	mov	r29, r22
- 250:	c7 2f       	mov	r28, r23
+ 2d2:	0f 93       	push	r16
+ 2d4:	1f 93       	push	r17
+ 2d6:	cf 93       	push	r28
+ 2d8:	df 93       	push	r29
+ 2da:	00 d0       	rcall	.+0      	; 0x2dc <IR_voidSendPulses_timer+0xa>
+ 2dc:	0f 92       	push	r0
+ 2de:	cd b7       	in	r28, 0x3d	; 61
+ 2e0:	de b7       	in	r29, 0x3e	; 62
+ 2e2:	06 2f       	mov	r16, r22
+ 2e4:	69 83       	std	Y+1, r22	; 0x01
+ 2e6:	17 2f       	mov	r17, r23
+ 2e8:	7a 83       	std	Y+2, r23	; 0x02
+ 2ea:	8b 83       	std	Y+3, r24	; 0x03
     TCNT2 =0;
- 252:	14 bc       	out	0x24, r1	; 36
+ 2ec:	14 bc       	out	0x24, r1	; 36
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 254:	86 2f       	mov	r24, r22
- 256:	67 2f       	mov	r22, r23
- 258:	41 e0       	ldi	r20, 0x01	; 1
- 25a:	32 d2       	rcall	.+1124   	; 0x6c0 <dio_vidWriteChannel>
+ 2ee:	86 2f       	mov	r24, r22
+ 2f0:	67 2f       	mov	r22, r23
+ 2f2:	41 e0       	ldi	r20, 0x01	; 1
+ 2f4:	41 d1       	rcall	.+642    	; 0x578 <dio_vidWriteChannel>
    while( TCNT2 <= HALF_PULSE_TIME );
- 25c:	84 b5       	in	r24, 0x24	; 36
- 25e:	89 31       	cpi	r24, 0x19	; 25
- 260:	e8 f3       	brcs	.-6      	; 0x25c <IR_voidSendPulses_timer+0x12>
+ 2f6:	84 b5       	in	r24, 0x24	; 36
+ 2f8:	89 31       	cpi	r24, 0x19	; 25
+ 2fa:	e8 f3       	brcs	.-6      	; 0x2f6 <IR_voidSendPulses_timer+0x24>
   // _delay_ms(13);
    dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
- 262:	8d 2f       	mov	r24, r29
- 264:	6c 2f       	mov	r22, r28
- 266:	40 e0       	ldi	r20, 0x00	; 0
- 268:	2b d2       	rcall	.+1110   	; 0x6c0 <dio_vidWriteChannel>
+ 2fc:	80 2f       	mov	r24, r16
+ 2fe:	61 2f       	mov	r22, r17
+ 300:	40 e0       	ldi	r20, 0x00	; 0
+ 302:	3a d1       	rcall	.+628    	; 0x578 <dio_vidWriteChannel>
    while( TCNT2 <= 2*HALF_PULSE_TIME );
- 26a:	84 b5       	in	r24, 0x24	; 36
- 26c:	81 33       	cpi	r24, 0x31	; 49
- 26e:	e8 f3       	brcs	.-6      	; 0x26a <IR_voidSendPulses_timer+0x20>
+ 304:	84 b5       	in	r24, 0x24	; 36
+ 306:	81 33       	cpi	r24, 0x31	; 49
+ 308:	e8 f3       	brcs	.-6      	; 0x304 <IR_voidSendPulses_timer+0x32>
   //_delay_ms(13);
 }
- 270:	df 91       	pop	r29
- 272:	cf 91       	pop	r28
- 274:	08 95       	ret
+ 30a:	0f 90       	pop	r0
+ 30c:	0f 90       	pop	r0
+ 30e:	0f 90       	pop	r0
+ 310:	df 91       	pop	r29
+ 312:	cf 91       	pop	r28
+ 314:	1f 91       	pop	r17
+ 316:	0f 91       	pop	r16
+ 318:	08 95       	ret
 
-00000276 <IR_voidSendStartBit_timer>:
+0000031a <IR_voidSendStartBit_timer>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the start of the frame
 */
 void IR_voidSendStartBit_timer(IR_parameters_t IR_Obj)
 {
- 276:	ef 92       	push	r14
- 278:	ff 92       	push	r15
- 27a:	0f 93       	push	r16
- 27c:	1f 93       	push	r17
- 27e:	cf 93       	push	r28
- 280:	df 93       	push	r29
- 282:	06 2f       	mov	r16, r22
- 284:	17 2f       	mov	r17, r23
- 286:	f8 2e       	mov	r15, r24
- 288:	e9 2e       	mov	r14, r25
+ 31a:	0f 93       	push	r16
+ 31c:	1f 93       	push	r17
+ 31e:	cf 93       	push	r28
+ 320:	df 93       	push	r29
+ 322:	00 d0       	rcall	.+0      	; 0x324 <IR_voidSendStartBit_timer+0xa>
+ 324:	0f 92       	push	r0
+ 326:	cd b7       	in	r28, 0x3d	; 61
+ 328:	de b7       	in	r29, 0x3e	; 62
+ 32a:	96 2f       	mov	r25, r22
+ 32c:	69 83       	std	Y+1, r22	; 0x01
+ 32e:	67 2f       	mov	r22, r23
+ 330:	7a 83       	std	Y+2, r23	; 0x02
+ 332:	8b 83       	std	Y+3, r24	; 0x03
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 28a:	86 2f       	mov	r24, r22
- 28c:	67 2f       	mov	r22, r23
- 28e:	41 e0       	ldi	r20, 0x01	; 1
- 290:	17 d2       	rcall	.+1070   	; 0x6c0 <dio_vidWriteChannel>
- 292:	8f e9       	ldi	r24, 0x9F	; 159
- 294:	9c e8       	ldi	r25, 0x8C	; 140
- 296:	01 97       	sbiw	r24, 0x01	; 1
- 298:	f1 f7       	brne	.-4      	; 0x296 <IR_voidSendStartBit_timer+0x20>
- 29a:	00 c0       	rjmp	.+0      	; 0x29c <IR_voidSendStartBit_timer+0x26>
- 29c:	00 00       	nop
- 29e:	cd ea       	ldi	r28, 0xAD	; 173
- 2a0:	d0 e0       	ldi	r29, 0x00	; 0
+ 334:	89 2f       	mov	r24, r25
+ 336:	41 e0       	ldi	r20, 0x01	; 1
+ 338:	1f d1       	rcall	.+574    	; 0x578 <dio_vidWriteChannel>
+ 33a:	8f e9       	ldi	r24, 0x9F	; 159
+ 33c:	9c e8       	ldi	r25, 0x8C	; 140
+ 33e:	01 97       	sbiw	r24, 0x01	; 1
+ 340:	f1 f7       	brne	.-4      	; 0x33e <IR_voidSendStartBit_timer+0x24>
+ 342:	00 c0       	rjmp	.+0      	; 0x344 <IR_voidSendStartBit_timer+0x2a>
+ 344:	00 00       	nop
+ 346:	0d ea       	ldi	r16, 0xAD	; 173
+ 348:	10 e0       	ldi	r17, 0x00	; 0
     _delay_ms(9);
     
     for(int i=0; i<LOW_START_ITERATION;i++)
     {
         IR_voidSendPulses_timer(IR_Obj);
- 2a2:	60 2f       	mov	r22, r16
- 2a4:	71 2f       	mov	r23, r17
- 2a6:	8f 2d       	mov	r24, r15
- 2a8:	9e 2d       	mov	r25, r14
- 2aa:	cf df       	rcall	.-98     	; 0x24a <IR_voidSendPulses_timer>
- 2ac:	21 97       	sbiw	r28, 0x01	; 1
+ 34a:	69 81       	ldd	r22, Y+1	; 0x01
+ 34c:	7a 81       	ldd	r23, Y+2	; 0x02
+ 34e:	8b 81       	ldd	r24, Y+3	; 0x03
+ 350:	c0 df       	rcall	.-128    	; 0x2d2 <IR_voidSendPulses_timer>
+ 352:	01 50       	subi	r16, 0x01	; 1
+ 354:	10 40       	sbci	r17, 0x00	; 0
 void IR_voidSendStartBit_timer(IR_parameters_t IR_Obj)
 {
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
     _delay_ms(9);
     
     for(int i=0; i<LOW_START_ITERATION;i++)
- 2ae:	c9 f7       	brne	.-14     	; 0x2a2 <IR_voidSendStartBit_timer+0x2c>
+ 356:	c9 f7       	brne	.-14     	; 0x34a <IR_voidSendStartBit_timer+0x30>
 
     /*dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_LOW);
     _delay_ms(4.5);*/
     
     
 }
- 2b0:	df 91       	pop	r29
- 2b2:	cf 91       	pop	r28
- 2b4:	1f 91       	pop	r17
- 2b6:	0f 91       	pop	r16
- 2b8:	ff 90       	pop	r15
- 2ba:	ef 90       	pop	r14
- 2bc:	08 95       	ret
+ 358:	0f 90       	pop	r0
+ 35a:	0f 90       	pop	r0
+ 35c:	0f 90       	pop	r0
+ 35e:	df 91       	pop	r29
+ 360:	cf 91       	pop	r28
+ 362:	1f 91       	pop	r17
+ 364:	0f 91       	pop	r16
+ 366:	08 95       	ret
 
-000002be <IR_voidTransmitData_timer>:
+00000368 <IR_voidTransmitData_timer>:
     Function Arguments   : struct
     Function Description : send the IR Address & Data
 */
 
 void IR_voidTransmitData_timer(IR_parameters_t IR_Obj)
 {
- 2be:	2f 92       	push	r2
- 2c0:	3f 92       	push	r3
- 2c2:	4f 92       	push	r4
- 2c4:	5f 92       	push	r5
- 2c6:	6f 92       	push	r6
- 2c8:	7f 92       	push	r7
- 2ca:	8f 92       	push	r8
- 2cc:	9f 92       	push	r9
- 2ce:	af 92       	push	r10
- 2d0:	bf 92       	push	r11
- 2d2:	cf 92       	push	r12
- 2d4:	df 92       	push	r13
- 2d6:	ef 92       	push	r14
- 2d8:	ff 92       	push	r15
- 2da:	0f 93       	push	r16
- 2dc:	1f 93       	push	r17
- 2de:	cf 93       	push	r28
- 2e0:	df 93       	push	r29
- 2e2:	00 d0       	rcall	.+0      	; 0x2e4 <IR_voidTransmitData_timer+0x26>
- 2e4:	00 d0       	rcall	.+0      	; 0x2e6 <IR_voidTransmitData_timer+0x28>
- 2e6:	cd b7       	in	r28, 0x3d	; 61
- 2e8:	de b7       	in	r29, 0x3e	; 62
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
- 2ea:	6a 83       	std	Y+2, r22	; 0x02
- 2ec:	79 83       	std	Y+1, r23	; 0x01
- 2ee:	38 2e       	mov	r3, r24
- 2f0:	29 2e       	mov	r2, r25
-    Function Arguments   : struct
-    Function Description : send the IR Address & Data
-*/
-
-void IR_voidTransmitData_timer(IR_parameters_t IR_Obj)
-{
- 2f2:	cc 24       	eor	r12, r12
- 2f4:	dd 24       	eor	r13, r13
-    u8 u8Counter=0;
-
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 2f6:	96 2e       	mov	r9, r22
- 2f8:	87 2e       	mov	r8, r23
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
- 2fa:	a9 2e       	mov	r10, r25
- 2fc:	bb 24       	eor	r11, r11
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 2fe:	16 2f       	mov	r17, r22
- 300:	07 2f       	mov	r16, r23
- 302:	f8 2e       	mov	r15, r24
- 304:	e9 2e       	mov	r14, r25
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
- 306:	0f 2e       	mov	r0, r31
- 308:	f5 e1       	ldi	r31, 0x15	; 21
- 30a:	4f 2e       	mov	r4, r31
- 30c:	55 24       	eor	r5, r5
- 30e:	f0 2d       	mov	r31, r0
-    u8 u8Counter=0;
-
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 310:	89 2d       	mov	r24, r9
- 312:	68 2d       	mov	r22, r8
- 314:	41 e0       	ldi	r20, 0x01	; 1
- 316:	d4 d1       	rcall	.+936    	; 0x6c0 <dio_vidWriteChannel>
- 318:	8b ec       	ldi	r24, 0xCB	; 203
- 31a:	98 e0       	ldi	r25, 0x08	; 8
- 31c:	01 97       	sbiw	r24, 0x01	; 1
- 31e:	f1 f7       	brne	.-4      	; 0x31c <IR_voidTransmitData_timer+0x5e>
- 320:	00 c0       	rjmp	.+0      	; 0x322 <IR_voidTransmitData_timer+0x64>
- 322:	00 00       	nop
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
- 324:	35 01       	movw	r6, r10
- 326:	c5 01       	movw	r24, r10
- 328:	0c 2c       	mov	r0, r12
- 32a:	02 c0       	rjmp	.+4      	; 0x330 <IR_voidTransmitData_timer+0x72>
- 32c:	95 95       	asr	r25
- 32e:	87 95       	ror	r24
- 330:	0a 94       	dec	r0
- 332:	e2 f7       	brpl	.-8      	; 0x32c <IR_voidTransmitData_timer+0x6e>
- 334:	80 fd       	sbrc	r24, 0
- 336:	0f c0       	rjmp	.+30     	; 0x356 <IR_voidTransmitData_timer+0x98>
- 338:	5c 82       	std	Y+4, r5	; 0x04
- 33a:	4b 82       	std	Y+3, r4	; 0x03
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 33c:	61 2f       	mov	r22, r17
- 33e:	70 2f       	mov	r23, r16
- 340:	8f 2d       	mov	r24, r15
- 342:	9e 2d       	mov	r25, r14
- 344:	82 df       	rcall	.-252    	; 0x24a <IR_voidSendPulses_timer>
- 346:	eb 81       	ldd	r30, Y+3	; 0x03
- 348:	fc 81       	ldd	r31, Y+4	; 0x04
- 34a:	31 97       	sbiw	r30, 0x01	; 1
- 34c:	fc 83       	std	Y+4, r31	; 0x04
- 34e:	eb 83       	std	Y+3, r30	; 0x03
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
- 350:	30 97       	sbiw	r30, 0x00	; 0
- 352:	a1 f7       	brne	.-24     	; 0x33c <IR_voidTransmitData_timer+0x7e>
- 354:	10 c0       	rjmp	.+32     	; 0x376 <IR_voidTransmitData_timer+0xb8>
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
- 356:	81 e4       	ldi	r24, 0x41	; 65
- 358:	90 e0       	ldi	r25, 0x00	; 0
- 35a:	9c 83       	std	Y+4, r25	; 0x04
- 35c:	8b 83       	std	Y+3, r24	; 0x03
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 35e:	61 2f       	mov	r22, r17
- 360:	70 2f       	mov	r23, r16
- 362:	8f 2d       	mov	r24, r15
- 364:	9e 2d       	mov	r25, r14
- 366:	71 df       	rcall	.-286    	; 0x24a <IR_voidSendPulses_timer>
- 368:	eb 81       	ldd	r30, Y+3	; 0x03
- 36a:	fc 81       	ldd	r31, Y+4	; 0x04
- 36c:	31 97       	sbiw	r30, 0x01	; 1
- 36e:	fc 83       	std	Y+4, r31	; 0x04
- 370:	eb 83       	std	Y+3, r30	; 0x03
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
- 372:	30 97       	sbiw	r30, 0x00	; 0
- 374:	a1 f7       	brne	.-24     	; 0x35e <IR_voidTransmitData_timer+0xa0>
- 376:	08 94       	sec
- 378:	c1 1c       	adc	r12, r1
- 37a:	d1 1c       	adc	r13, r1
-
-void IR_voidTransmitData_timer(IR_parameters_t IR_Obj)
-{
-    u8 u8Counter=0;
-
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
- 37c:	f8 e0       	ldi	r31, 0x08	; 8
- 37e:	cf 16       	cp	r12, r31
- 380:	d1 04       	cpc	r13, r1
- 382:	31 f6       	brne	.-116    	; 0x310 <IR_voidTransmitData_timer+0x52>
- 384:	cc 24       	eor	r12, r12
- 386:	dd 24       	eor	r13, r13
-        }
-    }
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 388:	9a 80       	ldd	r9, Y+2	; 0x02
- 38a:	89 80       	ldd	r8, Y+1	; 0x01
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
- 38c:	53 01       	movw	r10, r6
- 38e:	a0 94       	com	r10
- 390:	b0 94       	com	r11
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 392:	19 2d       	mov	r17, r9
- 394:	08 2d       	mov	r16, r8
- 396:	f3 2c       	mov	r15, r3
- 398:	e2 2c       	mov	r14, r2
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
- 39a:	0f 2e       	mov	r0, r31
- 39c:	f5 e1       	ldi	r31, 0x15	; 21
- 39e:	6f 2e       	mov	r6, r31
- 3a0:	77 24       	eor	r7, r7
- 3a2:	f0 2d       	mov	r31, r0
-        }
-    }
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 3a4:	89 2d       	mov	r24, r9
- 3a6:	68 2d       	mov	r22, r8
- 3a8:	41 e0       	ldi	r20, 0x01	; 1
- 3aa:	8a d1       	rcall	.+788    	; 0x6c0 <dio_vidWriteChannel>
- 3ac:	8b ec       	ldi	r24, 0xCB	; 203
- 3ae:	98 e0       	ldi	r25, 0x08	; 8
- 3b0:	01 97       	sbiw	r24, 0x01	; 1
- 3b2:	f1 f7       	brne	.-4      	; 0x3b0 <IR_voidTransmitData_timer+0xf2>
- 3b4:	00 c0       	rjmp	.+0      	; 0x3b6 <IR_voidTransmitData_timer+0xf8>
- 3b6:	00 00       	nop
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
- 3b8:	c5 01       	movw	r24, r10
- 3ba:	0c 2c       	mov	r0, r12
- 3bc:	02 c0       	rjmp	.+4      	; 0x3c2 <IR_voidTransmitData_timer+0x104>
- 3be:	95 95       	asr	r25
- 3c0:	87 95       	ror	r24
- 3c2:	0a 94       	dec	r0
- 3c4:	e2 f7       	brpl	.-8      	; 0x3be <IR_voidTransmitData_timer+0x100>
- 3c6:	80 fd       	sbrc	r24, 0
- 3c8:	0d c0       	rjmp	.+26     	; 0x3e4 <IR_voidTransmitData_timer+0x126>
- 3ca:	23 01       	movw	r4, r6
-		{
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 3cc:	61 2f       	mov	r22, r17
- 3ce:	70 2f       	mov	r23, r16
- 3d0:	8f 2d       	mov	r24, r15
- 3d2:	9e 2d       	mov	r25, r14
- 3d4:	3a df       	rcall	.-396    	; 0x24a <IR_voidSendPulses_timer>
- 3d6:	08 94       	sec
- 3d8:	41 08       	sbc	r4, r1
- 3da:	51 08       	sbc	r5, r1
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
-		{
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
- 3dc:	41 14       	cp	r4, r1
- 3de:	51 04       	cpc	r5, r1
- 3e0:	a9 f7       	brne	.-22     	; 0x3cc <IR_voidTransmitData_timer+0x10e>
- 3e2:	10 c0       	rjmp	.+32     	; 0x404 <IR_voidTransmitData_timer+0x146>
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
- 3e4:	0f 2e       	mov	r0, r31
- 3e6:	f1 e4       	ldi	r31, 0x41	; 65
- 3e8:	4f 2e       	mov	r4, r31
- 3ea:	55 24       	eor	r5, r5
- 3ec:	f0 2d       	mov	r31, r0
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 3ee:	61 2f       	mov	r22, r17
- 3f0:	70 2f       	mov	r23, r16
- 3f2:	8f 2d       	mov	r24, r15
- 3f4:	9e 2d       	mov	r25, r14
- 3f6:	29 df       	rcall	.-430    	; 0x24a <IR_voidSendPulses_timer>
- 3f8:	08 94       	sec
- 3fa:	41 08       	sbc	r4, r1
- 3fc:	51 08       	sbc	r5, r1
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
- 3fe:	41 14       	cp	r4, r1
- 400:	51 04       	cpc	r5, r1
- 402:	a9 f7       	brne	.-22     	; 0x3ee <IR_voidTransmitData_timer+0x130>
- 404:	08 94       	sec
- 406:	c1 1c       	adc	r12, r1
- 408:	d1 1c       	adc	r13, r1
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }
-    }
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
- 40a:	98 e0       	ldi	r25, 0x08	; 8
- 40c:	c9 16       	cp	r12, r25
- 40e:	d1 04       	cpc	r13, r1
- 410:	49 f6       	brne	.-110    	; 0x3a4 <IR_voidTransmitData_timer+0xe6>
- 412:	cc 24       	eor	r12, r12
- 414:	dd 24       	eor	r13, r13
-	}	
-    
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 416:	9a 80       	ldd	r9, Y+2	; 0x02
- 418:	89 80       	ldd	r8, Y+1	; 0x01
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(IR_Obj.u8Data, u8Counter) == 0)
- 41a:	a3 2c       	mov	r10, r3
- 41c:	bb 24       	eor	r11, r11
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 41e:	19 2d       	mov	r17, r9
- 420:	08 2d       	mov	r16, r8
- 422:	f3 2c       	mov	r15, r3
- 424:	e2 2c       	mov	r14, r2
+ 368:	cf 92       	push	r12
+ 36a:	df 92       	push	r13
+ 36c:	ef 92       	push	r14
+ 36e:	ff 92       	push	r15
+ 370:	0f 93       	push	r16
+ 372:	1f 93       	push	r17
+ 374:	cf 93       	push	r28
+ 376:	df 93       	push	r29
+ 378:	00 d0       	rcall	.+0      	; 0x37a <IR_voidTransmitData_timer+0x12>
+ 37a:	0f 92       	push	r0
+ 37c:	cd b7       	in	r28, 0x3d	; 61
+ 37e:	de b7       	in	r29, 0x3e	; 62
+ 380:	69 83       	std	Y+1, r22	; 0x01
+ 382:	7a 83       	std	Y+2, r23	; 0x02
+ 384:	8b 83       	std	Y+3, r24	; 0x03
+ 386:	ee 24       	eor	r14, r14
+ 388:	ff 24       	eor	r15, r15
     {
         
         dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
         _delay_ms(HIGH_PULSE_BURST_TIMES);
         
         if(CHECK_BIT(IR_Obj.u8Data, u8Counter) == 0)
- 426:	0f 2e       	mov	r0, r31
- 428:	f5 e1       	ldi	r31, 0x15	; 21
- 42a:	4f 2e       	mov	r4, r31
- 42c:	55 24       	eor	r5, r5
- 42e:	f0 2d       	mov	r31, r0
-	}	
-    
+ 38a:	0f 2e       	mov	r0, r31
+ 38c:	f5 e1       	ldi	r31, 0x15	; 21
+ 38e:	cf 2e       	mov	r12, r31
+ 390:	dd 24       	eor	r13, r13
+ 392:	f0 2d       	mov	r31, r0
+	//}	
+    /* SEnding the data */
     for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
     {
         
         dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 430:	89 2d       	mov	r24, r9
- 432:	68 2d       	mov	r22, r8
- 434:	41 e0       	ldi	r20, 0x01	; 1
- 436:	44 d1       	rcall	.+648    	; 0x6c0 <dio_vidWriteChannel>
- 438:	eb ec       	ldi	r30, 0xCB	; 203
- 43a:	f8 e0       	ldi	r31, 0x08	; 8
- 43c:	31 97       	sbiw	r30, 0x01	; 1
- 43e:	f1 f7       	brne	.-4      	; 0x43c <IR_voidTransmitData_timer+0x17e>
- 440:	00 c0       	rjmp	.+0      	; 0x442 <IR_voidTransmitData_timer+0x184>
- 442:	00 00       	nop
+ 394:	89 81       	ldd	r24, Y+1	; 0x01
+ 396:	6a 81       	ldd	r22, Y+2	; 0x02
+ 398:	41 e0       	ldi	r20, 0x01	; 1
+ 39a:	ee d0       	rcall	.+476    	; 0x578 <dio_vidWriteChannel>
+ 39c:	8b ec       	ldi	r24, 0xCB	; 203
+ 39e:	98 e0       	ldi	r25, 0x08	; 8
+ 3a0:	01 97       	sbiw	r24, 0x01	; 1
+ 3a2:	f1 f7       	brne	.-4      	; 0x3a0 <IR_voidTransmitData_timer+0x38>
+ 3a4:	00 c0       	rjmp	.+0      	; 0x3a6 <IR_voidTransmitData_timer+0x3e>
+ 3a6:	00 00       	nop
         _delay_ms(HIGH_PULSE_BURST_TIMES);
         
         if(CHECK_BIT(IR_Obj.u8Data, u8Counter) == 0)
- 444:	35 01       	movw	r6, r10
- 446:	c5 01       	movw	r24, r10
- 448:	0c 2c       	mov	r0, r12
- 44a:	02 c0       	rjmp	.+4      	; 0x450 <IR_voidTransmitData_timer+0x192>
- 44c:	95 95       	asr	r25
- 44e:	87 95       	ror	r24
- 450:	0a 94       	dec	r0
- 452:	e2 f7       	brpl	.-8      	; 0x44c <IR_voidTransmitData_timer+0x18e>
- 454:	80 fd       	sbrc	r24, 0
- 456:	0f c0       	rjmp	.+30     	; 0x476 <__stack+0x17>
- 458:	5c 82       	std	Y+4, r5	; 0x04
- 45a:	4b 82       	std	Y+3, r4	; 0x03
+ 3a8:	8b 81       	ldd	r24, Y+3	; 0x03
+ 3aa:	90 e0       	ldi	r25, 0x00	; 0
+ 3ac:	0e 2c       	mov	r0, r14
+ 3ae:	02 c0       	rjmp	.+4      	; 0x3b4 <IR_voidTransmitData_timer+0x4c>
+ 3b0:	95 95       	asr	r25
+ 3b2:	87 95       	ror	r24
+ 3b4:	0a 94       	dec	r0
+ 3b6:	e2 f7       	brpl	.-8      	; 0x3b0 <IR_voidTransmitData_timer+0x48>
+ 3b8:	80 fd       	sbrc	r24, 0
+ 3ba:	09 c0       	rjmp	.+18     	; 0x3ce <IR_voidTransmitData_timer+0x66>
+ 3bc:	86 01       	movw	r16, r12
         {
             for(int i=0;i<LOW_DATA_ITERATION;i++)
             {
                 IR_voidSendPulses_timer(IR_Obj);
- 45c:	61 2f       	mov	r22, r17
- 45e:	70 2f       	mov	r23, r16
- 460:	8f 2d       	mov	r24, r15
- 462:	9e 2d       	mov	r25, r14
- 464:	f2 de       	rcall	.-540    	; 0x24a <IR_voidSendPulses_timer>
- 466:	8b 81       	ldd	r24, Y+3	; 0x03
- 468:	9c 81       	ldd	r25, Y+4	; 0x04
- 46a:	01 97       	sbiw	r24, 0x01	; 1
- 46c:	9c 83       	std	Y+4, r25	; 0x04
- 46e:	8b 83       	std	Y+3, r24	; 0x03
+ 3be:	69 81       	ldd	r22, Y+1	; 0x01
+ 3c0:	7a 81       	ldd	r23, Y+2	; 0x02
+ 3c2:	8b 81       	ldd	r24, Y+3	; 0x03
+ 3c4:	86 df       	rcall	.-244    	; 0x2d2 <IR_voidSendPulses_timer>
+ 3c6:	01 50       	subi	r16, 0x01	; 1
+ 3c8:	10 40       	sbci	r17, 0x00	; 0
         dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
         _delay_ms(HIGH_PULSE_BURST_TIMES);
         
         if(CHECK_BIT(IR_Obj.u8Data, u8Counter) == 0)
         {
             for(int i=0;i<LOW_DATA_ITERATION;i++)
- 470:	00 97       	sbiw	r24, 0x00	; 0
- 472:	a1 f7       	brne	.-24     	; 0x45c <IR_voidTransmitData_timer+0x19e>
- 474:	10 c0       	rjmp	.+32     	; 0x496 <__stack+0x37>
+ 3ca:	c9 f7       	brne	.-14     	; 0x3be <IR_voidTransmitData_timer+0x56>
+ 3cc:	09 c0       	rjmp	.+18     	; 0x3e0 <IR_voidTransmitData_timer+0x78>
     {
         
         dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
         _delay_ms(HIGH_PULSE_BURST_TIMES);
         
         if(CHECK_BIT(IR_Obj.u8Data, u8Counter) == 0)
- 476:	e1 e4       	ldi	r30, 0x41	; 65
- 478:	f0 e0       	ldi	r31, 0x00	; 0
- 47a:	fc 83       	std	Y+4, r31	; 0x04
- 47c:	eb 83       	std	Y+3, r30	; 0x03
+ 3ce:	01 e4       	ldi	r16, 0x41	; 65
+ 3d0:	10 e0       	ldi	r17, 0x00	; 0
             }
             
         }else{
             for(int i=0;i<HIGH_DATA_ITERATION;i++)
             {
                 IR_voidSendPulses_timer(IR_Obj);
- 47e:	61 2f       	mov	r22, r17
- 480:	70 2f       	mov	r23, r16
- 482:	8f 2d       	mov	r24, r15
- 484:	9e 2d       	mov	r25, r14
- 486:	e1 de       	rcall	.-574    	; 0x24a <IR_voidSendPulses_timer>
- 488:	8b 81       	ldd	r24, Y+3	; 0x03
- 48a:	9c 81       	ldd	r25, Y+4	; 0x04
- 48c:	01 97       	sbiw	r24, 0x01	; 1
- 48e:	9c 83       	std	Y+4, r25	; 0x04
- 490:	8b 83       	std	Y+3, r24	; 0x03
+ 3d2:	69 81       	ldd	r22, Y+1	; 0x01
+ 3d4:	7a 81       	ldd	r23, Y+2	; 0x02
+ 3d6:	8b 81       	ldd	r24, Y+3	; 0x03
+ 3d8:	7c df       	rcall	.-264    	; 0x2d2 <IR_voidSendPulses_timer>
+ 3da:	01 50       	subi	r16, 0x01	; 1
+ 3dc:	10 40       	sbci	r17, 0x00	; 0
             {
                 IR_voidSendPulses_timer(IR_Obj);
             }
             
         }else{
             for(int i=0;i<HIGH_DATA_ITERATION;i++)
- 492:	00 97       	sbiw	r24, 0x00	; 0
- 494:	a1 f7       	brne	.-24     	; 0x47e <__stack+0x1f>
- 496:	08 94       	sec
- 498:	c1 1c       	adc	r12, r1
- 49a:	d1 1c       	adc	r13, r1
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }		
-	}	
-    
+ 3de:	c9 f7       	brne	.-14     	; 0x3d2 <IR_voidTransmitData_timer+0x6a>
+ 3e0:	08 94       	sec
+ 3e2:	e1 1c       	adc	r14, r1
+ 3e4:	f1 1c       	adc	r15, r1
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+        //}		
+	//}	
+    /* SEnding the data */
     for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
- 49c:	98 e0       	ldi	r25, 0x08	; 8
- 49e:	c9 16       	cp	r12, r25
- 4a0:	d1 04       	cpc	r13, r1
- 4a2:	31 f6       	brne	.-116    	; 0x430 <IR_voidTransmitData_timer+0x172>
- 4a4:	cc 24       	eor	r12, r12
- 4a6:	dd 24       	eor	r13, r13
-    }
-    
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 4a8:	9a 80       	ldd	r9, Y+2	; 0x02
- 4aa:	89 80       	ldd	r8, Y+1	; 0x01
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
- 4ac:	53 01       	movw	r10, r6
- 4ae:	a0 94       	com	r10
- 4b0:	b0 94       	com	r11
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 4b2:	19 2d       	mov	r17, r9
- 4b4:	08 2d       	mov	r16, r8
- 4b6:	f3 2c       	mov	r15, r3
- 4b8:	e2 2c       	mov	r14, r2
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
- 4ba:	0f 2e       	mov	r0, r31
- 4bc:	f5 e1       	ldi	r31, 0x15	; 21
- 4be:	6f 2e       	mov	r6, r31
- 4c0:	77 24       	eor	r7, r7
- 4c2:	f0 2d       	mov	r31, r0
-    }
-    
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 4c4:	89 2d       	mov	r24, r9
- 4c6:	68 2d       	mov	r22, r8
- 4c8:	41 e0       	ldi	r20, 0x01	; 1
- 4ca:	fa d0       	rcall	.+500    	; 0x6c0 <dio_vidWriteChannel>
- 4cc:	eb ec       	ldi	r30, 0xCB	; 203
- 4ce:	f8 e0       	ldi	r31, 0x08	; 8
- 4d0:	31 97       	sbiw	r30, 0x01	; 1
- 4d2:	f1 f7       	brne	.-4      	; 0x4d0 <__stack+0x71>
- 4d4:	00 c0       	rjmp	.+0      	; 0x4d6 <__stack+0x77>
- 4d6:	00 00       	nop
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
- 4d8:	c5 01       	movw	r24, r10
- 4da:	0c 2c       	mov	r0, r12
- 4dc:	02 c0       	rjmp	.+4      	; 0x4e2 <__stack+0x83>
- 4de:	95 95       	asr	r25
- 4e0:	87 95       	ror	r24
- 4e2:	0a 94       	dec	r0
- 4e4:	e2 f7       	brpl	.-8      	; 0x4de <__stack+0x7f>
- 4e6:	80 fd       	sbrc	r24, 0
- 4e8:	0d c0       	rjmp	.+26     	; 0x504 <__stack+0xa5>
- 4ea:	23 01       	movw	r4, r6
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 4ec:	61 2f       	mov	r22, r17
- 4ee:	70 2f       	mov	r23, r16
- 4f0:	8f 2d       	mov	r24, r15
- 4f2:	9e 2d       	mov	r25, r14
- 4f4:	aa de       	rcall	.-684    	; 0x24a <IR_voidSendPulses_timer>
- 4f6:	08 94       	sec
- 4f8:	41 08       	sbc	r4, r1
- 4fa:	51 08       	sbc	r5, r1
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
- 4fc:	41 14       	cp	r4, r1
- 4fe:	51 04       	cpc	r5, r1
- 500:	a9 f7       	brne	.-22     	; 0x4ec <__stack+0x8d>
- 502:	10 c0       	rjmp	.+32     	; 0x524 <__stack+0xc5>
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
- 504:	0f 2e       	mov	r0, r31
- 506:	f1 e4       	ldi	r31, 0x41	; 65
- 508:	4f 2e       	mov	r4, r31
- 50a:	55 24       	eor	r5, r5
- 50c:	f0 2d       	mov	r31, r0
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
- 50e:	61 2f       	mov	r22, r17
- 510:	70 2f       	mov	r23, r16
- 512:	8f 2d       	mov	r24, r15
- 514:	9e 2d       	mov	r25, r14
- 516:	99 de       	rcall	.-718    	; 0x24a <IR_voidSendPulses_timer>
- 518:	08 94       	sec
- 51a:	41 08       	sbc	r4, r1
- 51c:	51 08       	sbc	r5, r1
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
- 51e:	41 14       	cp	r4, r1
- 520:	51 04       	cpc	r5, r1
- 522:	a9 f7       	brne	.-22     	; 0x50e <__stack+0xaf>
- 524:	08 94       	sec
- 526:	c1 1c       	adc	r12, r1
- 528:	d1 1c       	adc	r13, r1
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }
-    }
-    
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
- 52a:	f8 e0       	ldi	r31, 0x08	; 8
- 52c:	cf 16       	cp	r12, r31
- 52e:	d1 04       	cpc	r13, r1
- 530:	49 f6       	brne	.-110    	; 0x4c4 <__stack+0x65>
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }
-    }
+ 3e6:	98 e0       	ldi	r25, 0x08	; 8
+ 3e8:	e9 16       	cp	r14, r25
+ 3ea:	f1 04       	cpc	r15, r1
+ 3ec:	99 f6       	brne	.-90     	; 0x394 <IR_voidTransmitData_timer+0x2c>
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+        //}
+    //}
  }	
- 532:	0f 90       	pop	r0
- 534:	0f 90       	pop	r0
- 536:	0f 90       	pop	r0
- 538:	0f 90       	pop	r0
- 53a:	df 91       	pop	r29
- 53c:	cf 91       	pop	r28
- 53e:	1f 91       	pop	r17
- 540:	0f 91       	pop	r16
- 542:	ff 90       	pop	r15
- 544:	ef 90       	pop	r14
- 546:	df 90       	pop	r13
- 548:	cf 90       	pop	r12
- 54a:	bf 90       	pop	r11
- 54c:	af 90       	pop	r10
- 54e:	9f 90       	pop	r9
- 550:	8f 90       	pop	r8
- 552:	7f 90       	pop	r7
- 554:	6f 90       	pop	r6
- 556:	5f 90       	pop	r5
- 558:	4f 90       	pop	r4
- 55a:	3f 90       	pop	r3
- 55c:	2f 90       	pop	r2
- 55e:	08 95       	ret
+ 3ee:	0f 90       	pop	r0
+ 3f0:	0f 90       	pop	r0
+ 3f2:	0f 90       	pop	r0
+ 3f4:	df 91       	pop	r29
+ 3f6:	cf 91       	pop	r28
+ 3f8:	1f 91       	pop	r17
+ 3fa:	0f 91       	pop	r16
+ 3fc:	ff 90       	pop	r15
+ 3fe:	ef 90       	pop	r14
+ 400:	df 90       	pop	r13
+ 402:	cf 90       	pop	r12
+ 404:	08 95       	ret
 
-00000560 <IR_voidEndBit_timer>:
+00000406 <IR_voidEndBit_timer>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send end of the frame
 */
 void IR_voidEndBit_timer(IR_parameters_t IR_Obj)
 {
- 560:	ef 92       	push	r14
- 562:	ff 92       	push	r15
- 564:	0f 93       	push	r16
- 566:	1f 93       	push	r17
- 568:	cf 93       	push	r28
- 56a:	df 93       	push	r29
- 56c:	06 2f       	mov	r16, r22
- 56e:	17 2f       	mov	r17, r23
- 570:	f8 2e       	mov	r15, r24
- 572:	e9 2e       	mov	r14, r25
+ 406:	0f 93       	push	r16
+ 408:	1f 93       	push	r17
+ 40a:	cf 93       	push	r28
+ 40c:	df 93       	push	r29
+ 40e:	00 d0       	rcall	.+0      	; 0x410 <IR_voidEndBit_timer+0xa>
+ 410:	0f 92       	push	r0
+ 412:	cd b7       	in	r28, 0x3d	; 61
+ 414:	de b7       	in	r29, 0x3e	; 62
+ 416:	96 2f       	mov	r25, r22
+ 418:	69 83       	std	Y+1, r22	; 0x01
+ 41a:	67 2f       	mov	r22, r23
+ 41c:	7a 83       	std	Y+2, r23	; 0x02
+ 41e:	8b 83       	std	Y+3, r24	; 0x03
     /* send the high signal */
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
- 574:	86 2f       	mov	r24, r22
- 576:	67 2f       	mov	r22, r23
- 578:	41 e0       	ldi	r20, 0x01	; 1
- 57a:	a2 d0       	rcall	.+324    	; 0x6c0 <dio_vidWriteChannel>
- 57c:	8b ec       	ldi	r24, 0xCB	; 203
- 57e:	98 e0       	ldi	r25, 0x08	; 8
- 580:	01 97       	sbiw	r24, 0x01	; 1
- 582:	f1 f7       	brne	.-4      	; 0x580 <IR_voidEndBit_timer+0x20>
- 584:	00 c0       	rjmp	.+0      	; 0x586 <IR_voidEndBit_timer+0x26>
- 586:	00 00       	nop
- 588:	c5 e1       	ldi	r28, 0x15	; 21
- 58a:	d0 e0       	ldi	r29, 0x00	; 0
+ 420:	89 2f       	mov	r24, r25
+ 422:	41 e0       	ldi	r20, 0x01	; 1
+ 424:	a9 d0       	rcall	.+338    	; 0x578 <dio_vidWriteChannel>
+ 426:	8b ec       	ldi	r24, 0xCB	; 203
+ 428:	98 e0       	ldi	r25, 0x08	; 8
+ 42a:	01 97       	sbiw	r24, 0x01	; 1
+ 42c:	f1 f7       	brne	.-4      	; 0x42a <IR_voidEndBit_timer+0x24>
+ 42e:	00 c0       	rjmp	.+0      	; 0x430 <IR_voidEndBit_timer+0x2a>
+ 430:	00 00       	nop
+ 432:	05 e1       	ldi	r16, 0x15	; 21
+ 434:	10 e0       	ldi	r17, 0x00	; 0
     _delay_ms(HIGH_PULSE_BURST_TIMES);
     /* send the pulse modulation signal */
     for(int i=0;i<LOW_DATA_ITERATION;i++)
     {
         IR_voidSendPulses_timer(IR_Obj);
- 58c:	60 2f       	mov	r22, r16
- 58e:	71 2f       	mov	r23, r17
- 590:	8f 2d       	mov	r24, r15
- 592:	9e 2d       	mov	r25, r14
- 594:	5a de       	rcall	.-844    	; 0x24a <IR_voidSendPulses_timer>
- 596:	21 97       	sbiw	r28, 0x01	; 1
+ 436:	69 81       	ldd	r22, Y+1	; 0x01
+ 438:	7a 81       	ldd	r23, Y+2	; 0x02
+ 43a:	8b 81       	ldd	r24, Y+3	; 0x03
+ 43c:	4a df       	rcall	.-364    	; 0x2d2 <IR_voidSendPulses_timer>
+ 43e:	01 50       	subi	r16, 0x01	; 1
+ 440:	10 40       	sbci	r17, 0x00	; 0
 {
     /* send the high signal */
     dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
     _delay_ms(HIGH_PULSE_BURST_TIMES);
     /* send the pulse modulation signal */
     for(int i=0;i<LOW_DATA_ITERATION;i++)
- 598:	c9 f7       	brne	.-14     	; 0x58c <IR_voidEndBit_timer+0x2c>
+ 442:	c9 f7       	brne	.-14     	; 0x436 <IR_voidEndBit_timer+0x30>
     }
         /*	for(int i=0;i<LOW_DATA_ITERATION;i++)
             {
                 IR_voidSendPulses_timer(IR_Obj);
             }*/
 }
- 59a:	df 91       	pop	r29
- 59c:	cf 91       	pop	r28
- 59e:	1f 91       	pop	r17
- 5a0:	0f 91       	pop	r16
- 5a2:	ff 90       	pop	r15
- 5a4:	ef 90       	pop	r14
- 5a6:	08 95       	ret
+ 444:	0f 90       	pop	r0
+ 446:	0f 90       	pop	r0
+ 448:	0f 90       	pop	r0
+ 44a:	df 91       	pop	r29
+ 44c:	cf 91       	pop	r28
+ 44e:	1f 91       	pop	r17
+ 450:	0f 91       	pop	r16
+ 452:	08 95       	ret
 
-000005a8 <IR_voidTransmitFrame_timer>:
+00000454 <IR_voidTransmitFrame_timer>:
     Function Returns     : void
     Function Arguments   : struct
     Function Description : send the IR signal
 */
 void IR_voidTransmitFrame_timer(IR_parameters_t IR_Obj)
 {
- 5a8:	cf 92       	push	r12
- 5aa:	df 92       	push	r13
- 5ac:	ef 92       	push	r14
- 5ae:	ff 92       	push	r15
- 5b0:	6b 01       	movw	r12, r22
- 5b2:	7c 01       	movw	r14, r24
+ 454:	cf 93       	push	r28
+ 456:	df 93       	push	r29
+ 458:	00 d0       	rcall	.+0      	; 0x45a <IR_voidTransmitFrame_timer+0x6>
+ 45a:	0f 92       	push	r0
+ 45c:	cd b7       	in	r28, 0x3d	; 61
+ 45e:	de b7       	in	r29, 0x3e	; 62
+ 460:	69 83       	std	Y+1, r22	; 0x01
+ 462:	7a 83       	std	Y+2, r23	; 0x02
+ 464:	8b 83       	std	Y+3, r24	; 0x03
     /* send the start of the frame */
     IR_voidSendStartBit_timer(IR_Obj); 
- 5b4:	60 de       	rcall	.-832    	; 0x276 <IR_voidSendStartBit_timer>
+ 466:	59 df       	rcall	.-334    	; 0x31a <IR_voidSendStartBit_timer>
     /* send the address and data */
     IR_voidTransmitData_timer(IR_Obj);
- 5b6:	c7 01       	movw	r24, r14
- 5b8:	b6 01       	movw	r22, r12
- 5ba:	81 de       	rcall	.-766    	; 0x2be <IR_voidTransmitData_timer>
+ 468:	69 81       	ldd	r22, Y+1	; 0x01
+ 46a:	7a 81       	ldd	r23, Y+2	; 0x02
+ 46c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 46e:	7c df       	rcall	.-264    	; 0x368 <IR_voidTransmitData_timer>
     //IR_voidNew(IR_Obj);
     /* send the end of the frame */
     IR_voidEndBit_timer(IR_Obj);
- 5bc:	c7 01       	movw	r24, r14
- 5be:	b6 01       	movw	r22, r12
- 5c0:	cf df       	rcall	.-98     	; 0x560 <IR_voidEndBit_timer>
- 5c2:	ff 90       	pop	r15
- 5c4:	ef 90       	pop	r14
- 5c6:	df 90       	pop	r13
- 5c8:	cf 90       	pop	r12
- 5ca:	08 95       	ret
+ 470:	69 81       	ldd	r22, Y+1	; 0x01
+ 472:	7a 81       	ldd	r23, Y+2	; 0x02
+ 474:	8b 81       	ldd	r24, Y+3	; 0x03
+ 476:	c7 df       	rcall	.-114    	; 0x406 <IR_voidEndBit_timer>
+ 478:	0f 90       	pop	r0
+ 47a:	0f 90       	pop	r0
+ 47c:	0f 90       	pop	r0
+ 47e:	df 91       	pop	r29
+ 480:	cf 91       	pop	r28
+ 482:	08 95       	ret
 
-000005cc <main>:
- 5cc:	48 dd       	rcall	.-1392   	; 0x5e <App_vidInit>
- 5ce:	52 dd       	rcall	.-1372   	; 0x74 <App_vidMain>
- 5d0:	fe cf       	rjmp	.-4      	; 0x5ce <main+0x2>
+00000484 <main>:
+ 484:	ec dd       	rcall	.-1064   	; 0x5e <App_vidInit>
+ 486:	f6 dd       	rcall	.-1044   	; 0x74 <App_vidMain>
+ 488:	fe cf       	rjmp	.-4      	; 0x486 <main+0x2>
 
-000005d2 <dio_vidConfigChannel>:
- 5d2:	82 30       	cpi	r24, 0x02	; 2
- 5d4:	19 f1       	breq	.+70     	; 0x61c <dio_vidConfigChannel+0x4a>
- 5d6:	83 30       	cpi	r24, 0x03	; 3
- 5d8:	09 f4       	brne	.+2      	; 0x5dc <dio_vidConfigChannel+0xa>
- 5da:	3d c0       	rjmp	.+122    	; 0x656 <dio_vidConfigChannel+0x84>
- 5dc:	81 30       	cpi	r24, 0x01	; 1
- 5de:	09 f0       	breq	.+2      	; 0x5e2 <dio_vidConfigChannel+0x10>
- 5e0:	56 c0       	rjmp	.+172    	; 0x68e <dio_vidConfigChannel+0xbc>
- 5e2:	41 30       	cpi	r20, 0x01	; 1
- 5e4:	69 f4       	brne	.+26     	; 0x600 <dio_vidConfigChannel+0x2e>
- 5e6:	27 b3       	in	r18, 0x17	; 23
- 5e8:	81 e0       	ldi	r24, 0x01	; 1
- 5ea:	90 e0       	ldi	r25, 0x00	; 0
- 5ec:	ac 01       	movw	r20, r24
- 5ee:	02 c0       	rjmp	.+4      	; 0x5f4 <dio_vidConfigChannel+0x22>
- 5f0:	44 0f       	add	r20, r20
- 5f2:	55 1f       	adc	r21, r21
- 5f4:	6a 95       	dec	r22
- 5f6:	e2 f7       	brpl	.-8      	; 0x5f0 <dio_vidConfigChannel+0x1e>
- 5f8:	ba 01       	movw	r22, r20
- 5fa:	62 2b       	or	r22, r18
- 5fc:	67 bb       	out	0x17, r22	; 23
- 5fe:	08 95       	ret
- 600:	27 b3       	in	r18, 0x17	; 23
+0000048a <dio_vidConfigChannel>:
+ 48a:	82 30       	cpi	r24, 0x02	; 2
+ 48c:	19 f1       	breq	.+70     	; 0x4d4 <dio_vidConfigChannel+0x4a>
+ 48e:	83 30       	cpi	r24, 0x03	; 3
+ 490:	09 f4       	brne	.+2      	; 0x494 <dio_vidConfigChannel+0xa>
+ 492:	3d c0       	rjmp	.+122    	; 0x50e <dio_vidConfigChannel+0x84>
+ 494:	81 30       	cpi	r24, 0x01	; 1
+ 496:	09 f0       	breq	.+2      	; 0x49a <dio_vidConfigChannel+0x10>
+ 498:	56 c0       	rjmp	.+172    	; 0x546 <dio_vidConfigChannel+0xbc>
+ 49a:	41 30       	cpi	r20, 0x01	; 1
+ 49c:	69 f4       	brne	.+26     	; 0x4b8 <dio_vidConfigChannel+0x2e>
+ 49e:	27 b3       	in	r18, 0x17	; 23
+ 4a0:	81 e0       	ldi	r24, 0x01	; 1
+ 4a2:	90 e0       	ldi	r25, 0x00	; 0
+ 4a4:	ac 01       	movw	r20, r24
+ 4a6:	02 c0       	rjmp	.+4      	; 0x4ac <dio_vidConfigChannel+0x22>
+ 4a8:	44 0f       	add	r20, r20
+ 4aa:	55 1f       	adc	r21, r21
+ 4ac:	6a 95       	dec	r22
+ 4ae:	e2 f7       	brpl	.-8      	; 0x4a8 <dio_vidConfigChannel+0x1e>
+ 4b0:	ba 01       	movw	r22, r20
+ 4b2:	62 2b       	or	r22, r18
+ 4b4:	67 bb       	out	0x17, r22	; 23
+ 4b6:	08 95       	ret
+ 4b8:	27 b3       	in	r18, 0x17	; 23
+ 4ba:	81 e0       	ldi	r24, 0x01	; 1
+ 4bc:	90 e0       	ldi	r25, 0x00	; 0
+ 4be:	ac 01       	movw	r20, r24
+ 4c0:	02 c0       	rjmp	.+4      	; 0x4c6 <dio_vidConfigChannel+0x3c>
+ 4c2:	44 0f       	add	r20, r20
+ 4c4:	55 1f       	adc	r21, r21
+ 4c6:	6a 95       	dec	r22
+ 4c8:	e2 f7       	brpl	.-8      	; 0x4c2 <dio_vidConfigChannel+0x38>
+ 4ca:	ba 01       	movw	r22, r20
+ 4cc:	60 95       	com	r22
+ 4ce:	62 23       	and	r22, r18
+ 4d0:	67 bb       	out	0x17, r22	; 23
+ 4d2:	08 95       	ret
+ 4d4:	41 30       	cpi	r20, 0x01	; 1
+ 4d6:	69 f4       	brne	.+26     	; 0x4f2 <dio_vidConfigChannel+0x68>
+ 4d8:	24 b3       	in	r18, 0x14	; 20
+ 4da:	81 e0       	ldi	r24, 0x01	; 1
+ 4dc:	90 e0       	ldi	r25, 0x00	; 0
+ 4de:	ac 01       	movw	r20, r24
+ 4e0:	02 c0       	rjmp	.+4      	; 0x4e6 <dio_vidConfigChannel+0x5c>
+ 4e2:	44 0f       	add	r20, r20
+ 4e4:	55 1f       	adc	r21, r21
+ 4e6:	6a 95       	dec	r22
+ 4e8:	e2 f7       	brpl	.-8      	; 0x4e2 <dio_vidConfigChannel+0x58>
+ 4ea:	ba 01       	movw	r22, r20
+ 4ec:	62 2b       	or	r22, r18
+ 4ee:	64 bb       	out	0x14, r22	; 20
+ 4f0:	08 95       	ret
+ 4f2:	24 b3       	in	r18, 0x14	; 20
+ 4f4:	81 e0       	ldi	r24, 0x01	; 1
+ 4f6:	90 e0       	ldi	r25, 0x00	; 0
+ 4f8:	ac 01       	movw	r20, r24
+ 4fa:	02 c0       	rjmp	.+4      	; 0x500 <dio_vidConfigChannel+0x76>
+ 4fc:	44 0f       	add	r20, r20
+ 4fe:	55 1f       	adc	r21, r21
+ 500:	6a 95       	dec	r22
+ 502:	e2 f7       	brpl	.-8      	; 0x4fc <dio_vidConfigChannel+0x72>
+ 504:	ba 01       	movw	r22, r20
+ 506:	60 95       	com	r22
+ 508:	62 23       	and	r22, r18
+ 50a:	64 bb       	out	0x14, r22	; 20
+ 50c:	08 95       	ret
+ 50e:	41 30       	cpi	r20, 0x01	; 1
+ 510:	69 f4       	brne	.+26     	; 0x52c <dio_vidConfigChannel+0xa2>
+ 512:	21 b3       	in	r18, 0x11	; 17
+ 514:	81 e0       	ldi	r24, 0x01	; 1
+ 516:	90 e0       	ldi	r25, 0x00	; 0
+ 518:	ac 01       	movw	r20, r24
+ 51a:	02 c0       	rjmp	.+4      	; 0x520 <dio_vidConfigChannel+0x96>
+ 51c:	44 0f       	add	r20, r20
+ 51e:	55 1f       	adc	r21, r21
+ 520:	6a 95       	dec	r22
+ 522:	e2 f7       	brpl	.-8      	; 0x51c <dio_vidConfigChannel+0x92>
+ 524:	ba 01       	movw	r22, r20
+ 526:	62 2b       	or	r22, r18
+ 528:	61 bb       	out	0x11, r22	; 17
+ 52a:	08 95       	ret
+ 52c:	21 b3       	in	r18, 0x11	; 17
+ 52e:	81 e0       	ldi	r24, 0x01	; 1
+ 530:	90 e0       	ldi	r25, 0x00	; 0
+ 532:	ac 01       	movw	r20, r24
+ 534:	02 c0       	rjmp	.+4      	; 0x53a <dio_vidConfigChannel+0xb0>
+ 536:	44 0f       	add	r20, r20
+ 538:	55 1f       	adc	r21, r21
+ 53a:	6a 95       	dec	r22
+ 53c:	e2 f7       	brpl	.-8      	; 0x536 <dio_vidConfigChannel+0xac>
+ 53e:	ba 01       	movw	r22, r20
+ 540:	60 95       	com	r22
+ 542:	62 23       	and	r22, r18
+ 544:	61 bb       	out	0x11, r22	; 17
+ 546:	08 95       	ret
+
+00000548 <dio_vidConfigPort>:
+ 548:	82 30       	cpi	r24, 0x02	; 2
+ 54a:	31 f0       	breq	.+12     	; 0x558 <dio_vidConfigPort+0x10>
+ 54c:	83 30       	cpi	r24, 0x03	; 3
+ 54e:	31 f0       	breq	.+12     	; 0x55c <dio_vidConfigPort+0x14>
+ 550:	81 30       	cpi	r24, 0x01	; 1
+ 552:	29 f4       	brne	.+10     	; 0x55e <dio_vidConfigPort+0x16>
+ 554:	67 bb       	out	0x17, r22	; 23
+ 556:	08 95       	ret
+ 558:	64 bb       	out	0x14, r22	; 20
+ 55a:	08 95       	ret
+ 55c:	61 bb       	out	0x11, r22	; 17
+ 55e:	08 95       	ret
+
+00000560 <dio_vidSetPortValue>:
+ 560:	82 30       	cpi	r24, 0x02	; 2
+ 562:	31 f0       	breq	.+12     	; 0x570 <dio_vidSetPortValue+0x10>
+ 564:	83 30       	cpi	r24, 0x03	; 3
+ 566:	31 f0       	breq	.+12     	; 0x574 <dio_vidSetPortValue+0x14>
+ 568:	81 30       	cpi	r24, 0x01	; 1
+ 56a:	29 f4       	brne	.+10     	; 0x576 <dio_vidSetPortValue+0x16>
+ 56c:	68 bb       	out	0x18, r22	; 24
+ 56e:	08 95       	ret
+ 570:	65 bb       	out	0x15, r22	; 21
+ 572:	08 95       	ret
+ 574:	62 bb       	out	0x12, r22	; 18
+ 576:	08 95       	ret
+
+00000578 <dio_vidWriteChannel>:
+ 578:	82 30       	cpi	r24, 0x02	; 2
+ 57a:	19 f1       	breq	.+70     	; 0x5c2 <dio_vidWriteChannel+0x4a>
+ 57c:	83 30       	cpi	r24, 0x03	; 3
+ 57e:	09 f4       	brne	.+2      	; 0x582 <dio_vidWriteChannel+0xa>
+ 580:	3d c0       	rjmp	.+122    	; 0x5fc <dio_vidWriteChannel+0x84>
+ 582:	81 30       	cpi	r24, 0x01	; 1
+ 584:	09 f0       	breq	.+2      	; 0x588 <dio_vidWriteChannel+0x10>
+ 586:	56 c0       	rjmp	.+172    	; 0x634 <dio_vidWriteChannel+0xbc>
+ 588:	44 23       	and	r20, r20
+ 58a:	71 f4       	brne	.+28     	; 0x5a8 <dio_vidWriteChannel+0x30>
+ 58c:	28 b3       	in	r18, 0x18	; 24
+ 58e:	81 e0       	ldi	r24, 0x01	; 1
+ 590:	90 e0       	ldi	r25, 0x00	; 0
+ 592:	ac 01       	movw	r20, r24
+ 594:	02 c0       	rjmp	.+4      	; 0x59a <dio_vidWriteChannel+0x22>
+ 596:	44 0f       	add	r20, r20
+ 598:	55 1f       	adc	r21, r21
+ 59a:	6a 95       	dec	r22
+ 59c:	e2 f7       	brpl	.-8      	; 0x596 <dio_vidWriteChannel+0x1e>
+ 59e:	ba 01       	movw	r22, r20
+ 5a0:	60 95       	com	r22
+ 5a2:	62 23       	and	r22, r18
+ 5a4:	68 bb       	out	0x18, r22	; 24
+ 5a6:	08 95       	ret
+ 5a8:	28 b3       	in	r18, 0x18	; 24
+ 5aa:	81 e0       	ldi	r24, 0x01	; 1
+ 5ac:	90 e0       	ldi	r25, 0x00	; 0
+ 5ae:	ac 01       	movw	r20, r24
+ 5b0:	02 c0       	rjmp	.+4      	; 0x5b6 <dio_vidWriteChannel+0x3e>
+ 5b2:	44 0f       	add	r20, r20
+ 5b4:	55 1f       	adc	r21, r21
+ 5b6:	6a 95       	dec	r22
+ 5b8:	e2 f7       	brpl	.-8      	; 0x5b2 <dio_vidWriteChannel+0x3a>
+ 5ba:	ba 01       	movw	r22, r20
+ 5bc:	62 2b       	or	r22, r18
+ 5be:	68 bb       	out	0x18, r22	; 24
+ 5c0:	08 95       	ret
+ 5c2:	44 23       	and	r20, r20
+ 5c4:	71 f4       	brne	.+28     	; 0x5e2 <dio_vidWriteChannel+0x6a>
+ 5c6:	25 b3       	in	r18, 0x15	; 21
+ 5c8:	81 e0       	ldi	r24, 0x01	; 1
+ 5ca:	90 e0       	ldi	r25, 0x00	; 0
+ 5cc:	ac 01       	movw	r20, r24
+ 5ce:	02 c0       	rjmp	.+4      	; 0x5d4 <dio_vidWriteChannel+0x5c>
+ 5d0:	44 0f       	add	r20, r20
+ 5d2:	55 1f       	adc	r21, r21
+ 5d4:	6a 95       	dec	r22
+ 5d6:	e2 f7       	brpl	.-8      	; 0x5d0 <dio_vidWriteChannel+0x58>
+ 5d8:	ba 01       	movw	r22, r20
+ 5da:	60 95       	com	r22
+ 5dc:	62 23       	and	r22, r18
+ 5de:	65 bb       	out	0x15, r22	; 21
+ 5e0:	08 95       	ret
+ 5e2:	25 b3       	in	r18, 0x15	; 21
+ 5e4:	81 e0       	ldi	r24, 0x01	; 1
+ 5e6:	90 e0       	ldi	r25, 0x00	; 0
+ 5e8:	ac 01       	movw	r20, r24
+ 5ea:	02 c0       	rjmp	.+4      	; 0x5f0 <dio_vidWriteChannel+0x78>
+ 5ec:	44 0f       	add	r20, r20
+ 5ee:	55 1f       	adc	r21, r21
+ 5f0:	6a 95       	dec	r22
+ 5f2:	e2 f7       	brpl	.-8      	; 0x5ec <dio_vidWriteChannel+0x74>
+ 5f4:	ba 01       	movw	r22, r20
+ 5f6:	62 2b       	or	r22, r18
+ 5f8:	65 bb       	out	0x15, r22	; 21
+ 5fa:	08 95       	ret
+ 5fc:	44 23       	and	r20, r20
+ 5fe:	71 f4       	brne	.+28     	; 0x61c <dio_vidWriteChannel+0xa4>
+ 600:	22 b3       	in	r18, 0x12	; 18
  602:	81 e0       	ldi	r24, 0x01	; 1
  604:	90 e0       	ldi	r25, 0x00	; 0
  606:	ac 01       	movw	r20, r24
- 608:	02 c0       	rjmp	.+4      	; 0x60e <dio_vidConfigChannel+0x3c>
+ 608:	02 c0       	rjmp	.+4      	; 0x60e <dio_vidWriteChannel+0x96>
  60a:	44 0f       	add	r20, r20
  60c:	55 1f       	adc	r21, r21
  60e:	6a 95       	dec	r22
- 610:	e2 f7       	brpl	.-8      	; 0x60a <dio_vidConfigChannel+0x38>
+ 610:	e2 f7       	brpl	.-8      	; 0x60a <dio_vidWriteChannel+0x92>
  612:	ba 01       	movw	r22, r20
  614:	60 95       	com	r22
  616:	62 23       	and	r22, r18
- 618:	67 bb       	out	0x17, r22	; 23
+ 618:	62 bb       	out	0x12, r22	; 18
  61a:	08 95       	ret
- 61c:	41 30       	cpi	r20, 0x01	; 1
- 61e:	69 f4       	brne	.+26     	; 0x63a <dio_vidConfigChannel+0x68>
- 620:	24 b3       	in	r18, 0x14	; 20
- 622:	81 e0       	ldi	r24, 0x01	; 1
- 624:	90 e0       	ldi	r25, 0x00	; 0
- 626:	ac 01       	movw	r20, r24
- 628:	02 c0       	rjmp	.+4      	; 0x62e <dio_vidConfigChannel+0x5c>
- 62a:	44 0f       	add	r20, r20
- 62c:	55 1f       	adc	r21, r21
- 62e:	6a 95       	dec	r22
- 630:	e2 f7       	brpl	.-8      	; 0x62a <dio_vidConfigChannel+0x58>
- 632:	ba 01       	movw	r22, r20
- 634:	62 2b       	or	r22, r18
- 636:	64 bb       	out	0x14, r22	; 20
- 638:	08 95       	ret
- 63a:	24 b3       	in	r18, 0x14	; 20
- 63c:	81 e0       	ldi	r24, 0x01	; 1
- 63e:	90 e0       	ldi	r25, 0x00	; 0
- 640:	ac 01       	movw	r20, r24
- 642:	02 c0       	rjmp	.+4      	; 0x648 <dio_vidConfigChannel+0x76>
- 644:	44 0f       	add	r20, r20
- 646:	55 1f       	adc	r21, r21
- 648:	6a 95       	dec	r22
- 64a:	e2 f7       	brpl	.-8      	; 0x644 <dio_vidConfigChannel+0x72>
- 64c:	ba 01       	movw	r22, r20
- 64e:	60 95       	com	r22
- 650:	62 23       	and	r22, r18
- 652:	64 bb       	out	0x14, r22	; 20
- 654:	08 95       	ret
- 656:	41 30       	cpi	r20, 0x01	; 1
- 658:	69 f4       	brne	.+26     	; 0x674 <dio_vidConfigChannel+0xa2>
- 65a:	21 b3       	in	r18, 0x11	; 17
- 65c:	81 e0       	ldi	r24, 0x01	; 1
- 65e:	90 e0       	ldi	r25, 0x00	; 0
- 660:	ac 01       	movw	r20, r24
- 662:	02 c0       	rjmp	.+4      	; 0x668 <dio_vidConfigChannel+0x96>
- 664:	44 0f       	add	r20, r20
- 666:	55 1f       	adc	r21, r21
- 668:	6a 95       	dec	r22
- 66a:	e2 f7       	brpl	.-8      	; 0x664 <dio_vidConfigChannel+0x92>
- 66c:	ba 01       	movw	r22, r20
- 66e:	62 2b       	or	r22, r18
- 670:	61 bb       	out	0x11, r22	; 17
- 672:	08 95       	ret
- 674:	21 b3       	in	r18, 0x11	; 17
- 676:	81 e0       	ldi	r24, 0x01	; 1
- 678:	90 e0       	ldi	r25, 0x00	; 0
- 67a:	ac 01       	movw	r20, r24
- 67c:	02 c0       	rjmp	.+4      	; 0x682 <dio_vidConfigChannel+0xb0>
- 67e:	44 0f       	add	r20, r20
- 680:	55 1f       	adc	r21, r21
- 682:	6a 95       	dec	r22
- 684:	e2 f7       	brpl	.-8      	; 0x67e <dio_vidConfigChannel+0xac>
- 686:	ba 01       	movw	r22, r20
- 688:	60 95       	com	r22
- 68a:	62 23       	and	r22, r18
- 68c:	61 bb       	out	0x11, r22	; 17
- 68e:	08 95       	ret
+ 61c:	22 b3       	in	r18, 0x12	; 18
+ 61e:	81 e0       	ldi	r24, 0x01	; 1
+ 620:	90 e0       	ldi	r25, 0x00	; 0
+ 622:	ac 01       	movw	r20, r24
+ 624:	02 c0       	rjmp	.+4      	; 0x62a <dio_vidWriteChannel+0xb2>
+ 626:	44 0f       	add	r20, r20
+ 628:	55 1f       	adc	r21, r21
+ 62a:	6a 95       	dec	r22
+ 62c:	e2 f7       	brpl	.-8      	; 0x626 <dio_vidWriteChannel+0xae>
+ 62e:	ba 01       	movw	r22, r20
+ 630:	62 2b       	or	r22, r18
+ 632:	62 bb       	out	0x12, r22	; 18
+ 634:	08 95       	ret
 
-00000690 <dio_vidConfigPort>:
- 690:	82 30       	cpi	r24, 0x02	; 2
- 692:	31 f0       	breq	.+12     	; 0x6a0 <dio_vidConfigPort+0x10>
- 694:	83 30       	cpi	r24, 0x03	; 3
- 696:	31 f0       	breq	.+12     	; 0x6a4 <dio_vidConfigPort+0x14>
- 698:	81 30       	cpi	r24, 0x01	; 1
- 69a:	29 f4       	brne	.+10     	; 0x6a6 <dio_vidConfigPort+0x16>
- 69c:	67 bb       	out	0x17, r22	; 23
+00000636 <dio_vidWriteChannelGroup>:
+ 636:	82 30       	cpi	r24, 0x02	; 2
+ 638:	a1 f0       	breq	.+40     	; 0x662 <dio_vidWriteChannelGroup+0x2c>
+ 63a:	83 30       	cpi	r24, 0x03	; 3
+ 63c:	09 f1       	breq	.+66     	; 0x680 <dio_vidWriteChannelGroup+0x4a>
+ 63e:	81 30       	cpi	r24, 0x01	; 1
+ 640:	71 f5       	brne	.+92     	; 0x69e <dio_vidWriteChannelGroup+0x68>
+ 642:	88 b3       	in	r24, 0x18	; 24
+ 644:	94 2f       	mov	r25, r20
+ 646:	90 95       	com	r25
+ 648:	89 23       	and	r24, r25
+ 64a:	88 bb       	out	0x18, r24	; 24
+ 64c:	e6 2f       	mov	r30, r22
+ 64e:	f0 e0       	ldi	r31, 0x00	; 0
+ 650:	bf 01       	movw	r22, r30
+ 652:	02 c0       	rjmp	.+4      	; 0x658 <dio_vidWriteChannelGroup+0x22>
+ 654:	66 0f       	add	r22, r22
+ 656:	77 1f       	adc	r23, r23
+ 658:	2a 95       	dec	r18
+ 65a:	e2 f7       	brpl	.-8      	; 0x654 <dio_vidWriteChannelGroup+0x1e>
+ 65c:	64 23       	and	r22, r20
+ 65e:	68 bb       	out	0x18, r22	; 24
+ 660:	08 95       	ret
+ 662:	85 b3       	in	r24, 0x15	; 21
+ 664:	94 2f       	mov	r25, r20
+ 666:	90 95       	com	r25
+ 668:	89 23       	and	r24, r25
+ 66a:	85 bb       	out	0x15, r24	; 21
+ 66c:	70 e0       	ldi	r23, 0x00	; 0
+ 66e:	cb 01       	movw	r24, r22
+ 670:	02 c0       	rjmp	.+4      	; 0x676 <dio_vidWriteChannelGroup+0x40>
+ 672:	88 0f       	add	r24, r24
+ 674:	99 1f       	adc	r25, r25
+ 676:	2a 95       	dec	r18
+ 678:	e2 f7       	brpl	.-8      	; 0x672 <dio_vidWriteChannelGroup+0x3c>
+ 67a:	84 23       	and	r24, r20
+ 67c:	85 bb       	out	0x15, r24	; 21
+ 67e:	08 95       	ret
+ 680:	82 b3       	in	r24, 0x12	; 18
+ 682:	94 2f       	mov	r25, r20
+ 684:	90 95       	com	r25
+ 686:	89 23       	and	r24, r25
+ 688:	82 bb       	out	0x12, r24	; 18
+ 68a:	70 e0       	ldi	r23, 0x00	; 0
+ 68c:	cb 01       	movw	r24, r22
+ 68e:	02 c0       	rjmp	.+4      	; 0x694 <dio_vidWriteChannelGroup+0x5e>
+ 690:	88 0f       	add	r24, r24
+ 692:	99 1f       	adc	r25, r25
+ 694:	2a 95       	dec	r18
+ 696:	e2 f7       	brpl	.-8      	; 0x690 <dio_vidWriteChannelGroup+0x5a>
+ 698:	9c 01       	movw	r18, r24
+ 69a:	24 23       	and	r18, r20
+ 69c:	22 bb       	out	0x12, r18	; 18
  69e:	08 95       	ret
- 6a0:	64 bb       	out	0x14, r22	; 20
- 6a2:	08 95       	ret
- 6a4:	61 bb       	out	0x11, r22	; 17
- 6a6:	08 95       	ret
 
-000006a8 <dio_vidSetPortValue>:
- 6a8:	82 30       	cpi	r24, 0x02	; 2
- 6aa:	31 f0       	breq	.+12     	; 0x6b8 <dio_vidSetPortValue+0x10>
- 6ac:	83 30       	cpi	r24, 0x03	; 3
- 6ae:	31 f0       	breq	.+12     	; 0x6bc <dio_vidSetPortValue+0x14>
- 6b0:	81 30       	cpi	r24, 0x01	; 1
- 6b2:	29 f4       	brne	.+10     	; 0x6be <dio_vidSetPortValue+0x16>
- 6b4:	68 bb       	out	0x18, r22	; 24
- 6b6:	08 95       	ret
- 6b8:	65 bb       	out	0x15, r22	; 21
- 6ba:	08 95       	ret
- 6bc:	62 bb       	out	0x12, r22	; 18
- 6be:	08 95       	ret
+000006a0 <dio_vidReadChannelGroup>:
+ 6a0:	68 23       	and	r22, r24
+ 6a2:	70 e0       	ldi	r23, 0x00	; 0
+ 6a4:	cb 01       	movw	r24, r22
+ 6a6:	02 c0       	rjmp	.+4      	; 0x6ac <dio_vidReadChannelGroup+0xc>
+ 6a8:	95 95       	asr	r25
+ 6aa:	87 95       	ror	r24
+ 6ac:	4a 95       	dec	r20
+ 6ae:	e2 f7       	brpl	.-8      	; 0x6a8 <dio_vidReadChannelGroup+0x8>
+ 6b0:	08 95       	ret
 
-000006c0 <dio_vidWriteChannel>:
- 6c0:	82 30       	cpi	r24, 0x02	; 2
- 6c2:	19 f1       	breq	.+70     	; 0x70a <dio_vidWriteChannel+0x4a>
- 6c4:	83 30       	cpi	r24, 0x03	; 3
- 6c6:	09 f4       	brne	.+2      	; 0x6ca <dio_vidWriteChannel+0xa>
- 6c8:	3d c0       	rjmp	.+122    	; 0x744 <dio_vidWriteChannel+0x84>
- 6ca:	81 30       	cpi	r24, 0x01	; 1
- 6cc:	09 f0       	breq	.+2      	; 0x6d0 <dio_vidWriteChannel+0x10>
- 6ce:	56 c0       	rjmp	.+172    	; 0x77c <dio_vidWriteChannel+0xbc>
- 6d0:	44 23       	and	r20, r20
- 6d2:	71 f4       	brne	.+28     	; 0x6f0 <dio_vidWriteChannel+0x30>
- 6d4:	28 b3       	in	r18, 0x18	; 24
- 6d6:	81 e0       	ldi	r24, 0x01	; 1
- 6d8:	90 e0       	ldi	r25, 0x00	; 0
- 6da:	ac 01       	movw	r20, r24
- 6dc:	02 c0       	rjmp	.+4      	; 0x6e2 <dio_vidWriteChannel+0x22>
- 6de:	44 0f       	add	r20, r20
- 6e0:	55 1f       	adc	r21, r21
- 6e2:	6a 95       	dec	r22
- 6e4:	e2 f7       	brpl	.-8      	; 0x6de <dio_vidWriteChannel+0x1e>
- 6e6:	ba 01       	movw	r22, r20
- 6e8:	60 95       	com	r22
- 6ea:	62 23       	and	r22, r18
- 6ec:	68 bb       	out	0x18, r22	; 24
- 6ee:	08 95       	ret
- 6f0:	28 b3       	in	r18, 0x18	; 24
- 6f2:	81 e0       	ldi	r24, 0x01	; 1
- 6f4:	90 e0       	ldi	r25, 0x00	; 0
- 6f6:	ac 01       	movw	r20, r24
- 6f8:	02 c0       	rjmp	.+4      	; 0x6fe <dio_vidWriteChannel+0x3e>
- 6fa:	44 0f       	add	r20, r20
- 6fc:	55 1f       	adc	r21, r21
- 6fe:	6a 95       	dec	r22
- 700:	e2 f7       	brpl	.-8      	; 0x6fa <dio_vidWriteChannel+0x3a>
- 702:	ba 01       	movw	r22, r20
- 704:	62 2b       	or	r22, r18
- 706:	68 bb       	out	0x18, r22	; 24
- 708:	08 95       	ret
- 70a:	44 23       	and	r20, r20
- 70c:	71 f4       	brne	.+28     	; 0x72a <dio_vidWriteChannel+0x6a>
- 70e:	25 b3       	in	r18, 0x15	; 21
- 710:	81 e0       	ldi	r24, 0x01	; 1
- 712:	90 e0       	ldi	r25, 0x00	; 0
- 714:	ac 01       	movw	r20, r24
- 716:	02 c0       	rjmp	.+4      	; 0x71c <dio_vidWriteChannel+0x5c>
- 718:	44 0f       	add	r20, r20
- 71a:	55 1f       	adc	r21, r21
- 71c:	6a 95       	dec	r22
- 71e:	e2 f7       	brpl	.-8      	; 0x718 <dio_vidWriteChannel+0x58>
- 720:	ba 01       	movw	r22, r20
- 722:	60 95       	com	r22
- 724:	62 23       	and	r22, r18
- 726:	65 bb       	out	0x15, r22	; 21
- 728:	08 95       	ret
- 72a:	25 b3       	in	r18, 0x15	; 21
- 72c:	81 e0       	ldi	r24, 0x01	; 1
- 72e:	90 e0       	ldi	r25, 0x00	; 0
- 730:	ac 01       	movw	r20, r24
- 732:	02 c0       	rjmp	.+4      	; 0x738 <dio_vidWriteChannel+0x78>
- 734:	44 0f       	add	r20, r20
- 736:	55 1f       	adc	r21, r21
+000006b2 <dio_vidFlipChannel>:
+ 6b2:	82 30       	cpi	r24, 0x02	; 2
+ 6b4:	89 f0       	breq	.+34     	; 0x6d8 <dio_vidFlipChannel+0x26>
+ 6b6:	83 30       	cpi	r24, 0x03	; 3
+ 6b8:	e1 f0       	breq	.+56     	; 0x6f2 <dio_vidFlipChannel+0x40>
+ 6ba:	81 30       	cpi	r24, 0x01	; 1
+ 6bc:	31 f5       	brne	.+76     	; 0x70a <dio_vidFlipChannel+0x58>
+ 6be:	28 b3       	in	r18, 0x18	; 24
+ 6c0:	81 e0       	ldi	r24, 0x01	; 1
+ 6c2:	90 e0       	ldi	r25, 0x00	; 0
+ 6c4:	ac 01       	movw	r20, r24
+ 6c6:	02 c0       	rjmp	.+4      	; 0x6cc <dio_vidFlipChannel+0x1a>
+ 6c8:	44 0f       	add	r20, r20
+ 6ca:	55 1f       	adc	r21, r21
+ 6cc:	6a 95       	dec	r22
+ 6ce:	e2 f7       	brpl	.-8      	; 0x6c8 <dio_vidFlipChannel+0x16>
+ 6d0:	ba 01       	movw	r22, r20
+ 6d2:	62 27       	eor	r22, r18
+ 6d4:	68 bb       	out	0x18, r22	; 24
+ 6d6:	08 95       	ret
+ 6d8:	25 b3       	in	r18, 0x15	; 21
+ 6da:	81 e0       	ldi	r24, 0x01	; 1
+ 6dc:	90 e0       	ldi	r25, 0x00	; 0
+ 6de:	ac 01       	movw	r20, r24
+ 6e0:	02 c0       	rjmp	.+4      	; 0x6e6 <dio_vidFlipChannel+0x34>
+ 6e2:	44 0f       	add	r20, r20
+ 6e4:	55 1f       	adc	r21, r21
+ 6e6:	6a 95       	dec	r22
+ 6e8:	e2 f7       	brpl	.-8      	; 0x6e2 <dio_vidFlipChannel+0x30>
+ 6ea:	ba 01       	movw	r22, r20
+ 6ec:	62 27       	eor	r22, r18
+ 6ee:	65 bb       	out	0x15, r22	; 21
+ 6f0:	08 95       	ret
+ 6f2:	22 b3       	in	r18, 0x12	; 18
+ 6f4:	81 e0       	ldi	r24, 0x01	; 1
+ 6f6:	90 e0       	ldi	r25, 0x00	; 0
+ 6f8:	ac 01       	movw	r20, r24
+ 6fa:	02 c0       	rjmp	.+4      	; 0x700 <dio_vidFlipChannel+0x4e>
+ 6fc:	44 0f       	add	r20, r20
+ 6fe:	55 1f       	adc	r21, r21
+ 700:	6a 95       	dec	r22
+ 702:	e2 f7       	brpl	.-8      	; 0x6fc <dio_vidFlipChannel+0x4a>
+ 704:	ba 01       	movw	r22, r20
+ 706:	62 27       	eor	r22, r18
+ 708:	62 bb       	out	0x12, r22	; 18
+ 70a:	08 95       	ret
+
+0000070c <dio_dioLevelReadChannel>:
+ 70c:	82 30       	cpi	r24, 0x02	; 2
+ 70e:	71 f0       	breq	.+28     	; 0x72c <dio_dioLevelReadChannel+0x20>
+ 710:	83 30       	cpi	r24, 0x03	; 3
+ 712:	b1 f0       	breq	.+44     	; 0x740 <dio_dioLevelReadChannel+0x34>
+ 714:	81 30       	cpi	r24, 0x01	; 1
+ 716:	f1 f4       	brne	.+60     	; 0x754 <dio_dioLevelReadChannel+0x48>
+ 718:	26 b3       	in	r18, 0x16	; 22
+ 71a:	30 e0       	ldi	r19, 0x00	; 0
+ 71c:	c9 01       	movw	r24, r18
+ 71e:	02 c0       	rjmp	.+4      	; 0x724 <dio_dioLevelReadChannel+0x18>
+ 720:	95 95       	asr	r25
+ 722:	87 95       	ror	r24
+ 724:	6a 95       	dec	r22
+ 726:	e2 f7       	brpl	.-8      	; 0x720 <dio_dioLevelReadChannel+0x14>
+ 728:	81 70       	andi	r24, 0x01	; 1
+ 72a:	08 95       	ret
+ 72c:	23 b3       	in	r18, 0x13	; 19
+ 72e:	30 e0       	ldi	r19, 0x00	; 0
+ 730:	c9 01       	movw	r24, r18
+ 732:	02 c0       	rjmp	.+4      	; 0x738 <dio_dioLevelReadChannel+0x2c>
+ 734:	95 95       	asr	r25
+ 736:	87 95       	ror	r24
  738:	6a 95       	dec	r22
- 73a:	e2 f7       	brpl	.-8      	; 0x734 <dio_vidWriteChannel+0x74>
- 73c:	ba 01       	movw	r22, r20
- 73e:	62 2b       	or	r22, r18
- 740:	65 bb       	out	0x15, r22	; 21
- 742:	08 95       	ret
- 744:	44 23       	and	r20, r20
- 746:	71 f4       	brne	.+28     	; 0x764 <dio_vidWriteChannel+0xa4>
- 748:	22 b3       	in	r18, 0x12	; 18
- 74a:	81 e0       	ldi	r24, 0x01	; 1
- 74c:	90 e0       	ldi	r25, 0x00	; 0
- 74e:	ac 01       	movw	r20, r24
- 750:	02 c0       	rjmp	.+4      	; 0x756 <dio_vidWriteChannel+0x96>
- 752:	44 0f       	add	r20, r20
- 754:	55 1f       	adc	r21, r21
- 756:	6a 95       	dec	r22
- 758:	e2 f7       	brpl	.-8      	; 0x752 <dio_vidWriteChannel+0x92>
- 75a:	ba 01       	movw	r22, r20
- 75c:	60 95       	com	r22
- 75e:	62 23       	and	r22, r18
- 760:	62 bb       	out	0x12, r22	; 18
- 762:	08 95       	ret
- 764:	22 b3       	in	r18, 0x12	; 18
- 766:	81 e0       	ldi	r24, 0x01	; 1
+ 73a:	e2 f7       	brpl	.-8      	; 0x734 <dio_dioLevelReadChannel+0x28>
+ 73c:	81 70       	andi	r24, 0x01	; 1
+ 73e:	08 95       	ret
+ 740:	20 b3       	in	r18, 0x10	; 16
+ 742:	30 e0       	ldi	r19, 0x00	; 0
+ 744:	c9 01       	movw	r24, r18
+ 746:	02 c0       	rjmp	.+4      	; 0x74c <dio_dioLevelReadChannel+0x40>
+ 748:	95 95       	asr	r25
+ 74a:	87 95       	ror	r24
+ 74c:	6a 95       	dec	r22
+ 74e:	e2 f7       	brpl	.-8      	; 0x748 <dio_dioLevelReadChannel+0x3c>
+ 750:	81 70       	andi	r24, 0x01	; 1
+ 752:	08 95       	ret
+ 754:	80 e0       	ldi	r24, 0x00	; 0
+ 756:	08 95       	ret
+
+00000758 <dio_vidEnablePullUp>:
+ 758:	82 30       	cpi	r24, 0x02	; 2
+ 75a:	e1 f0       	breq	.+56     	; 0x794 <dio_vidEnablePullUp+0x3c>
+ 75c:	83 30       	cpi	r24, 0x03	; 3
+ 75e:	89 f1       	breq	.+98     	; 0x7c2 <dio_vidEnablePullUp+0x6a>
+ 760:	81 30       	cpi	r24, 0x01	; 1
+ 762:	09 f0       	breq	.+2      	; 0x766 <dio_vidEnablePullUp+0xe>
+ 764:	44 c0       	rjmp	.+136    	; 0x7ee <dio_vidEnablePullUp+0x96>
+ 766:	87 b3       	in	r24, 0x17	; 23
  768:	90 e0       	ldi	r25, 0x00	; 0
- 76a:	ac 01       	movw	r20, r24
- 76c:	02 c0       	rjmp	.+4      	; 0x772 <dio_vidWriteChannel+0xb2>
- 76e:	44 0f       	add	r20, r20
- 770:	55 1f       	adc	r21, r21
- 772:	6a 95       	dec	r22
- 774:	e2 f7       	brpl	.-8      	; 0x76e <dio_vidWriteChannel+0xae>
- 776:	ba 01       	movw	r22, r20
- 778:	62 2b       	or	r22, r18
- 77a:	62 bb       	out	0x12, r22	; 18
- 77c:	08 95       	ret
+ 76a:	06 2e       	mov	r0, r22
+ 76c:	02 c0       	rjmp	.+4      	; 0x772 <dio_vidEnablePullUp+0x1a>
+ 76e:	95 95       	asr	r25
+ 770:	87 95       	ror	r24
+ 772:	0a 94       	dec	r0
+ 774:	e2 f7       	brpl	.-8      	; 0x76e <dio_vidEnablePullUp+0x16>
+ 776:	80 fd       	sbrc	r24, 0
+ 778:	3a c0       	rjmp	.+116    	; 0x7ee <dio_vidEnablePullUp+0x96>
+ 77a:	28 b3       	in	r18, 0x18	; 24
+ 77c:	81 e0       	ldi	r24, 0x01	; 1
+ 77e:	90 e0       	ldi	r25, 0x00	; 0
+ 780:	ac 01       	movw	r20, r24
+ 782:	02 c0       	rjmp	.+4      	; 0x788 <dio_vidEnablePullUp+0x30>
+ 784:	44 0f       	add	r20, r20
+ 786:	55 1f       	adc	r21, r21
+ 788:	6a 95       	dec	r22
+ 78a:	e2 f7       	brpl	.-8      	; 0x784 <dio_vidEnablePullUp+0x2c>
+ 78c:	ba 01       	movw	r22, r20
+ 78e:	62 2b       	or	r22, r18
+ 790:	68 bb       	out	0x18, r22	; 24
+ 792:	08 95       	ret
+ 794:	84 b3       	in	r24, 0x14	; 20
+ 796:	90 e0       	ldi	r25, 0x00	; 0
+ 798:	06 2e       	mov	r0, r22
+ 79a:	02 c0       	rjmp	.+4      	; 0x7a0 <dio_vidEnablePullUp+0x48>
+ 79c:	95 95       	asr	r25
+ 79e:	87 95       	ror	r24
+ 7a0:	0a 94       	dec	r0
+ 7a2:	e2 f7       	brpl	.-8      	; 0x79c <dio_vidEnablePullUp+0x44>
+ 7a4:	80 fd       	sbrc	r24, 0
+ 7a6:	23 c0       	rjmp	.+70     	; 0x7ee <dio_vidEnablePullUp+0x96>
+ 7a8:	25 b3       	in	r18, 0x15	; 21
+ 7aa:	81 e0       	ldi	r24, 0x01	; 1
+ 7ac:	90 e0       	ldi	r25, 0x00	; 0
+ 7ae:	ac 01       	movw	r20, r24
+ 7b0:	02 c0       	rjmp	.+4      	; 0x7b6 <dio_vidEnablePullUp+0x5e>
+ 7b2:	44 0f       	add	r20, r20
+ 7b4:	55 1f       	adc	r21, r21
+ 7b6:	6a 95       	dec	r22
+ 7b8:	e2 f7       	brpl	.-8      	; 0x7b2 <dio_vidEnablePullUp+0x5a>
+ 7ba:	ba 01       	movw	r22, r20
+ 7bc:	62 2b       	or	r22, r18
+ 7be:	65 bb       	out	0x15, r22	; 21
+ 7c0:	08 95       	ret
+ 7c2:	81 b3       	in	r24, 0x11	; 17
+ 7c4:	90 e0       	ldi	r25, 0x00	; 0
+ 7c6:	06 2e       	mov	r0, r22
+ 7c8:	02 c0       	rjmp	.+4      	; 0x7ce <dio_vidEnablePullUp+0x76>
+ 7ca:	95 95       	asr	r25
+ 7cc:	87 95       	ror	r24
+ 7ce:	0a 94       	dec	r0
+ 7d0:	e2 f7       	brpl	.-8      	; 0x7ca <dio_vidEnablePullUp+0x72>
+ 7d2:	80 fd       	sbrc	r24, 0
+ 7d4:	0c c0       	rjmp	.+24     	; 0x7ee <dio_vidEnablePullUp+0x96>
+ 7d6:	22 b3       	in	r18, 0x12	; 18
+ 7d8:	81 e0       	ldi	r24, 0x01	; 1
+ 7da:	90 e0       	ldi	r25, 0x00	; 0
+ 7dc:	ac 01       	movw	r20, r24
+ 7de:	02 c0       	rjmp	.+4      	; 0x7e4 <dio_vidEnablePullUp+0x8c>
+ 7e0:	44 0f       	add	r20, r20
+ 7e2:	55 1f       	adc	r21, r21
+ 7e4:	6a 95       	dec	r22
+ 7e6:	e2 f7       	brpl	.-8      	; 0x7e0 <dio_vidEnablePullUp+0x88>
+ 7e8:	ba 01       	movw	r22, r20
+ 7ea:	62 2b       	or	r22, r18
+ 7ec:	62 bb       	out	0x12, r22	; 18
+ 7ee:	08 95       	ret
 
-0000077e <dio_vidWriteChannelGroup>:
- 77e:	82 30       	cpi	r24, 0x02	; 2
- 780:	a1 f0       	breq	.+40     	; 0x7aa <dio_vidWriteChannelGroup+0x2c>
- 782:	83 30       	cpi	r24, 0x03	; 3
- 784:	09 f1       	breq	.+66     	; 0x7c8 <dio_vidWriteChannelGroup+0x4a>
- 786:	81 30       	cpi	r24, 0x01	; 1
- 788:	71 f5       	brne	.+92     	; 0x7e6 <dio_vidWriteChannelGroup+0x68>
- 78a:	88 b3       	in	r24, 0x18	; 24
- 78c:	94 2f       	mov	r25, r20
- 78e:	90 95       	com	r25
- 790:	89 23       	and	r24, r25
- 792:	88 bb       	out	0x18, r24	; 24
- 794:	e6 2f       	mov	r30, r22
- 796:	f0 e0       	ldi	r31, 0x00	; 0
- 798:	bf 01       	movw	r22, r30
- 79a:	02 c0       	rjmp	.+4      	; 0x7a0 <dio_vidWriteChannelGroup+0x22>
- 79c:	66 0f       	add	r22, r22
- 79e:	77 1f       	adc	r23, r23
- 7a0:	2a 95       	dec	r18
- 7a2:	e2 f7       	brpl	.-8      	; 0x79c <dio_vidWriteChannelGroup+0x1e>
- 7a4:	64 23       	and	r22, r20
- 7a6:	68 bb       	out	0x18, r22	; 24
- 7a8:	08 95       	ret
- 7aa:	85 b3       	in	r24, 0x15	; 21
- 7ac:	94 2f       	mov	r25, r20
- 7ae:	90 95       	com	r25
- 7b0:	89 23       	and	r24, r25
- 7b2:	85 bb       	out	0x15, r24	; 21
- 7b4:	70 e0       	ldi	r23, 0x00	; 0
- 7b6:	cb 01       	movw	r24, r22
- 7b8:	02 c0       	rjmp	.+4      	; 0x7be <dio_vidWriteChannelGroup+0x40>
- 7ba:	88 0f       	add	r24, r24
- 7bc:	99 1f       	adc	r25, r25
- 7be:	2a 95       	dec	r18
- 7c0:	e2 f7       	brpl	.-8      	; 0x7ba <dio_vidWriteChannelGroup+0x3c>
- 7c2:	84 23       	and	r24, r20
- 7c4:	85 bb       	out	0x15, r24	; 21
- 7c6:	08 95       	ret
- 7c8:	82 b3       	in	r24, 0x12	; 18
- 7ca:	94 2f       	mov	r25, r20
- 7cc:	90 95       	com	r25
- 7ce:	89 23       	and	r24, r25
- 7d0:	82 bb       	out	0x12, r24	; 18
- 7d2:	70 e0       	ldi	r23, 0x00	; 0
- 7d4:	cb 01       	movw	r24, r22
- 7d6:	02 c0       	rjmp	.+4      	; 0x7dc <dio_vidWriteChannelGroup+0x5e>
- 7d8:	88 0f       	add	r24, r24
- 7da:	99 1f       	adc	r25, r25
- 7dc:	2a 95       	dec	r18
- 7de:	e2 f7       	brpl	.-8      	; 0x7d8 <dio_vidWriteChannelGroup+0x5a>
- 7e0:	9c 01       	movw	r18, r24
- 7e2:	24 23       	and	r18, r20
- 7e4:	22 bb       	out	0x12, r18	; 18
- 7e6:	08 95       	ret
+000007f0 <TIMER2_void_Init>:
+ 7f0:	85 b5       	in	r24, 0x25	; 37
+ 7f2:	8f 7b       	andi	r24, 0xBF	; 191
+ 7f4:	85 bd       	out	0x25, r24	; 37
+ 7f6:	85 b5       	in	r24, 0x25	; 37
+ 7f8:	87 7f       	andi	r24, 0xF7	; 247
+ 7fa:	85 bd       	out	0x25, r24	; 37
+ 7fc:	85 b5       	in	r24, 0x25	; 37
+ 7fe:	81 60       	ori	r24, 0x01	; 1
+ 800:	85 bd       	out	0x25, r24	; 37
+ 802:	85 b5       	in	r24, 0x25	; 37
+ 804:	8d 7f       	andi	r24, 0xFD	; 253
+ 806:	85 bd       	out	0x25, r24	; 37
+ 808:	85 b5       	in	r24, 0x25	; 37
+ 80a:	8b 7f       	andi	r24, 0xFB	; 251
+ 80c:	85 bd       	out	0x25, r24	; 37
+ 80e:	85 b5       	in	r24, 0x25	; 37
+ 810:	8f 7e       	andi	r24, 0xEF	; 239
+ 812:	85 bd       	out	0x25, r24	; 37
+ 814:	85 b5       	in	r24, 0x25	; 37
+ 816:	8f 7d       	andi	r24, 0xDF	; 223
+ 818:	85 bd       	out	0x25, r24	; 37
+ 81a:	89 b7       	in	r24, 0x39	; 57
+ 81c:	8e 7f       	andi	r24, 0xFE	; 254
+ 81e:	89 bf       	out	0x39, r24	; 57
+ 820:	89 b7       	in	r24, 0x39	; 57
+ 822:	8d 7f       	andi	r24, 0xFD	; 253
+ 824:	89 bf       	out	0x39, r24	; 57
+ 826:	88 b7       	in	r24, 0x38	; 56
+ 828:	81 60       	ori	r24, 0x01	; 1
+ 82a:	88 bf       	out	0x38, r24	; 56
+ 82c:	88 b7       	in	r24, 0x38	; 56
+ 82e:	82 60       	ori	r24, 0x02	; 2
+ 830:	88 bf       	out	0x38, r24	; 56
+ 832:	14 bc       	out	0x24, r1	; 36
+ 834:	13 bc       	out	0x23, r1	; 35
+ 836:	08 95       	ret
 
-000007e8 <dio_vidReadChannelGroup>:
- 7e8:	68 23       	and	r22, r24
- 7ea:	70 e0       	ldi	r23, 0x00	; 0
- 7ec:	cb 01       	movw	r24, r22
- 7ee:	02 c0       	rjmp	.+4      	; 0x7f4 <dio_vidReadChannelGroup+0xc>
- 7f0:	95 95       	asr	r25
- 7f2:	87 95       	ror	r24
- 7f4:	4a 95       	dec	r20
- 7f6:	e2 f7       	brpl	.-8      	; 0x7f0 <dio_vidReadChannelGroup+0x8>
- 7f8:	08 95       	ret
+00000838 <TIMER2_void_SetTimerReg>:
+ 838:	84 bd       	out	0x24, r24	; 36
+ 83a:	08 95       	ret
 
-000007fa <dio_vidFlipChannel>:
- 7fa:	82 30       	cpi	r24, 0x02	; 2
- 7fc:	89 f0       	breq	.+34     	; 0x820 <dio_vidFlipChannel+0x26>
- 7fe:	83 30       	cpi	r24, 0x03	; 3
- 800:	e1 f0       	breq	.+56     	; 0x83a <dio_vidFlipChannel+0x40>
- 802:	81 30       	cpi	r24, 0x01	; 1
- 804:	31 f5       	brne	.+76     	; 0x852 <dio_vidFlipChannel+0x58>
- 806:	28 b3       	in	r18, 0x18	; 24
- 808:	81 e0       	ldi	r24, 0x01	; 1
- 80a:	90 e0       	ldi	r25, 0x00	; 0
- 80c:	ac 01       	movw	r20, r24
- 80e:	02 c0       	rjmp	.+4      	; 0x814 <dio_vidFlipChannel+0x1a>
- 810:	44 0f       	add	r20, r20
- 812:	55 1f       	adc	r21, r21
- 814:	6a 95       	dec	r22
- 816:	e2 f7       	brpl	.-8      	; 0x810 <dio_vidFlipChannel+0x16>
- 818:	ba 01       	movw	r22, r20
- 81a:	62 27       	eor	r22, r18
- 81c:	68 bb       	out	0x18, r22	; 24
- 81e:	08 95       	ret
- 820:	25 b3       	in	r18, 0x15	; 21
- 822:	81 e0       	ldi	r24, 0x01	; 1
- 824:	90 e0       	ldi	r25, 0x00	; 0
- 826:	ac 01       	movw	r20, r24
- 828:	02 c0       	rjmp	.+4      	; 0x82e <dio_vidFlipChannel+0x34>
- 82a:	44 0f       	add	r20, r20
- 82c:	55 1f       	adc	r21, r21
- 82e:	6a 95       	dec	r22
- 830:	e2 f7       	brpl	.-8      	; 0x82a <dio_vidFlipChannel+0x30>
- 832:	ba 01       	movw	r22, r20
- 834:	62 27       	eor	r22, r18
- 836:	65 bb       	out	0x15, r22	; 21
- 838:	08 95       	ret
- 83a:	22 b3       	in	r18, 0x12	; 18
- 83c:	81 e0       	ldi	r24, 0x01	; 1
- 83e:	90 e0       	ldi	r25, 0x00	; 0
- 840:	ac 01       	movw	r20, r24
- 842:	02 c0       	rjmp	.+4      	; 0x848 <dio_vidFlipChannel+0x4e>
- 844:	44 0f       	add	r20, r20
- 846:	55 1f       	adc	r21, r21
- 848:	6a 95       	dec	r22
- 84a:	e2 f7       	brpl	.-8      	; 0x844 <dio_vidFlipChannel+0x4a>
- 84c:	ba 01       	movw	r22, r20
- 84e:	62 27       	eor	r22, r18
- 850:	62 bb       	out	0x12, r22	; 18
- 852:	08 95       	ret
+0000083c <TIMER2_void_SetCompareVal>:
+ 83c:	83 bd       	out	0x23, r24	; 35
+ 83e:	08 95       	ret
 
-00000854 <dio_dioLevelReadChannel>:
- 854:	82 30       	cpi	r24, 0x02	; 2
- 856:	71 f0       	breq	.+28     	; 0x874 <dio_dioLevelReadChannel+0x20>
- 858:	83 30       	cpi	r24, 0x03	; 3
- 85a:	b1 f0       	breq	.+44     	; 0x888 <dio_dioLevelReadChannel+0x34>
- 85c:	81 30       	cpi	r24, 0x01	; 1
- 85e:	f1 f4       	brne	.+60     	; 0x89c <dio_dioLevelReadChannel+0x48>
- 860:	26 b3       	in	r18, 0x16	; 22
- 862:	30 e0       	ldi	r19, 0x00	; 0
- 864:	c9 01       	movw	r24, r18
- 866:	02 c0       	rjmp	.+4      	; 0x86c <dio_dioLevelReadChannel+0x18>
- 868:	95 95       	asr	r25
- 86a:	87 95       	ror	r24
- 86c:	6a 95       	dec	r22
- 86e:	e2 f7       	brpl	.-8      	; 0x868 <dio_dioLevelReadChannel+0x14>
- 870:	81 70       	andi	r24, 0x01	; 1
+00000840 <TIMER2_void_EnableOVInt>:
+ 840:	89 b7       	in	r24, 0x39	; 57
+ 842:	80 64       	ori	r24, 0x40	; 64
+ 844:	89 bf       	out	0x39, r24	; 57
+ 846:	08 95       	ret
+
+00000848 <TIMER2_void_DisableOVInt>:
+ 848:	89 b7       	in	r24, 0x39	; 57
+ 84a:	8f 7b       	andi	r24, 0xBF	; 191
+ 84c:	89 bf       	out	0x39, r24	; 57
+ 84e:	08 95       	ret
+
+00000850 <TIMER2_void_EnableCTCInt>:
+ 850:	89 b7       	in	r24, 0x39	; 57
+ 852:	80 68       	ori	r24, 0x80	; 128
+ 854:	89 bf       	out	0x39, r24	; 57
+ 856:	08 95       	ret
+
+00000858 <TIMER2_void_DisableCTCInt>:
+ 858:	89 b7       	in	r24, 0x39	; 57
+ 85a:	8f 77       	andi	r24, 0x7F	; 127
+ 85c:	89 bf       	out	0x39, r24	; 57
+ 85e:	08 95       	ret
+
+00000860 <TIMER2_void_SetOVCallBack>:
+ 860:	90 93 82 00 	sts	0x0082, r25
+ 864:	80 93 81 00 	sts	0x0081, r24
+ 868:	08 95       	ret
+
+0000086a <TIMER2_void_SetCTCCallBack>:
+ 86a:	90 93 80 00 	sts	0x0080, r25
+ 86e:	80 93 7f 00 	sts	0x007F, r24
  872:	08 95       	ret
- 874:	23 b3       	in	r18, 0x13	; 19
- 876:	30 e0       	ldi	r19, 0x00	; 0
- 878:	c9 01       	movw	r24, r18
- 87a:	02 c0       	rjmp	.+4      	; 0x880 <dio_dioLevelReadChannel+0x2c>
- 87c:	95 95       	asr	r25
- 87e:	87 95       	ror	r24
- 880:	6a 95       	dec	r22
- 882:	e2 f7       	brpl	.-8      	; 0x87c <dio_dioLevelReadChannel+0x28>
- 884:	81 70       	andi	r24, 0x01	; 1
- 886:	08 95       	ret
- 888:	20 b3       	in	r18, 0x10	; 16
- 88a:	30 e0       	ldi	r19, 0x00	; 0
- 88c:	c9 01       	movw	r24, r18
- 88e:	02 c0       	rjmp	.+4      	; 0x894 <dio_dioLevelReadChannel+0x40>
- 890:	95 95       	asr	r25
- 892:	87 95       	ror	r24
- 894:	6a 95       	dec	r22
- 896:	e2 f7       	brpl	.-8      	; 0x890 <dio_dioLevelReadChannel+0x3c>
- 898:	81 70       	andi	r24, 0x01	; 1
- 89a:	08 95       	ret
- 89c:	80 e0       	ldi	r24, 0x00	; 0
- 89e:	08 95       	ret
 
-000008a0 <dio_vidEnablePullUp>:
- 8a0:	82 30       	cpi	r24, 0x02	; 2
- 8a2:	e1 f0       	breq	.+56     	; 0x8dc <dio_vidEnablePullUp+0x3c>
- 8a4:	83 30       	cpi	r24, 0x03	; 3
- 8a6:	89 f1       	breq	.+98     	; 0x90a <dio_vidEnablePullUp+0x6a>
- 8a8:	81 30       	cpi	r24, 0x01	; 1
- 8aa:	09 f0       	breq	.+2      	; 0x8ae <dio_vidEnablePullUp+0xe>
- 8ac:	44 c0       	rjmp	.+136    	; 0x936 <dio_vidEnablePullUp+0x96>
- 8ae:	87 b3       	in	r24, 0x17	; 23
- 8b0:	90 e0       	ldi	r25, 0x00	; 0
- 8b2:	06 2e       	mov	r0, r22
- 8b4:	02 c0       	rjmp	.+4      	; 0x8ba <dio_vidEnablePullUp+0x1a>
- 8b6:	95 95       	asr	r25
- 8b8:	87 95       	ror	r24
- 8ba:	0a 94       	dec	r0
- 8bc:	e2 f7       	brpl	.-8      	; 0x8b6 <dio_vidEnablePullUp+0x16>
- 8be:	80 fd       	sbrc	r24, 0
- 8c0:	3a c0       	rjmp	.+116    	; 0x936 <dio_vidEnablePullUp+0x96>
- 8c2:	28 b3       	in	r18, 0x18	; 24
- 8c4:	81 e0       	ldi	r24, 0x01	; 1
- 8c6:	90 e0       	ldi	r25, 0x00	; 0
- 8c8:	ac 01       	movw	r20, r24
- 8ca:	02 c0       	rjmp	.+4      	; 0x8d0 <dio_vidEnablePullUp+0x30>
- 8cc:	44 0f       	add	r20, r20
- 8ce:	55 1f       	adc	r21, r21
- 8d0:	6a 95       	dec	r22
- 8d2:	e2 f7       	brpl	.-8      	; 0x8cc <dio_vidEnablePullUp+0x2c>
- 8d4:	ba 01       	movw	r22, r20
- 8d6:	62 2b       	or	r22, r18
- 8d8:	68 bb       	out	0x18, r22	; 24
- 8da:	08 95       	ret
- 8dc:	84 b3       	in	r24, 0x14	; 20
- 8de:	90 e0       	ldi	r25, 0x00	; 0
- 8e0:	06 2e       	mov	r0, r22
- 8e2:	02 c0       	rjmp	.+4      	; 0x8e8 <dio_vidEnablePullUp+0x48>
- 8e4:	95 95       	asr	r25
- 8e6:	87 95       	ror	r24
- 8e8:	0a 94       	dec	r0
- 8ea:	e2 f7       	brpl	.-8      	; 0x8e4 <dio_vidEnablePullUp+0x44>
- 8ec:	80 fd       	sbrc	r24, 0
- 8ee:	23 c0       	rjmp	.+70     	; 0x936 <dio_vidEnablePullUp+0x96>
- 8f0:	25 b3       	in	r18, 0x15	; 21
- 8f2:	81 e0       	ldi	r24, 0x01	; 1
- 8f4:	90 e0       	ldi	r25, 0x00	; 0
- 8f6:	ac 01       	movw	r20, r24
- 8f8:	02 c0       	rjmp	.+4      	; 0x8fe <dio_vidEnablePullUp+0x5e>
- 8fa:	44 0f       	add	r20, r20
- 8fc:	55 1f       	adc	r21, r21
- 8fe:	6a 95       	dec	r22
- 900:	e2 f7       	brpl	.-8      	; 0x8fa <dio_vidEnablePullUp+0x5a>
- 902:	ba 01       	movw	r22, r20
- 904:	62 2b       	or	r22, r18
- 906:	65 bb       	out	0x15, r22	; 21
- 908:	08 95       	ret
- 90a:	81 b3       	in	r24, 0x11	; 17
- 90c:	90 e0       	ldi	r25, 0x00	; 0
- 90e:	06 2e       	mov	r0, r22
- 910:	02 c0       	rjmp	.+4      	; 0x916 <dio_vidEnablePullUp+0x76>
- 912:	95 95       	asr	r25
- 914:	87 95       	ror	r24
- 916:	0a 94       	dec	r0
- 918:	e2 f7       	brpl	.-8      	; 0x912 <dio_vidEnablePullUp+0x72>
- 91a:	80 fd       	sbrc	r24, 0
- 91c:	0c c0       	rjmp	.+24     	; 0x936 <dio_vidEnablePullUp+0x96>
- 91e:	22 b3       	in	r18, 0x12	; 18
- 920:	81 e0       	ldi	r24, 0x01	; 1
- 922:	90 e0       	ldi	r25, 0x00	; 0
- 924:	ac 01       	movw	r20, r24
- 926:	02 c0       	rjmp	.+4      	; 0x92c <dio_vidEnablePullUp+0x8c>
- 928:	44 0f       	add	r20, r20
- 92a:	55 1f       	adc	r21, r21
- 92c:	6a 95       	dec	r22
- 92e:	e2 f7       	brpl	.-8      	; 0x928 <dio_vidEnablePullUp+0x88>
- 930:	ba 01       	movw	r22, r20
- 932:	62 2b       	or	r22, r18
- 934:	62 bb       	out	0x12, r22	; 18
- 936:	08 95       	ret
+00000874 <__vector_5>:
+ 874:	1f 92       	push	r1
+ 876:	0f 92       	push	r0
+ 878:	0f b6       	in	r0, 0x3f	; 63
+ 87a:	0f 92       	push	r0
+ 87c:	11 24       	eor	r1, r1
+ 87e:	2f 93       	push	r18
+ 880:	3f 93       	push	r19
+ 882:	4f 93       	push	r20
+ 884:	5f 93       	push	r21
+ 886:	6f 93       	push	r22
+ 888:	7f 93       	push	r23
+ 88a:	8f 93       	push	r24
+ 88c:	9f 93       	push	r25
+ 88e:	af 93       	push	r26
+ 890:	bf 93       	push	r27
+ 892:	ef 93       	push	r30
+ 894:	ff 93       	push	r31
+ 896:	e0 91 81 00 	lds	r30, 0x0081
+ 89a:	f0 91 82 00 	lds	r31, 0x0082
+ 89e:	09 95       	icall
+ 8a0:	ff 91       	pop	r31
+ 8a2:	ef 91       	pop	r30
+ 8a4:	bf 91       	pop	r27
+ 8a6:	af 91       	pop	r26
+ 8a8:	9f 91       	pop	r25
+ 8aa:	8f 91       	pop	r24
+ 8ac:	7f 91       	pop	r23
+ 8ae:	6f 91       	pop	r22
+ 8b0:	5f 91       	pop	r21
+ 8b2:	4f 91       	pop	r20
+ 8b4:	3f 91       	pop	r19
+ 8b6:	2f 91       	pop	r18
+ 8b8:	0f 90       	pop	r0
+ 8ba:	0f be       	out	0x3f, r0	; 63
+ 8bc:	0f 90       	pop	r0
+ 8be:	1f 90       	pop	r1
+ 8c0:	18 95       	reti
 
-00000938 <TIMER2_void_Init>:
- 938:	85 b5       	in	r24, 0x25	; 37
- 93a:	8f 7b       	andi	r24, 0xBF	; 191
- 93c:	85 bd       	out	0x25, r24	; 37
- 93e:	85 b5       	in	r24, 0x25	; 37
- 940:	87 7f       	andi	r24, 0xF7	; 247
- 942:	85 bd       	out	0x25, r24	; 37
- 944:	85 b5       	in	r24, 0x25	; 37
- 946:	81 60       	ori	r24, 0x01	; 1
- 948:	85 bd       	out	0x25, r24	; 37
- 94a:	85 b5       	in	r24, 0x25	; 37
- 94c:	8d 7f       	andi	r24, 0xFD	; 253
- 94e:	85 bd       	out	0x25, r24	; 37
- 950:	85 b5       	in	r24, 0x25	; 37
- 952:	8b 7f       	andi	r24, 0xFB	; 251
- 954:	85 bd       	out	0x25, r24	; 37
- 956:	85 b5       	in	r24, 0x25	; 37
- 958:	8f 7e       	andi	r24, 0xEF	; 239
- 95a:	85 bd       	out	0x25, r24	; 37
- 95c:	85 b5       	in	r24, 0x25	; 37
- 95e:	8f 7d       	andi	r24, 0xDF	; 223
- 960:	85 bd       	out	0x25, r24	; 37
- 962:	89 b7       	in	r24, 0x39	; 57
- 964:	8e 7f       	andi	r24, 0xFE	; 254
- 966:	89 bf       	out	0x39, r24	; 57
- 968:	89 b7       	in	r24, 0x39	; 57
- 96a:	8d 7f       	andi	r24, 0xFD	; 253
- 96c:	89 bf       	out	0x39, r24	; 57
- 96e:	88 b7       	in	r24, 0x38	; 56
- 970:	81 60       	ori	r24, 0x01	; 1
- 972:	88 bf       	out	0x38, r24	; 56
- 974:	88 b7       	in	r24, 0x38	; 56
- 976:	82 60       	ori	r24, 0x02	; 2
- 978:	88 bf       	out	0x38, r24	; 56
- 97a:	14 bc       	out	0x24, r1	; 36
- 97c:	13 bc       	out	0x23, r1	; 35
- 97e:	08 95       	ret
+000008c2 <__vector_4>:
+ 8c2:	1f 92       	push	r1
+ 8c4:	0f 92       	push	r0
+ 8c6:	0f b6       	in	r0, 0x3f	; 63
+ 8c8:	0f 92       	push	r0
+ 8ca:	11 24       	eor	r1, r1
+ 8cc:	2f 93       	push	r18
+ 8ce:	3f 93       	push	r19
+ 8d0:	4f 93       	push	r20
+ 8d2:	5f 93       	push	r21
+ 8d4:	6f 93       	push	r22
+ 8d6:	7f 93       	push	r23
+ 8d8:	8f 93       	push	r24
+ 8da:	9f 93       	push	r25
+ 8dc:	af 93       	push	r26
+ 8de:	bf 93       	push	r27
+ 8e0:	ef 93       	push	r30
+ 8e2:	ff 93       	push	r31
+ 8e4:	e0 91 7f 00 	lds	r30, 0x007F
+ 8e8:	f0 91 80 00 	lds	r31, 0x0080
+ 8ec:	09 95       	icall
+ 8ee:	ff 91       	pop	r31
+ 8f0:	ef 91       	pop	r30
+ 8f2:	bf 91       	pop	r27
+ 8f4:	af 91       	pop	r26
+ 8f6:	9f 91       	pop	r25
+ 8f8:	8f 91       	pop	r24
+ 8fa:	7f 91       	pop	r23
+ 8fc:	6f 91       	pop	r22
+ 8fe:	5f 91       	pop	r21
+ 900:	4f 91       	pop	r20
+ 902:	3f 91       	pop	r19
+ 904:	2f 91       	pop	r18
+ 906:	0f 90       	pop	r0
+ 908:	0f be       	out	0x3f, r0	; 63
+ 90a:	0f 90       	pop	r0
+ 90c:	1f 90       	pop	r1
+ 90e:	18 95       	reti
 
-00000980 <TIMER2_void_SetTimerReg>:
- 980:	84 bd       	out	0x24, r24	; 36
- 982:	08 95       	ret
+00000910 <_exit>:
+ 910:	f8 94       	cli
 
-00000984 <TIMER2_void_SetCompareVal>:
- 984:	83 bd       	out	0x23, r24	; 35
- 986:	08 95       	ret
-
-00000988 <TIMER2_void_EnableOVInt>:
- 988:	89 b7       	in	r24, 0x39	; 57
- 98a:	80 64       	ori	r24, 0x40	; 64
- 98c:	89 bf       	out	0x39, r24	; 57
- 98e:	08 95       	ret
-
-00000990 <TIMER2_void_DisableOVInt>:
- 990:	89 b7       	in	r24, 0x39	; 57
- 992:	8f 7b       	andi	r24, 0xBF	; 191
- 994:	89 bf       	out	0x39, r24	; 57
- 996:	08 95       	ret
-
-00000998 <TIMER2_void_EnableCTCInt>:
- 998:	89 b7       	in	r24, 0x39	; 57
- 99a:	80 68       	ori	r24, 0x80	; 128
- 99c:	89 bf       	out	0x39, r24	; 57
- 99e:	08 95       	ret
-
-000009a0 <TIMER2_void_DisableCTCInt>:
- 9a0:	89 b7       	in	r24, 0x39	; 57
- 9a2:	8f 77       	andi	r24, 0x7F	; 127
- 9a4:	89 bf       	out	0x39, r24	; 57
- 9a6:	08 95       	ret
-
-000009a8 <TIMER2_void_SetOVCallBack>:
- 9a8:	90 93 8b 00 	sts	0x008B, r25
- 9ac:	80 93 8a 00 	sts	0x008A, r24
- 9b0:	08 95       	ret
-
-000009b2 <TIMER2_void_SetCTCCallBack>:
- 9b2:	90 93 89 00 	sts	0x0089, r25
- 9b6:	80 93 88 00 	sts	0x0088, r24
- 9ba:	08 95       	ret
-
-000009bc <__vector_5>:
- 9bc:	1f 92       	push	r1
- 9be:	0f 92       	push	r0
- 9c0:	0f b6       	in	r0, 0x3f	; 63
- 9c2:	0f 92       	push	r0
- 9c4:	11 24       	eor	r1, r1
- 9c6:	2f 93       	push	r18
- 9c8:	3f 93       	push	r19
- 9ca:	4f 93       	push	r20
- 9cc:	5f 93       	push	r21
- 9ce:	6f 93       	push	r22
- 9d0:	7f 93       	push	r23
- 9d2:	8f 93       	push	r24
- 9d4:	9f 93       	push	r25
- 9d6:	af 93       	push	r26
- 9d8:	bf 93       	push	r27
- 9da:	ef 93       	push	r30
- 9dc:	ff 93       	push	r31
- 9de:	e0 91 8a 00 	lds	r30, 0x008A
- 9e2:	f0 91 8b 00 	lds	r31, 0x008B
- 9e6:	09 95       	icall
- 9e8:	ff 91       	pop	r31
- 9ea:	ef 91       	pop	r30
- 9ec:	bf 91       	pop	r27
- 9ee:	af 91       	pop	r26
- 9f0:	9f 91       	pop	r25
- 9f2:	8f 91       	pop	r24
- 9f4:	7f 91       	pop	r23
- 9f6:	6f 91       	pop	r22
- 9f8:	5f 91       	pop	r21
- 9fa:	4f 91       	pop	r20
- 9fc:	3f 91       	pop	r19
- 9fe:	2f 91       	pop	r18
- a00:	0f 90       	pop	r0
- a02:	0f be       	out	0x3f, r0	; 63
- a04:	0f 90       	pop	r0
- a06:	1f 90       	pop	r1
- a08:	18 95       	reti
-
-00000a0a <__vector_4>:
- a0a:	1f 92       	push	r1
- a0c:	0f 92       	push	r0
- a0e:	0f b6       	in	r0, 0x3f	; 63
- a10:	0f 92       	push	r0
- a12:	11 24       	eor	r1, r1
- a14:	2f 93       	push	r18
- a16:	3f 93       	push	r19
- a18:	4f 93       	push	r20
- a1a:	5f 93       	push	r21
- a1c:	6f 93       	push	r22
- a1e:	7f 93       	push	r23
- a20:	8f 93       	push	r24
- a22:	9f 93       	push	r25
- a24:	af 93       	push	r26
- a26:	bf 93       	push	r27
- a28:	ef 93       	push	r30
- a2a:	ff 93       	push	r31
- a2c:	e0 91 88 00 	lds	r30, 0x0088
- a30:	f0 91 89 00 	lds	r31, 0x0089
- a34:	09 95       	icall
- a36:	ff 91       	pop	r31
- a38:	ef 91       	pop	r30
- a3a:	bf 91       	pop	r27
- a3c:	af 91       	pop	r26
- a3e:	9f 91       	pop	r25
- a40:	8f 91       	pop	r24
- a42:	7f 91       	pop	r23
- a44:	6f 91       	pop	r22
- a46:	5f 91       	pop	r21
- a48:	4f 91       	pop	r20
- a4a:	3f 91       	pop	r19
- a4c:	2f 91       	pop	r18
- a4e:	0f 90       	pop	r0
- a50:	0f be       	out	0x3f, r0	; 63
- a52:	0f 90       	pop	r0
- a54:	1f 90       	pop	r1
- a56:	18 95       	reti
-
-00000a58 <_exit>:
- a58:	f8 94       	cli
-
-00000a5a <__stop_program>:
- a5a:	ff cf       	rjmp	.-2      	; 0xa5a <__stop_program>
+00000912 <__stop_program>:
+ 912:	ff cf       	rjmp	.-2      	; 0x912 <__stop_program>

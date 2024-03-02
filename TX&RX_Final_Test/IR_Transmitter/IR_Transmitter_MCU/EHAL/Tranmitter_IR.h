@@ -24,7 +24,7 @@ typedef struct IR_parameters{
 	u8 u8port;
 	u8 u8pin;
 	u8 u8Data;
-	u8 u8Address;
+	//u8 u8Address;
 }IR_parameters_t;
 
 #define SET_BIT_PULSE_TIMES 9

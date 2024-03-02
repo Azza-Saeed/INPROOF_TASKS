@@ -165,47 +165,49 @@ void IR_voidTransmitData_timer(IR_parameters_t IR_Obj)
 {
     u8 u8Counter=0;
 
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-    
-        if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }
-    }
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
-		{
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }		
-	}	
-    
+			/* Address and Inverse */
+    //for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
+    //{
+        //
+        //dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
+        //_delay_ms(HIGH_PULSE_BURST_TIMES);
+    //
+        //if(CHECK_BIT(IR_Obj.u8Address, u8Counter) == 0)
+        //{
+            //for(int i=0;i<LOW_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+            //
+        //}else{
+            //for(int i=0;i<HIGH_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+        //}
+    //}
+	/* Sending the inverse of the address */
+    //for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
+    //{
+        //
+        //dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
+        //_delay_ms(HIGH_PULSE_BURST_TIMES);
+        //
+        //if(CHECK_BIT(~IR_Obj.u8Address, u8Counter) == 0) 
+		//{
+            //for(int i=0;i<LOW_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+            //
+        //}else{
+            //for(int i=0;i<HIGH_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+        //}		
+	//}	
+    /* SEnding the data */
     for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
     {
         
@@ -226,27 +228,27 @@ void IR_voidTransmitData_timer(IR_parameters_t IR_Obj)
             }
         }
     }
-    
-    for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
-    {
-        
-        dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
-        _delay_ms(HIGH_PULSE_BURST_TIMES);
-        
-        if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
-        {
-            for(int i=0;i<LOW_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-            
-        }else{
-            for(int i=0;i<HIGH_DATA_ITERATION;i++)
-            {
-                IR_voidSendPulses_timer(IR_Obj);
-            }
-        }
-    }
+    /* The inverse of the data */
+    //for(u8Counter=0;u8Counter<MAX_NUMBER_BITS;u8Counter++ )
+    //{
+        //
+        //dio_vidWriteChannel(IR_Obj.u8port, IR_Obj.u8pin, STD_HIGH);
+        //_delay_ms(HIGH_PULSE_BURST_TIMES);
+        //
+        //if(CHECK_BIT(~IR_Obj.u8Data, u8Counter) == 0)
+        //{
+            //for(int i=0;i<LOW_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+            //
+        //}else{
+            //for(int i=0;i<HIGH_DATA_ITERATION;i++)
+            //{
+                //IR_voidSendPulses_timer(IR_Obj);
+            //}
+        //}
+    //}
  }	
 /*
     Function Name        : IR_voidEndBit_timer
