@@ -14,6 +14,7 @@ ISR(VECTOR(12)) {
 	ptr_func();
 }
 
+
 void SPI_Init_Master(Master_Config *My_Config) {
 	dio_vidConfigChannel(MISO_PORT, MISO_PIN, INPUT);
 	dio_vidConfigChannel(MOSI_PORT, MOSI_PIN, OUTPUT);

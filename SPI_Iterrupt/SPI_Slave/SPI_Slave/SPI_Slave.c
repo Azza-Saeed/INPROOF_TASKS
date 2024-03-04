@@ -17,35 +17,31 @@
 #include "STD_Types.h"
 #include "BIT_MATH.h"
 
+u8 Recieve_Data;
+
+void SPI_Callback_Recieve(void);
 
 int main(void)
 {
 	/* SPI Initialization */
-	//Master_Config Slave_Obj={ SPI_INTERRUPT_DISABLE,SPI_LSB,SPI_RISING_LEADING,SPI_SAMPLE_LEADING,SPI_PRESCALER_128};
-	//
-	//volatile u8  Ptr_Received=0;
-	//u8 u8Copy_data=0x55;
-	//
-	//SPI_Init_Slave(&Slave_Obj);
-	//Global_Interrupt_Enable();
-	//SPI_Set_CallBack(Func_recieve_slave);
-	dio_vidConfigChannel(DIO_PORTC,DIO_PIN0,OUTPUT);
+	Slave_Config Slave_Obj={ SPI_INTERRUPT_ENABLE,SPI_LSB,SPI_RISING_LEADING,SPI_SAMPLE_LEADING};
+		
+	SPI_Init_Slave(&Slave_Obj);
+	Global_Interrupt_Enable();
+	SPI_Set_CallBack(SPI_Callback_Recieve);
+	dio_vidConfigChannel(DIO_PORTC,DIO_PIN7,OUTPUT);
 	
     while(1)
     {
-		 dio_vidFlipChannel(DIO_PORTC,DIO_PIN0);
-		 _delay_ms(500);
-		 
-		//SPI_Send_ASynch_Byte(u8Copy_data);
-		//_delay_ms(200);
-		//// check for this data 
-		//SPI_Read_Data(&Ptr_Received);
-		//
-		//if( Ptr_Received == DUMMY_DATA )
-		//{
-			 //dio_vidFlipChannel(DIO_PORTC,DIO_PIN0);
-			 //_delay_ms(500);
-		 //}
+		if( Recieve_Data == 0xFE)
+		{
+			dio_vidFlipChannel(DIO_PORTC,DIO_PIN7);
+			_delay_ms(500);
+		}
 	}	
 }
 
+void SPI_Callback_Recieve(void)
+{
+	SPI_Read_Data(&Recieve_Data);
+}

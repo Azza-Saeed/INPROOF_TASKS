@@ -3,29 +3,29 @@ SPI_Slave.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  0000055e  000005f2  2**0
+  0 .data         00000000  00800100  00000594  00000628  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000055e  00000000  00000000  00000094  2**1
+  1 .text         00000594  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000002  00800100  00800100  000005f2  2**0
+  2 .bss          00000003  00800100  00800100  00000628  2**0
                   ALLOC
-  3 .stab         000006cc  00000000  00000000  000005f4  2**2
+  3 .stab         000006cc  00000000  00000000  00000628  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000085  00000000  00000000  00000cc0  2**0
+  4 .stabstr      00000085  00000000  00000000  00000cf4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 000000c0  00000000  00000000  00000d48  2**3
+  5 .debug_aranges 000000c0  00000000  00000000  00000d80  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000b00  00000000  00000000  00000e08  2**0
+  6 .debug_info   00000b96  00000000  00000000  00000e40  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000003b3  00000000  00000000  00001908  2**0
+  7 .debug_abbrev 00000408  00000000  00000000  000019d6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000004ad  00000000  00000000  00001cbb  2**0
+  8 .debug_line   000004bd  00000000  00000000  00001dde  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001ec  00000000  00000000  00002168  2**2
+  9 .debug_frame  0000020c  00000000  00000000  0000229c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000410  00000000  00000000  00002354  2**0
+ 10 .debug_str    0000043c  00000000  00000000  000024a8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000576  00000000  00000000  00002764  2**0
+ 11 .debug_loc    00000606  00000000  00000000  000028e4  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -70,7 +70,7 @@ Disassembly of section .text:
   40:	11 e0       	ldi	r17, 0x01	; 1
   42:	a0 e0       	ldi	r26, 0x00	; 0
   44:	b1 e0       	ldi	r27, 0x01	; 1
-  46:	ee e5       	ldi	r30, 0x5E	; 94
+  46:	e4 e9       	ldi	r30, 0x94	; 148
   48:	f5 e0       	ldi	r31, 0x05	; 5
   4a:	02 c0       	rjmp	.+4      	; 0x50 <__do_copy_data+0x10>
   4c:	05 90       	lpm	r0, Z+
@@ -89,11 +89,11 @@ Disassembly of section .text:
   5e:	1d 92       	st	X+, r1
 
 00000060 <.do_clear_bss_start>:
-  60:	a2 30       	cpi	r26, 0x02	; 2
+  60:	a3 30       	cpi	r26, 0x03	; 3
   62:	b1 07       	cpc	r27, r17
   64:	e1 f7       	brne	.-8      	; 0x5e <.do_clear_bss_loop>
-  66:	68 d2       	rcall	.+1232   	; 0x538 <main>
-  68:	78 c2       	rjmp	.+1264   	; 0x55a <_exit>
+  66:	6c d2       	rcall	.+1240   	; 0x540 <main>
+  68:	93 c2       	rjmp	.+1318   	; 0x590 <_exit>
 
 0000006a <__bad_interrupt>:
   6a:	ca cf       	rjmp	.-108    	; 0x0 <__vectors>
@@ -793,6 +793,7 @@ ISR(VECTOR(12)) {
 
 00000420 <SPI_Init_Master>:
 
+
 void SPI_Init_Master(Master_Config *My_Config) {
  420:	cf 93       	push	r28
  422:	df 93       	push	r29
@@ -1063,43 +1064,86 @@ u8 Master_Receive(){
  534:	cf 91       	pop	r28
  536:	08 95       	ret
 
-00000538 <main>:
-	//u8 u8Copy_data=0x55;
-	//
-	//SPI_Init_Slave(&Slave_Obj);
-	//Global_Interrupt_Enable();
-	//SPI_Set_CallBack(Func_recieve_slave);
-	dio_vidConfigChannel(DIO_PORTC,DIO_PIN0,OUTPUT);
+00000538 <SPI_Callback_Recieve>:
+	}	
+}
+
+void SPI_Callback_Recieve(void)
+{
+	SPI_Read_Data(&Recieve_Data);
  538:	82 e0       	ldi	r24, 0x02	; 2
- 53a:	60 e0       	ldi	r22, 0x00	; 0
- 53c:	41 e0       	ldi	r20, 0x01	; 1
- 53e:	96 dd       	rcall	.-1236   	; 0x6c <dio_vidConfigChannel>
+ 53a:	91 e0       	ldi	r25, 0x01	; 1
+ 53c:	de df       	rcall	.-68     	; 0x4fa <SPI_Read_Data>
+ 53e:	08 95       	ret
+
+00000540 <main>:
+u8 Recieve_Data;
+
+void SPI_Callback_Recieve(void);
+
+int main(void)
+{
+ 540:	cf 93       	push	r28
+ 542:	df 93       	push	r29
+ 544:	00 d0       	rcall	.+0      	; 0x546 <main+0x6>
+ 546:	00 d0       	rcall	.+0      	; 0x548 <main+0x8>
+ 548:	cd b7       	in	r28, 0x3d	; 61
+ 54a:	de b7       	in	r29, 0x3e	; 62
+	/* SPI Initialization */
+	Slave_Config Slave_Obj={ SPI_INTERRUPT_ENABLE,SPI_LSB,SPI_RISING_LEADING,SPI_SAMPLE_LEADING};
+ 54c:	81 e0       	ldi	r24, 0x01	; 1
+ 54e:	89 83       	std	Y+1, r24	; 0x01
+ 550:	8a 83       	std	Y+2, r24	; 0x02
+ 552:	1b 82       	std	Y+3, r1	; 0x03
+ 554:	1c 82       	std	Y+4, r1	; 0x04
+		
+	SPI_Init_Slave(&Slave_Obj);
+ 556:	ce 01       	movw	r24, r28
+ 558:	01 96       	adiw	r24, 0x01	; 1
+ 55a:	97 df       	rcall	.-210    	; 0x48a <SPI_Init_Slave>
+	Global_Interrupt_Enable();
+ 55c:	d7 df       	rcall	.-82     	; 0x50c <Global_Interrupt_Enable>
+	SPI_Set_CallBack(SPI_Callback_Recieve);
+ 55e:	8c e9       	ldi	r24, 0x9C	; 156
+ 560:	92 e0       	ldi	r25, 0x02	; 2
+ 562:	cf df       	rcall	.-98     	; 0x502 <SPI_Set_CallBack>
+	dio_vidConfigChannel(DIO_PORTC,DIO_PIN7,OUTPUT);
+ 564:	82 e0       	ldi	r24, 0x02	; 2
+ 566:	67 e0       	ldi	r22, 0x07	; 7
+ 568:	41 e0       	ldi	r20, 0x01	; 1
+ 56a:	80 dd       	rcall	.-1280   	; 0x6c <dio_vidConfigChannel>
 	
     while(1)
     {
-		 dio_vidFlipChannel(DIO_PORTC,DIO_PIN0);
- 540:	82 e0       	ldi	r24, 0x02	; 2
- 542:	60 e0       	ldi	r22, 0x00	; 0
- 544:	a7 de       	rcall	.-690    	; 0x294 <dio_vidFlipChannel>
+		if( Recieve_Data == 0xFE)
+ 56c:	80 91 02 01 	lds	r24, 0x0102
+ 570:	8e 3f       	cpi	r24, 0xFE	; 254
+ 572:	69 f4       	brne	.+26     	; 0x58e <main+0x4e>
+		{
+			dio_vidFlipChannel(DIO_PORTC,DIO_PIN7);
+ 574:	82 e0       	ldi	r24, 0x02	; 2
+ 576:	67 e0       	ldi	r22, 0x07	; 7
+ 578:	8d de       	rcall	.-742    	; 0x294 <dio_vidFlipChannel>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 546:	8f e9       	ldi	r24, 0x9F	; 159
- 548:	96 e8       	ldi	r25, 0x86	; 134
- 54a:	a1 e0       	ldi	r26, 0x01	; 1
- 54c:	81 50       	subi	r24, 0x01	; 1
- 54e:	90 40       	sbci	r25, 0x00	; 0
- 550:	a0 40       	sbci	r26, 0x00	; 0
- 552:	e1 f7       	brne	.-8      	; 0x54c <main+0x14>
- 554:	00 c0       	rjmp	.+0      	; 0x556 <main+0x1e>
- 556:	00 00       	nop
- 558:	f3 cf       	rjmp	.-26     	; 0x540 <main+0x8>
+ 57a:	8f e9       	ldi	r24, 0x9F	; 159
+ 57c:	96 e8       	ldi	r25, 0x86	; 134
+ 57e:	a1 e0       	ldi	r26, 0x01	; 1
+ 580:	81 50       	subi	r24, 0x01	; 1
+ 582:	90 40       	sbci	r25, 0x00	; 0
+ 584:	a0 40       	sbci	r26, 0x00	; 0
+ 586:	e1 f7       	brne	.-8      	; 0x580 <main+0x40>
+ 588:	00 c0       	rjmp	.+0      	; 0x58a <main+0x4a>
+ 58a:	00 00       	nop
+ 58c:	ef cf       	rjmp	.-34     	; 0x56c <main+0x2c>
+ 58e:	ff cf       	rjmp	.-2      	; 0x58e <main+0x4e>
 
-0000055a <_exit>:
- 55a:	f8 94       	cli
+00000590 <_exit>:
+ 590:	f8 94       	cli
 
-0000055c <__stop_program>:
- 55c:	ff cf       	rjmp	.-2      	; 0x55c <__stop_program>
+00000592 <__stop_program>:
+ 592:	ff cf       	rjmp	.-2      	; 0x592 <__stop_program>
